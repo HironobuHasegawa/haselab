@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="Mac OS X MS Office 2011 先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．
+単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．
+http://support.microsoft.com/kb/2398768/ja
+疲れた．
+メンテナンス ディスクのアクセス権の検証と修復 OS Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．
+参考 http://www.ttcbn.net/no_second_life/archives/22570
+2012/05/14
+Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード 0. Time Machineでバックアップを取っておく 1. App Storeからアップグレード 2. 再起動し，起動時にcmd&#43;Rを押し続けて「OS X 復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4. 「OS Xを再インストール」でEl Capitanをネットワークインストール 5. インストール後に起動し，データやアプリをTime Machineから復元する
+``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```
+vim インストール 日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う http://code.google.com/p/macvim-kaoriya/
+設定 シェルから起動させるための，.bash_profileへの設定は本ページ下部のシェル設定を参照
+Vimで挿入モードから抜ける時に英数入力に切り替えるを参考に，KeyRemap4MacBookを設定
+.vimrcへの設定は http://yuroyoro.hatenablog.com/entry/20101104/1288879591 を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず
+&#34; ;でコマンド入力( ;と:を入れ替) noremap ; : noremap : ; だけを設定しておく． 以下を追加（2012/11/07）">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mac :: HaseLab">
+    <meta name="twitter:description" content="Mac OS X MS Office 2011 先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．
+単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．
+http://support.microsoft.com/kb/2398768/ja
+疲れた．
+メンテナンス ディスクのアクセス権の検証と修復 OS Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．
+参考 http://www.ttcbn.net/no_second_life/archives/22570
+2012/05/14
+Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード 0. Time Machineでバックアップを取っておく 1. App Storeからアップグレード 2. 再起動し，起動時にcmd&#43;Rを押し続けて「OS X 復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4. 「OS Xを再インストール」でEl Capitanをネットワークインストール 5. インストール後に起動し，データやアプリをTime Machineから復元する
+``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```
+vim インストール 日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う http://code.google.com/p/macvim-kaoriya/
+設定 シェルから起動させるための，.bash_profileへの設定は本ページ下部のシェル設定を参照
+Vimで挿入モードから抜ける時に英数入力に切り替えるを参考に，KeyRemap4MacBookを設定
+.vimrcへの設定は http://yuroyoro.hatenablog.com/entry/20101104/1288879591 を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず
+&#34; ;でコマンド入力( ;と:を入れ替) noremap ; : noremap : ; だけを設定しておく． 以下を追加（2012/11/07）">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/osx/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="Mac :: HaseLab">
+    <meta property="og:description" content="Mac OS X MS Office 2011 先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．
+単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．
+http://support.microsoft.com/kb/2398768/ja
+疲れた．
+メンテナンス ディスクのアクセス権の検証と修復 OS Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．
+参考 http://www.ttcbn.net/no_second_life/archives/22570
+2012/05/14
+Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード 0. Time Machineでバックアップを取っておく 1. App Storeからアップグレード 2. 再起動し，起動時にcmd&#43;Rを押し続けて「OS X 復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4. 「OS Xを再インストール」でEl Capitanをネットワークインストール 5. インストール後に起動し，データやアプリをTime Machineから復元する
+``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```
+vim インストール 日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う http://code.google.com/p/macvim-kaoriya/
+設定 シェルから起動させるための，.bash_profileへの設定は本ページ下部のシェル設定を参照
+Vimで挿入モードから抜ける時に英数入力に切り替えるを参考に，KeyRemap4MacBookを設定
+.vimrcへの設定は http://yuroyoro.hatenablog.com/entry/20101104/1288879591 を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず
+&#34; ;でコマンド入力( ;と:を入れ替) noremap ; : noremap : ; だけを設定しておく． 以下を追加（2012/11/07）">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta itemprop="name" content="Mac :: HaseLab">
+    <meta itemprop="description" content="Mac OS X MS Office 2011 先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．
+単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．
+http://support.microsoft.com/kb/2398768/ja
+疲れた．
+メンテナンス ディスクのアクセス権の検証と修復 OS Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．
+参考 http://www.ttcbn.net/no_second_life/archives/22570
+2012/05/14
+Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード 0. Time Machineでバックアップを取っておく 1. App Storeからアップグレード 2. 再起動し，起動時にcmd&#43;Rを押し続けて「OS X 復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4. 「OS Xを再インストール」でEl Capitanをネットワークインストール 5. インストール後に起動し，データやアプリをTime Machineから復元する
+``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```
+vim インストール 日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う http://code.google.com/p/macvim-kaoriya/
+設定 シェルから起動させるための，.bash_profileへの設定は本ページ下部のシェル設定を参照
+Vimで挿入モードから抜ける時に英数入力に切り替えるを参考に，KeyRemap4MacBookを設定
+.vimrcへの設定は http://yuroyoro.hatenablog.com/entry/20101104/1288879591 を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず
+&#34; ;でコマンド入力( ;と:を入れ替) noremap ; : noremap : ; だけを設定しておく． 以下を追加（2012/11/07）">
+    <meta itemprop="wordCount" content="900">
+    <title>Mac :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/osx/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#ms-office-2011">MS Office 2011</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ディスクのアクセス権の検証と修復">ディスクのアクセス権の検証と修復</a></li>
+    <li><a href="#yosemite-10105からel-capitan-10116にアップグレード">Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#設定">設定</a></li>
+    <li><a href="#vimコマンド">vimコマンド</a>
+      <ul>
+        <li><a href="#コマンドモードで使うコマンド">コマンドモードで使うコマンド</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#ネットワーク">ネットワーク</a></li>
+    <li><a href="#入力デバイス関係">入力デバイス関係</a>
+      <ul>
+        <li><a href="#キーボード関係">キーボード関係</a></li>
+        <li><a href="#トラックパッド関係">トラックパッド関係</a></li>
+      </ul>
+    </li>
+    <li><a href="#finder">Finder</a>
+      <ul>
+        <li><a href="#タイトルバーにパスを表示">タイトルバーにパスを表示</a></li>
+      </ul>
+    </li>
+    <li><a href="#その他の環境整備">その他の環境整備</a>
+      <ul>
+        <li><a href="#プリンタの設定">プリンタの設定</a></li>
+        <li><a href="#起動音を消す">起動音を消す</a></li>
+        <li><a href="#メールリンクの処理">メールリンクの処理</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#wget">wget</a></li>
+    <li><a href="#git">git</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Mac</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/osx.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/linuxtips/index.html" title="Linux tips (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/office/index.html" title="MS Office (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="mac">Mac</h1>
+
+<p><a href="#R-image-1aa06853dfbf30135a3aa54246207d32" class="lightbox-link"><img class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="tag%3Eosx" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1aa06853dfbf30135a3aa54246207d32"><img class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="tag%3Eosx"></a></p>
+<h1 id="mac-os-x">Mac OS X</h1>
+<h2 id="ms-office-2011">MS Office 2011</h2>
+<p>先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．</p>
+<p>単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．</p>
+<p><a href="http://support.microsoft.com/kb/2398768/ja" rel="external" target="_blank">http://support.microsoft.com/kb/2398768/ja</a></p>
+<p>疲れた．</p>
+<h1 id="メンテナンス">メンテナンス</h1>
+<h2 id="ディスクのアクセス権の検証と修復">ディスクのアクセス権の検証と修復</h2>
+<p>OS
+Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．</p>
+<p>参考 <a href="http://www.ttcbn.net/no_second_life/archives/22570" rel="external" target="_blank">http://www.ttcbn.net/no_second_life/archives/22570</a></p>
+<p>2012/05/14</p>
+<h2 id="yosemite-10105からel-capitan-10116にアップグレード">Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード</h2>
+<p>0. Time Machineでバックアップを取っておく 1. App
+Storeからアップグレード 2. 再起動し，起動時にcmd+Rを押し続けて「OS X
+復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4.
+「OS Xを再インストール」でEl Capitanをネットワークインストール 5.
+インストール後に起動し，データやアプリをTime Machineから復元する</p>
+<p>``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```</p>
+<h1 id="vim">vim</h1>
+<h2 id="インストール">インストール</h2>
+<p>日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う
+<a href="http://code.google.com/p/macvim-kaoriya/" rel="external" target="_blank">http://code.google.com/p/macvim-kaoriya/</a></p>
+<h2 id="設定">設定</h2>
+<p>シェルから起動させるための，.bash_profileへの設定は本ページ下部の<a href="http://akita-nct.jp/hasegawa/wiki/doku.php?id=memo:osx#%E3%82%B7%E3%82%A7%E3%83%AB%E8%A8%AD%E5%AE%9A" rel="external" target="_blank">シェル設定</a>を参照</p>
+<p><a href="http://r7kamura.hatenablog.com/entry/20110217/1297910068" rel="external" target="_blank">Vimで挿入モードから抜ける時に英数入力に切り替える</a>を参考に，<a href="KeyRemap4MacBook">KeyRemap4MacBook</a>を設定</p>
+<p>.vimrcへの設定は
+<a href="http://yuroyoro.hatenablog.com/entry/20101104/1288879591" rel="external" target="_blank">http://yuroyoro.hatenablog.com/entry/20101104/1288879591</a>
+を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず</p>
+<pre><code>&quot; ;でコマンド入力( ;と:を入れ替)
+noremap ; :
+noremap : ;
+</code></pre>
+<p>だけを設定しておく． 以下を追加（2012/11/07）</p>
+<pre><code>&quot; 行番号を表示（set nonumberで非表示） 
+set number
+</code></pre>
+<p>以下を追加（2012/11/09）参考
+<a href="http://nanasi.jp/articles/others/xmllint.html#mac" rel="external" target="_blank">http://nanasi.jp/articles/others/xmllint.html#mac</a></p>
+<pre><code>&quot; xmlを開いたときにxmllintを使って整形する
+au FileType xml exe &quot;:silent 1,$!xmllint --format --recover - 2&gt;/dev/null&quot;
+</code></pre>
+<h2 id="vimコマンド">vimコマンド</h2>
+<h3 id="コマンドモードで使うコマンド">コマンドモードで使うコマンド</h3>
+<h4 id="移動">移動</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>h</td>
+          <td>左に移動</td>
+      </tr>
+      <tr>
+          <td>j</td>
+          <td>上に移動</td>
+      </tr>
+      <tr>
+          <td>k</td>
+          <td>下に移動</td>
+      </tr>
+      <tr>
+          <td>l</td>
+          <td>右に移動</td>
+      </tr>
+      <tr>
+          <td>w</td>
+          <td>次の単語に移動</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>行頭に移動</td>
+      </tr>
+      <tr>
+          <td>$</td>
+          <td>行末に移動</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="編集">編集</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x</td>
+          <td>カーソル位置にある文字を消去</td>
+      </tr>
+      <tr>
+          <td>dd</td>
+          <td>カーソルのある行全体を消去</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="入力モードへの切り替え">入力モードへの切り替え</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>i</td>
+          <td>カーソルの左から入力開始</td>
+      </tr>
+      <tr>
+          <td>a</td>
+          <td>カーソルの右から入力開始</td>
+      </tr>
+      <tr>
+          <td>I</td>
+          <td>行頭から入力開始</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td>行末から入力開始</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="検索">検索</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/&lt;文字列&gt;</td>
+          <td>文字列を順方向に検索</td>
+      </tr>
+      <tr>
+          <td>?&lt;文字列&gt;</td>
+          <td>文字列を逆方向に検索</td>
+      </tr>
+      <tr>
+          <td>n</td>
+          <td>順方向に検索</td>
+      </tr>
+      <tr>
+          <td>N</td>
+          <td>逆方向に検索</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="その他">その他</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>:scriptnames</td>
+          <td>読み込まれたスクリプトを確認</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="諸設定">諸設定</h1>
+<h2 id="ネットワーク">ネットワーク</h2>
+<h2 id="入力デバイス関係">入力デバイス関係</h2>
+<h3 id="キーボード関係">キーボード関係</h3>
+<p><a href="http://pqrs.org/macosx/keyremap4macbook/index.html.ja" rel="external" target="_blank">KeyRemap4MacBook</a></p>
+<h3 id="トラックパッド関係">トラックパッド関係</h3>
+<p>BetterTouchTool：トラックパッドの機能を拡張するアプリ</p>
+<p>ダウンロード：<a href="http://blog.boastr.net/?page_id=1722" rel="external" target="_blank">http://blog.boastr.net/?page_id=1722</a></p>
+<p>参考：<a href="http://nori510.com/archives/8117" rel="external" target="_blank">http://nori510.com/archives/8117</a></p>
+<p>参考：<a href="http://d.hatena.ne.jp/RyoAnna/20110731/1312100591" rel="external" target="_blank">http://d.hatena.ne.jp/RyoAnna/20110731/1312100591</a></p>
+<h2 id="finder">Finder</h2>
+<p>2012/03/27 ファインダーの拡張 XtraFinder
+<a href="http://mag.torumade.nu/?p=6602" rel="external" target="_blank">http://mag.torumade.nu/?p=6602</a></p>
+<p>2012/11/08追記
+XtraFinderがバージョンアップを繰り返し，気がついたらタブ表示にも対応していた．しかも無料のまま．素晴らしい．</p>
+<p>半年ほど前に買ったTotalFinderは封印し，しばらくはXtraFinderで行こうと思う．</p>
+<h3 id="タイトルバーにパスを表示">タイトルバーにパスを表示</h3>
+<p><a href="http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-display-the-full-path-of-folder-in-macos-finder-titlebar.html" rel="external" target="_blank">http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-display-the-full-path-of-folder-in-macos-finder-titlebar.html</a></p>
+<p>便利かと思ったけど，パスバー表示＆タブ環境では使いにくい．パスが右寄せでカレントディレクトリが表示されるような形になれば便利かも．</p>
+<h2 id="その他の環境整備">その他の環境整備</h2>
+<h3 id="プリンタの設定">プリンタの設定</h3>
+<p>モノクロをデフォルトにしたい場合</p>
+<p><a href="http://d.hatena.ne.jp/pcmaster/20111203/p2" rel="external" target="_blank">http://d.hatena.ne.jp/pcmaster/20111203/p2</a></p>
+<p>を参考に設定する．</p>
+<p>ただし，ブラウザはFirefoxではアクセス出来なかったのと，シェルから</p>
+<pre><code>cupsctl WebInterface=yes
+</code></pre>
+<p>を実行する必要があった．</p>
+<h3 id="起動音を消す">起動音を消す</h3>
+<p>2012/11/08</p>
+<p><a href="http://appdrill.net/60641/mac-boot-mute.html" rel="external" target="_blank">http://appdrill.net/60641/mac-boot-mute.html</a> 経由
+<a href="http://osxdaily.com/2012/11/04/disable-mac-boot-chime/" rel="external" target="_blank">http://osxdaily.com/2012/11/04/disable-mac-boot-chime/</a> より</p>
+<p>消すとき</p>
+<pre><code>sudo nvram SystemAudioVolume=%80
+</code></pre>
+<p>戻すとき</p>
+<pre><code>sudo nvram -d SystemAudioVolume
+</code></pre>
+<h3 id="メールリンクの処理">メールリンクの処理</h3>
+<p>2013/04/18</p>
+<p>Firefoxでmailtoのリンクを踏んだとき，デフォルトではOSの標準メールアプリケーションとなる．
+<a href="https://support.mozilla.org/ja/kb/Changing%20the%20e-mail%20program%20used%20by%20Firefox" rel="external" target="_blank">https://support.mozilla.org/ja/kb/Changing%20the%20e-mail%20program%20used%20by%20Firefox</a></p>
+<p>標準メールアプリケーションが設定したつもりのないアプリになっていたので，変更したい．</p>
+<p>OS標準のメーラー・ブラウザの変更方法は以下を参照
+<a href="http://support.apple.com/kb/HT1637?viewlocale=ja_JP&locale=ja_JP" rel="external" target="_blank">http://support.apple.com/kb/HT1637?viewlocale=ja_JP&locale=ja_JP</a></p>
+<p>まさか，Safari.appとMail.appからしか変更できないとはビックリした．Mail.appなんか一度も使ってないから，アカウントの設定をしなくちゃならなかった．下手にきちんと登録して受信されても迷惑なので，適当なサーバ情報で実際はアカウントにアクセス出来ない状態に設定した．この設定方法はポンコツだろう．</p>
+<h1 id="homebrew">homebrew</h1>
+<p>2012/04/17</p>
+<p>homebrewを入れようと思い，インストール用のrubyスクリプト</p>
+<pre><code>/usr/bin/ruby -e &quot;$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
+</code></pre>
+<p>を実行するも，該当するファイルにアクセス出来ないというようなエラーが出る．
+curlでシステム設定のプロクシを使ってくれないみたいなので，</p>
+<pre><code>~/.bash_profile
+</code></pre>
+<p>にcurlでproxyを使うために</p>
+<pre><code>export http_proxy=&quot;http://proxy.com:8080/&quot;
+export https_proxy=&quot;http://proxy.com:8080/&quot;
+export ftp_proxy=&quot;http://proxy.com:8080/&quot;
+</code></pre>
+<p>を記述した（プロクシアドレスとポート番号は適宜変更）．</p>
+<p>curlのマニュアルを読むと，<a href="http://www.hcn.zaq.ne.jp/___/unix/curl_manpage.html#O-proxy" rel="external" target="_blank">http://www.hcn.zaq.ne.jp/___/unix/curl_manpage.html#O-proxy</a>
+にproxyのオプションがあった．これを使って，</p>
+<pre><code>/usr/bin/ruby -e &quot;$(/usr/bin/curl -fksSL --proxy &quot;http://proxy.com:8080/&quot; https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;
+</code></pre>
+<p>でいいような気もする（2012/04/28追記，後日検証する）．というか，ルビースクリプトダウンロードして実行すればいいような気もする．</p>
+<p>シェルを再起動してから上記スクリプトを実行すると，</p>
+<pre><code>==&gt; This script will install:
+/usr/local/bin/brew
+/usr/local/Library/Formula/...
+/usr/local/Library/Homebrew/...
+==&gt; The following directories will be made group writable:
+/usr/local/.
+/usr/local/bin
+/usr/local/etc
+/usr/local/include
+/usr/local/lib
+/usr/local/share
+/usr/local/share/man
+/usr/local/share/man/man1
+==&gt; The following directories will have their group set to admin:
+/usr/local/.
+/usr/local/bin
+/usr/local/etc
+/usr/local/include
+/usr/local/lib
+/usr/local/share
+/usr/local/share/man
+/usr/local/share/man/man1
+
+Press enter to continue
+</code></pre>
+<p>と出て，エンターを押すと，パスワードを求められる．ログインパスワードを入力すると．．．</p>
+<pre><code>==&gt; Downloading and Installing Homebrew...
+==&gt; Installation successful!
+You should run `brew doctor' *before* you install anything.
+Now type: brew help
+</code></pre>
+<p>とりあえずインストールは出来た バージョンチェック</p>
+<pre><code>$ brew -v
+0.9
+</code></pre>
+<p>homebrewを使って何かをインストールする前に`brew
+doctor&rsquo;を実行すれというので実行</p>
+<pre><code>$ `brew doctor'
+</code></pre>
+<p>すると，Warningがたくさん出た．</p>
+<pre><code>Warning: Some directories in /usr/local/share/man aren't writable.
+This can happen if you &quot;sudo make install&quot; software that isn't managed
+by Homebrew. If a brew tries to add locale information to one of these
+directories, then the install will fail during the link step.
+You should probably `chown` them:
+
+  /usr/local/share/man/de
+  /usr/local/share/man/de/man1
+</code></pre>
+<p>書き込めなくってエラーが出るから，所有者を変えろとのこと．変えましょう．</p>
+<pre><code>$ chown -v hasegawa /usr/local/share/man/de
+chown: /usr/local/share/man/de: Operation not permitted
+</code></pre>
+<p>権限が足りないので，sudo</p>
+<pre><code>$ sudo chown -v hasegawa /usr/local/share/man/de
+Password:
+/usr/local/share/man/de
+</code></pre>
+<p>OK．次</p>
+<pre><code>$ sudo chown -v hasegawa /usr/local/share/man/de/man1
+Password:
+/usr/local/share/man/de/man1
+</code></pre>
+<p>OK．次の警告はXcodeが古いから新しくすれとのこと．</p>
+<pre><code>Warning: You have Xcode 4.2.1, which is outdated.
+Please install Xcode 4.3.
+</code></pre>
+<p>App Store見ても更新がない．アップデート方法を検索すると，このサイト
+<a href="http://null.ly/post/17783037515/switch-xcode-4-2-1-to-4-3" rel="external" target="_blank">http://null.ly/post/17783037515/switch-xcode-4-2-1-to-4-3</a>
+で別にXcode使わないならコマンドラインツールだけ別にインストール出来るとのこと．
+Xcode使わないから，アンインストール．</p>
+<pre><code>$ sudo /Developer/Library/uninstall-devtools --mode=all
+</code></pre>
+<p>アップルの開発者向けサイトhttps://developer.apple.com/ でユーザ登録し，
+<a href="https://developer.apple.com/downloads/index.action" rel="external" target="_blank">https://developer.apple.com/downloads/index.action</a> でcommand
+lineを検索して cltools_lion_latemarch12.dmg
+をダウンロードしてインストールする．とりあえずgcc入っているかチェック</p>
+<pre><code>$ gcc -v
+略
+gcc version 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.9.00)
+</code></pre>
+<p>入ってる．</p>
+<p>（前の続き2012/04/28）</p>
+<p>次，</p>
+<pre><code>Warning: Unbrewed dylibs were found in /usr/local/lib.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae, and may need to be deleted.
+
+Unexpected dylibs:
+  /usr/local/lib/libmecab.1.dylib
+Warning: Unbrewed .la files were found in /usr/local/lib.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae, and may need to be deleted.
+
+Unexpected .la files:
+  /usr/local/lib/libmecab.la
+Warning: Unbrewed static libraries were found in /usr/local/lib.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae, and may need to be deleted.
+
+Unexpected static libraries:
+  /usr/local/lib/libmecab.a
+</code></pre>
+<p>mecab関連のファイルが邪魔らしい．面倒なのでmecabをアンインストールする．</p>
+<pre><code>$ cd mecab-0.98
+$ make uninstall
+</code></pre>
+<p>もう一度</p>
+<pre><code>$ brew doctor
+
+Warning: Your Homebrew is outdated
+You haven't updated for at least 24 hours, this is a long time in brewland!
+Warning: Your Xcode is configured with an invalid path.
+You should change it to the correct path. Please note that there is no correct
+path at this time if you have *only* installed the Command Line Tools for Xcode.
+If your Xcode is pre-4.3 or you installed the whole of Xcode 4.3 then one of
+these is (probably) what you want:
+
+  sudo xcode-select -switch /Developer
+  sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+
+DO NOT SET / OR EVERYTHING BREAKS!
+</code></pre>
+<p>確かに，I have *only* installed the Command Line Tools for
+Xcode.なので，いろいろ調べるのも面倒なので，App
+StoreからXcodeをインストールする．</p>
+<pre><code>$ xcode-select -print-path
+/Developer
+</code></pre>
+<p>正しいpathに変更</p>
+<pre><code>$ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+Password:
+$ xcode-select -print-path
+/Applications/Xcode.app/Contents/Developer
+</code></pre>
+<p>さて，もう一度</p>
+<pre><code>$ brew doctor
+Warning: Your Homebrew is outdated
+You haven't updated for at least 24 hours, this is a long time in brewland!
+hasegawa99:Developer hasegawa$
+</code></pre>
+<p>一応homebrewのインストールスクリプトを再実行したが，やはりbrew
+doctorで同じ警告が出る．のでアップデート</p>
+<pre><code>$ brew update
+Initialized empty Git repository in /usr/local/.git/
+remote: Counting objects: 64923, done.
+remote: Compressing objects: 100% (32992/32992), done.
+remote: Total 64923 (delta 42949), reused 50825 (delta 31137)
+Receiving objects: 100% (64923/64923), 9.21 MiB | 513 KiB/s, done.
+Resolving deltas: 100% (42949/42949), done.
+From https://github.com/mxcl/homebrew
+ * [new branch]      gh-pages   -&gt; origin/gh-pages
+ * [new branch]      master     -&gt; origin/master
+Checking out files: 100% (2219/2219), done.
+HEAD is now at 457c025 cassandra 1.1.0
+Already up-to-date.
+</code></pre>
+<p>もう一度確認．</p>
+<pre><code>$ brew doctor
+Your system is raring to brew.
+</code></pre>
+<p>OK.</p>
+<p>使い方はhttp://yosilove.blogspot.jp/2010/12/homebrew.htmlに非常に分かりやすくまとまっている．
+（2012/09/14追記）</p>
+<h2 id="wget">wget</h2>
+<pre><code>$ brew install wget
+</code></pre>
+<h2 id="git">git</h2>
+<pre><code>$ brew install git
+==&gt; Downloading http://git-core.googlecode.com/files/git-1.7.10.tar.gz
+######################################################################## 100.0%
+==&gt; make prefix=/usr/local/Cellar/git/1.7.10 CC=/usr/bin/clang CFLAGS=-Os -w -pi
+==&gt; make CC=/usr/bin/clang CFLAGS=-Os -w -pipe -march=native -Qunused-arguments
+==&gt; make clean
+==&gt; Downloading http://git-core.googlecode.com/files/git-manpages-1.7.10.tar.gz
+######################################################################## 100.0%
+==&gt; Downloading http://git-core.googlecode.com/files/git-htmldocs-1.7.10.tar.gz
+######################################################################## 100.0%
+==&gt; Caveats
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+The OS X keychain credential helper has been installed to:
+  /usr/local/bin/git-credential-osxkeychain
+
+The 'contrib' directory has been installed to:
+  /usr/local/share/git-core/contrib
+==&gt; Summary
+/usr/local/Cellar/git/1.7.10: 1166 files, 23M, built in 79 seconds
+</code></pre>
+<h1 id="シェル設定">シェル設定</h1>
+<p>2012/11/19</p>
+<p>homebrew経由でzshをインストール</p>
+<pre><code>brew install zsh
+</code></pre>
+<p>zshをデフォルトのシェルに設定</p>
+<pre><code>sudo vi /etc/shells
+</code></pre>
+<p>末尾に</p>
+<pre><code>/usr/local/bin/zsh
+</code></pre>
+<p>を追記．以下のコマンドを実行</p>
+<pre><code>chpass -s /usr/local/bin/zsh
+</code></pre>
+<p>参考：<a href="http://tukaikta.blog135.fc2.com/blog-entry-195.html" rel="external" target="_blank">http://tukaikta.blog135.fc2.com/blog-entry-195.html</a></p>
+<hr>
+<p>2011/12/20</p>
+<pre><code>~/.bash_profile
+</code></pre>
+<p>に <a href="http://blog.cles.jp/item/1620" rel="external" target="_blank">http://blog.cles.jp/item/1620</a> のコメント欄で見つけた</p>
+<pre><code>alias cd='cdx'
+function cdx()
+{
+\cd ${1+&quot;$@&quot;}
+ls -al
+}
+</code></pre>
+<p>を追記し，</p>
+<pre><code>source ~/.bash_profile
+</code></pre>
+<p>で適用</p>
+<pre><code>cd
+</code></pre>
+<p>でディレクトリ移動と同時に</p>
+<pre><code>ls -al
+</code></pre>
+<p>が実行されてとても便利</p>
+<hr>
+<p>2012/10/17</p>
+<p>コンソールからmacvimを使用する（出典：
+<a href="http://code.google.com/p/macvim-kaoriya/wiki/Readme#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%8B%E3%82%89_MacVim_.app%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B" rel="external" target="_blank">http://code.google.com/p/macvim-kaoriya/wiki/Readme#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%8B%E3%82%89_MacVim_.app%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B</a>）</p>
+<pre><code>alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim &quot;$@&quot;'
+</code></pre>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="active " data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/osx/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

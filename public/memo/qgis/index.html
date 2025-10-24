@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="![](tag&gt;GIS osx) 書きかけ
+オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる． QGISはWindows，Mac OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．
+QGIS CRSについての注意点 2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない． 代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい． 数値地図（国土基本情報）などを使うときには注意が必要となる．
+また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．
+最初の設定 1. QGISを起動 2. 新規プロジェクト作成 3. 「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000 とのみ書かれているものを選択」 4. 「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考 http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy）．
+CRS Coordinate Reference System 座標参照系
+「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る 1. 秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．
+2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」
+3. 交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行
+4. 入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する
+以下，他の標高・傾斜度5次メッシュでも同様の処理を行う
+交差とクリップの違い 交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ
+「結合ツール」を使って複数のshapeファイルを結合する 1. 「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動 2. 「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行
+標高で色を塗り分け 標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．
+1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック
+秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．
+以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="QGIS :: HaseLab">
+    <meta name="twitter:description" content="![](tag&gt;GIS osx) 書きかけ
+オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる． QGISはWindows，Mac OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．
+QGIS CRSについての注意点 2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない． 代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい． 数値地図（国土基本情報）などを使うときには注意が必要となる．
+また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．
+最初の設定 1. QGISを起動 2. 新規プロジェクト作成 3. 「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000 とのみ書かれているものを選択」 4. 「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考 http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy）．
+CRS Coordinate Reference System 座標参照系
+「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る 1. 秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．
+2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」
+3. 交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行
+4. 入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する
+以下，他の標高・傾斜度5次メッシュでも同様の処理を行う
+交差とクリップの違い 交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ
+「結合ツール」を使って複数のshapeファイルを結合する 1. 「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動 2. 「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行
+標高で色を塗り分け 標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．
+1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック
+秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．
+以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/qgis/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="QGIS :: HaseLab">
+    <meta property="og:description" content="![](tag&gt;GIS osx) 書きかけ
+オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる． QGISはWindows，Mac OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．
+QGIS CRSについての注意点 2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない． 代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい． 数値地図（国土基本情報）などを使うときには注意が必要となる．
+また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．
+最初の設定 1. QGISを起動 2. 新規プロジェクト作成 3. 「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000 とのみ書かれているものを選択」 4. 「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考 http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy）．
+CRS Coordinate Reference System 座標参照系
+「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る 1. 秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．
+2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」
+3. 交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行
+4. 入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する
+以下，他の標高・傾斜度5次メッシュでも同様の処理を行う
+交差とクリップの違い 交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ
+「結合ツール」を使って複数のshapeファイルを結合する 1. 「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動 2. 「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行
+標高で色を塗り分け 標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．
+1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック
+秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．
+以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta itemprop="name" content="QGIS :: HaseLab">
+    <meta itemprop="description" content="![](tag&gt;GIS osx) 書きかけ
+オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる． QGISはWindows，Mac OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．
+QGIS CRSについての注意点 2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない． 代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい． 数値地図（国土基本情報）などを使うときには注意が必要となる．
+また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．
+最初の設定 1. QGISを起動 2. 新規プロジェクト作成 3. 「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000 とのみ書かれているものを選択」 4. 「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考 http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy）．
+CRS Coordinate Reference System 座標参照系
+「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る 1. 秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．
+2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」
+3. 交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行
+4. 入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する
+以下，他の標高・傾斜度5次メッシュでも同様の処理を行う
+交差とクリップの違い 交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ
+「結合ツール」を使って複数のshapeファイルを結合する 1. 「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動 2. 「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行
+標高で色を塗り分け 標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．
+1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック
+秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．
+以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
+    <meta itemprop="wordCount" content="390">
+    <title>QGIS :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/qgis/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#crsについての注意点">CRSについての注意点</a></li>
+    <li><a href="#最初の設定">最初の設定</a></li>
+    <li><a href="#交差ツールで秋田県行政区域と重なり合った部分だけを切り取る">「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る</a>
+      <ul>
+        <li><a href="#交差とクリップの違い">交差とクリップの違い</a></li>
+      </ul>
+    </li>
+    <li><a href="#結合ツールを使って複数のshapeファイルを結合する">「結合ツール」を使って複数のshapeファイルを結合する</a></li>
+    <li><a href="#標高で色を塗り分け">標高で色を塗り分け</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#国土交通省国土数値情報-平成18年土地利用細分メッシュテータ">国土交通省国土数値情報 平成18年土地利用細分メッシュデータ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#国土数値情報道路線">国土数値情報　道路（線）</a></li>
+    <li><a href="#国土数値情報-高速道路時系列データ">国土数値情報 高速道路時系列データ</a></li>
+    <li><a href="#国土数値情報行政区域データ">国土数値情報　行政区域データ</a></li>
+    <li><a href="#国土数値情報避難施設データ">国土数値情報　避難施設データ</a></li>
+    <li><a href="#国土数値情報標高傾斜度5次メッシュデータ">国土数値情報　標高・傾斜度5次メッシュデータ</a></li>
+    <li><a href="#国土数値情報河川データ">国土数値情報　河川データ</a></li>
+    <li><a href="#国土数値情報港湾データ">国土数値情報　港湾データ</a></li>
+    <li><a href="#国土数値情報-鉄道時系列データ">国土数値情報 鉄道時系列データ</a></li>
+    <li><a href="#国土数値情報バス停留所データ">国土数値情報　バス停留所データ</a></li>
+    <li><a href="#国土数値情報バスルート">国土数値情報　バスルート</a>
+      <ul>
+        <li><a href="#gtfsgeneral-transit-feed-specification">GTFS（General Transit Feed Specification）</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#shapeファイルへのコンバート">shapeファイルへのコンバート</a>
+      <ul>
+        <li><a href="#基盤地図情報demインポータ">基盤地図情報DEMインポータ</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#nike-httpsmattstuehlercomlabnikeplus">Nike+ <a href="https://mattstuehler.com/lab/NikePlus/">https://mattstuehler.com/lab/NikePlus/</a></a></li>
+    <li><a href="#trip-journal">Trip Journal</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">QGIS</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/qgis.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/pcsettings/index.html" title="PCのメモ (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/ubuntu/index.html" title="Ubuntu (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="qgis">QGIS</h1>
+
+<p>![](tag&gt;GIS osx) 書きかけ</p>
+<p>オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる．
+QGISはWindows，Mac
+OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．</p>
+<h1 id="qgis">QGIS</h1>
+<h2 id="crsについての注意点">CRSについての注意点</h2>
+<p>2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない．
+代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい．
+数値地図（国土基本情報）などを使うときには注意が必要となる．</p>
+<p>また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．</p>
+<h2 id="最初の設定">最初の設定</h2>
+<p>1. QGISを起動 2. 新規プロジェクト作成 3.
+「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000
+とのみ書かれているものを選択」 4.
+「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考
+<a href="http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy" rel="external" target="_blank">http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy</a>）．</p>
+<p>CRS Coordinate Reference System 座標参照系</p>
+<h2 id="交差ツールで秋田県行政区域と重なり合った部分だけを切り取る">「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る</h2>
+<p>1.
+秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．</p>
+<p>2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」</p>
+<p>3.
+交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行</p>
+<p>4.
+入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する</p>
+<p>以下，他の標高・傾斜度5次メッシュでも同様の処理を行う</p>
+<h3 id="交差とクリップの違い">交差とクリップの違い</h3>
+<p>交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ</p>
+<h2 id="結合ツールを使って複数のshapeファイルを結合する">「結合ツール」を使って複数のshapeファイルを結合する</h2>
+<p>1.
+「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動
+2.
+「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行</p>
+<h2 id="標高で色を塗り分け">標高で色を塗り分け</h2>
+<p>標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．</p>
+<p>1.
+QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る．
+2.
+「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE
+WHEN &ldquo;G04d_002&rdquo; != &lsquo;unknown&rsquo; THEN toreal( &ldquo;G04d_002&rdquo; )
+END```と入力（平均標高G04d_002が&rsquo;unknown&rsquo;と等しくない場合，G04d_002を実数値に変換する．&lsquo;unknown&rsquo;の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック
+3.
+「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択
+4.
+「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック</p>
+<p>秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．</p>
+<!-- raw HTML omitted -->
+<p>以下のページも参考になる．
+<a href="http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a" rel="external" target="_blank">http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a</a></p>
+<h1 id="qgisレイヤスタイルファイル">QGISレイヤスタイルファイル</h1>
+<p>設定したスタイルはエクスポート・インポートすることが出来る．ファイルは「.qml」という拡張子の付いたXMLフォーマットなので，任意のエディタでカスタマイズすることも出来る（全てをGUIでぽちぽちしながら設定するのは苦痛）．
+せっかくだから，国土数値情報などのオリジナルスタイルをアップロードしておく．</p>
+<h2 id="国土交通省国土数値情報-平成18年土地利用細分メッシュテータ">国土交通省国土数値情報 平成18年土地利用細分メッシュデータ</h2>
+<p>~~久しぶりに使おうとしたら，xml形式のみでの提供になっていた．~~Webページ内のタブでシェープファイルを含むダウンロードが選択できた（<a href="http://nlftp.mlit.go.jp/ksj/gmlold/index.html" rel="external" target="_blank">http://nlftp.mlit.go.jp/ksj/gmlold/index.html</a>
+分かり難いので，もっとシンプルな構造にして欲しい）．</p>
+<p>以前作ったスタイルファイル<a href="#R-image-a2c5e3d8943e74bd6425534162ca8031" class="lightbox-link"><img alt="H18LandUse_StyleSettings.qml" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/memo/h18landuse_stylesettings.qml" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a2c5e3d8943e74bd6425534162ca8031"><img alt="H18LandUse_StyleSettings.qml" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/memo/h18landuse_stylesettings.qml"></a>を使おうとしたところ，データを格納するカラム名が変わっていた．修正したもの<a href="#R-image-da698f0e5e1acc8abdb0d4b07e89731d" class="lightbox-link"><img class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/memo/l03-b-06_5940-jgd_meb01.qml" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-da698f0e5e1acc8abdb0d4b07e89731d"><img class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/memo/l03-b-06_5940-jgd_meb01.qml"></a>を適用すると，以下のような土地利用図が得られる．</p>
+<!-- raw HTML omitted -->
+<h1 id="使用している国土数値情報">使用している国土数値情報</h1>
+<p>国土数値情報とは</p>
+<blockquote>
+<p>国土数値情報は、全国総合開発計画、国土利用計画、国土形成計画などの国土計画の策定や推進の支援のために、国土に関する様々な情報を整備、数値化したデータです。</p>
+</blockquote>
+<p>（引用元：<a href="http://nlftp.mlit.go.jp/ksj/index.html#kokudo" rel="external" target="_blank">http://nlftp.mlit.go.jp/ksj/index.html#kokudo</a>）</p>
+<p>国土数値情報はJPGIS2.1(GML)準拠のデータ（gmlと言っているが，拡張子はxmlで，このままではQGISでは扱えない）とシェープファイルなどで提供されている．
+新しいデータはJPGIS2.1(GML)でのみ提供されているようだ（2014/12/18追記）．</p>
+<p>シェープファイルへの<a href="http://nlftp.mlit.go.jp/ksj/jpgis/jpgis_tool.html" rel="external" target="_blank">変換ツール</a>はWindows限定．
+例えば，L03-b-06_5940-jgd.xmlを変換すると，L03-b-06_5940-jgd_mEB01.shp，L03-b-06_5940-jgd_mEB01.shx，L03-b-06_5940-jgd_mEB01.dbfの3つが生成される．</p>
+<h2 id="国土数値情報道路線">国土数値情報　道路（線）</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>N01-07L-05-01.0a_GML.zip</td>
+          <td>0.38MB</td>
+          <td>平成7年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+  </tbody>
+</table>
+<p>&lt;&lt;featureType&gt;&gt; 道路</p>
+<ul>
+<li>場所: GM_Curve</li>
+<li>道路種別コード: 道路種別コード</li>
+<li>路線名: CharacterString</li>
+<li>線名: CharacterString [0..1]</li>
+<li>通称: CharacterString [0..1]</li>
+</ul>
+<p>&lt;&lt;codeList&gt;&gt; 道路種別コード</p>
+<ul>
+<li>高速道路 = 1</li>
+<li>一般国道 = 2</li>
+<li>主要地方道 = 3</li>
+<li>一般都道府県道 = 4</li>
+<li>特例都道 = 5</li>
+<li>市町村道 = 6</li>
+<li>私道 = 7</li>
+</ul>
+<h2 id="国土数値情報-高速道路時系列データ">国土数値情報 高速道路時系列データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>N06-13.zip</td>
+          <td>2.23MB</td>
+          <td>平成25年</td>
+          <td>世界測地系</td>
+          <td>全国</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報行政区域データ">国土数値情報　行政区域データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>N03-140401_05_GML.zip</td>
+          <td>1.96MB</td>
+          <td>平成26年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+      <tr>
+          <td>N03-130401_05_GML.zip</td>
+          <td>2.23MB</td>
+          <td>平成25年</td>
+          <td>世界測地系</td>
+          <td>北海道</td>
+      </tr>
+  </tbody>
+</table>
+<p>2014/12/18に上記の秋田県をダウンロードしたところ，新しいデータはJPGIS2.1でのみ提供されていることに気がついた．</p>
+<h2 id="国土数値情報避難施設データ">国土数値情報　避難施設データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>P20-12_05_GML.zip</td>
+          <td>0.34MB</td>
+          <td>平成24年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報標高傾斜度5次メッシュデータ">国土数値情報　標高・傾斜度5次メッシュデータ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_5839-jgd_GML.zip</td>
+          <td>0.79MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>5839</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_5840-jgd_GML.zip</td>
+          <td>5.00MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>5840</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_5939-jgd_GML.zip</td>
+          <td>0.23MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>5939</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_5940-jgd_GML.zip</td>
+          <td>4.77MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>5940</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_6039-jgd_GML.zip</td>
+          <td>0.24MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>6039</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>G04-d-11_6040-jgd_GML.zip</td>
+          <td>4.91MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>6040</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報河川データ">国土数値情報　河川データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>W05-07_05_GML.zip</td>
+          <td>9.61MB</td>
+          <td>平成19年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報港湾データ">国土数値情報　港湾データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量(MB)</td>
+          <td>年度</td>
+          <td>版数</td>
+          <td>データ項目</td>
+          <td>地域</td>
+          <td>測地系</td>
+      </tr>
+      <tr>
+          <td>C02-02P-jgd.zip</td>
+          <td>1.65MB</td>
+          <td>平成2年</td>
+          <td>4.0</td>
+          <td>港湾</td>
+          <td>全国</td>
+          <td>世界測地系</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報-鉄道時系列データ">国土数値情報 鉄道時系列データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>N05-13.zip</td>
+          <td>10.50MB</td>
+          <td>平成25年</td>
+          <td>世界測地系</td>
+          <td>全国</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="国土数値情報バス停留所データ">国土数値情報　バス停留所データ</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>P11-10_05_GML.zip</td>
+          <td>0.27MB</td>
+          <td>平成22年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11.html" rel="external" target="_blank">http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11.html</a></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>識別子</td>
+          <td>データ項目</td>
+          <td>タグ名</td>
+          <td>対応番号</td>
+          <td>属性名</td>
+      </tr>
+      <tr>
+          <td>P11</td>
+          <td>バス停留所</td>
+          <td>BusStop</td>
+          <td>P11-001</td>
+          <td>バス停名</td>
+      </tr>
+      <tr>
+          <td>P11</td>
+          <td>バス停留所</td>
+          <td>BusStop</td>
+          <td>P11-002</td>
+          <td>バス路線情報-バス区分</td>
+      </tr>
+      <tr>
+          <td>P11</td>
+          <td>バス停留所</td>
+          <td>BusStop</td>
+          <td>P11-003-1～19</td>
+          <td>バス路線情報-事業者名</td>
+      </tr>
+      <tr>
+          <td>P11</td>
+          <td>バス停留所</td>
+          <td>BusStop</td>
+          <td>P11-004-1～19</td>
+          <td>バス路線情報-バス系統</td>
+      </tr>
+  </tbody>
+</table>
+<p>レイヤパネルからレイヤを右クリックし，「名前を付けて保存」で「コンマ区切りファイル」形式を選べば，CSVでエクスポートできる．
+ヘッダーと一行目だけを以下に抜き出す．</p>
+<p>```
+X,Y,P11_001,P11_002,P11_003_1,P11_003_2,P11_003_3,P11_003_4,P11_003_5,P11_003_6,P11_003_7,P11_003_8,P11_003_9,P11_003_10,P11_003_11,P11_003_12,P11_003_13,P11_003_14,P11_003_15,P11_003_16,P11_003_17,P11_003_18,P11_003_19,P11_004_1,P11_004_2,P11_004_3,P11_004_4,P11_004_5,P11_004_6,P11_004_7,P11_004_8,P11_004_9,P11_004_10,P11_004_11,P11_004_12,P11_004_13,P11_004_14,P11_004_15,P11_004_16,P11_004_17,P11_004_18,P11_004_19
+140.06536198,39.62948181,長浜,&ldquo;3,1&rdquo;,&ldquo;秋田市,羽後交通（株）&rdquo;,,,,,,,,,,,,,,,,,,,&ldquo;下浜線,（急行）本荘・秋田線&rdquo;,,,,,,,,,,,,,,,,,,
+```
+左から順に，<code>経度</code>，<code>緯度</code>，<code>バス停名</code>，<code>バス路線情報バス区分</code>，<code>バス路線情報事業者名</code>．．．となる．
+同一バス停に複数路線が乗り入れている場合，バス路線情報（バス区分・事業者名・バス系統）が二重引用符『&quot;』でくくられ，その中でカンマ区切りで列挙される．</p>
+<h2 id="国土数値情報バスルート">国土数値情報　バスルート</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>ファイル容量</td>
+          <td>年度</td>
+          <td>測地系</td>
+          <td>地域</td>
+      </tr>
+      <tr>
+          <td>N07-11_05_GML.zip</td>
+          <td>3.19MB</td>
+          <td>平成23年</td>
+          <td>世界測地系</td>
+          <td>秋田</td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N07.html" rel="external" target="_blank">http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N07.html</a></p>
+<p>``` N07_001,N07_002,N07_003,N07_004,N07_005,N07_006,N07_007
+1,（資）十和田タクシー,花輪、四ノ岱線,7.0,0.0,0.0, ```</p>
+<p>バス停留所データとバスルートを使って秋田高専周辺の路線図を作成した．</p>
+<!-- raw HTML omitted -->
+<h3 id="gtfsgeneral-transit-feed-specification">GTFS（General Transit Feed Specification）</h3>
+<p>バス停とルートを<a href="/haselab/memo/gtfs/index.html">GTFS</a>（General Transit Feed
+Specification）で使いたい．</p>
+<p><a href="https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields" rel="external" target="_blank">stops.txt</a>と
+<a href="https://developers.google.com/transit/gtfs/reference?hl=ja#shapes_fields" rel="external" target="_blank">shapes.txt</a>を作れば良いのは分かった．
+誰か作っていないかと思って検索したら，データの信頼性があまりないのではないかという<a href="http://togetter.com/li/237320" rel="external" target="_blank">意見が見つかった</a>が，見ないことにして進もう．</p>
+<p>座標系をJGD2000からWGS84に変換する必要があるようで，そのためのツールが
+<a href="http://trac.osgeo.org/csmap/" rel="external" target="_blank">http://trac.osgeo.org/csmap/</a>
+にあるらしい（<a href="http://lists.osgeo.org/pipermail/osgeojapan-discuss/2010-August/000541.html" rel="external" target="_blank">http://lists.osgeo.org/pipermail/osgeojapan-discuss/2010-August/000541.html</a>
+で知った）．</p>
+<h1 id="基盤地図情報">基盤地図情報</h1>
+<blockquote>
+<p>「基盤地図情報」とは、電子地図における位置の基準となる情報のことです。基盤地図情報と位置が同じ地理空間情報を、国や地方公共団体、民間事業者等の様々な関係者が整備することにより、それぞれの地理空間情報を正しくつなぎ合わせたり、重ね合わせたりすることができるようになります。この結果、地理空間情報をより一層効率的に、高度に利用することが可能となります。</p>
+</blockquote>
+<p>出典：<a href="http://www.gsi.go.jp/kiban/towa.html" rel="external" target="_blank">http://www.gsi.go.jp/kiban/towa.html</a></p>
+<p>ダウンロードは <a href="http://fgd.gsi.go.jp/download/" rel="external" target="_blank">http://fgd.gsi.go.jp/download/</a>
+から（利用者登録が必要）．</p>
+<pre><code>1. 基盤地図情報(数値標高モデル),5mメッシュ（標高）,5940-50,基本測量:FG-JPS-5940-50-DEM5B.zip:5156
+2. 基盤地図情報(数値標高モデル),5mメッシュ（標高）,5940-40,基本測量:FG-JPS-5940-40-DEM5B.zip:3063
+3. 基盤地図情報(数値標高モデル),5mメッシュ（標高）,5940-30,基本測量:FG-JPS-5940-30-DEM5B.zip:2481
+</code></pre>
+<h2 id="shapeファイルへのコンバート">shapeファイルへのコンバート</h2>
+<p>shapeファイルへの変換には閲覧コンバートソフトが必要（Windowsのみ対応）
+<a href="http://fgd.gsi.go.jp/download/faq_download.html#q3" rel="external" target="_blank">http://fgd.gsi.go.jp/download/faq_download.html#q3</a></p>
+<p>macなので，nxwineで動くか検証する→ダメだった．起動はするが，変換の途中で落ちる
+<a href="http://mattintosh.hatenablog.com/entry/nxwine" rel="external" target="_blank">http://mattintosh.hatenablog.com/entry/nxwine</a></p>
+<p>Linuxでのshp形式へのコンバート方法が
+<a href="http://www.mk-mode.com/octopress/2014/07/13/gsi-install-gdal-ogr-lib-for-fgd/" rel="external" target="_blank">http://www.mk-mode.com/octopress/2014/07/13/gsi-install-gdal-ogr-lib-for-fgd/</a>
+に載っている． Macで試したところ，sudoは不要で，先にmakeしてからmake
+installでインストールは出来たが，変換は出来ない（2015/02/11）．</p>
+<h3 id="基盤地図情報demインポータ">基盤地図情報DEMインポータ</h3>
+<p>[基盤地図情報DEMインポータ](<a href="http://space.geocities.jp/bischofia_vb/qgis-plugins/fgddemImporter/" rel="external" target="_blank">http://space.geocities.jp/bischofia_vb/qgis-plugins/fgddemImporter/)を使えばOSに関係なく，基盤地図情報（数値標高メッシュ）を読み込むことが出来る</a>を使えばOSに関係なく，基盤地図情報（数値標高メッシュ）を読み込むことが出来る)．</p>
+<h1 id="iphoneの各種アプリで記録したgpsログの利用">iPhoneの各種アプリで記録したGPSログの利用</h1>
+<p>iPhoneにはGPSが登載されており，これを利用したアプリも数多くある．</p>
+<p>お遊びとしていくつかのアプリのログを読み込み，可視化してみる．</p>
+<h2 id="nike-httpsmattstuehlercomlabnikeplus">Nike+ <a href="https://mattstuehler.com/lab/NikePlus/" rel="external" target="_blank">https://mattstuehler.com/lab/NikePlus/</a></h2>
+<p>でNikep+にアップロードした過去のランがgpx形式（<a href="http://ja.wikipedia.org/wiki/GPX" rel="external" target="_blank">http://ja.wikipedia.org/wiki/GPX</a>
+参照）でダウンロード可能．ただし，サードパーティーによるサービスなので，利用は自己責任で．</p>
+<p>2010年の秋（もう3年前！）に北秋田市の森吉山にリバートレッキングに行った時<a href="#R-image-07b2fb857868974a1d092e250cb8ae1d" class="lightbox-link"><img class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/memo/p1000793.jpg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-07b2fb857868974a1d092e250cb8ae1d"><img class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/memo/p1000793.jpg"></a>のデータを読み込んでみる．
+「ベクタレイヤの追加」で全てのファイル形式を選んで，gpx形式のファイルを開く．読み込むベクタレイヤを「waypoints,
+routes, tracks, route_points,
+track_points」から指定するように言われるが，track_pointsとtracks以外は中身が入っていなかった．</p>
+<p>秋田県全域のなかだと，こんな感じ（国土数値情報
+行政区域データ利用，国土数値情報 標高・傾斜度5次メッシュデータ利用）．</p>
+<!-- raw HTML omitted -->
+<p>ルートにパンしてみると，</p>
+<!-- raw HTML omitted -->
+<p>リバートレッキングが出来るくらいの緩い沢なので，高低差は表現されていない．</p>
+<p>国土数値情報 河川データも使ってみると，かなりリバートレッキングっぽい．</p>
+<!-- raw HTML omitted -->
+<h2 id="trip-journal">Trip Journal</h2>
+<p>場所と写真を関連付けながら記録が出来る，見た目も素敵ないいアプリだと思うが，3年前に使って以来おっくうで使っていない．~~iPhoneで位置情報を付けて撮影した写真があれば，リアルタイムでなく後から振り返って旅日記を作成することも可能だが，面倒なのでやっていない．~~出来なかったので，開発者に要望を出しておいた．</p>
+<p>このアプリはアプリから直接エクスポートが可能で，gpx以外にもkmz形式（<a href="http://ja.wikipedia.org/wiki/KML" rel="external" target="_blank">http://ja.wikipedia.org/wiki/KML</a>
+参照）でもエクスポートできる．kmzの場合は写真も一緒に出力してくれるので，Google
+earthで見ると，旅の思い出が鮮やかに甦る（けど，一回しか作ってない）．</p>
+<p>3年前のGWに青森を旅行したときにTrip
+Journalというアプリで記録したログをkmzで出力し，「ベクタレイヤの追加」で全てのファイル形式を選んで，kmzを選択して読み込ませた．読み込むベクタレイヤを「Waypoints,
+Itinerary」から指定するように言われるので，全てを選択した．</p>
+<p>Waypointsの「レイヤプロパティ」→「ラベル」でNameを選択して表示すると，こんな感じ．</p>
+<!-- raw HTML omitted -->
+<p>~~恐らくCRS（座標参照系）の設定が適切でないため，ものすごいずれてる．~~バックグランドが秋田県だけなので錯覚していた．
+Google
+earthで開くと，余計な情報も入っているのでごちゃごちゃして見づらいものの，位置は適切なようだ．</p>
+<!-- raw HTML omitted -->
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="active " data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/qgis/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

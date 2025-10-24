@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text :: Tag :: HaseLab</title>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/text/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/text/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>awk</title>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</guid>
+      <description>2012/11/07 1行1レコード形式のデータ，特に大きなデータを取り扱うのに便利なのだということを某MLで知る．&#xA;今扱っている固定長データ（大きいのでも600MBくらいだけど）から分析に使うフィールドを切り出すのに便利そうだ．&#xA;※改行コードはLFを前提としていることに注意（2012/11/27追記）&#xA;網羅的なガイドは以下 http://www.kt.rim.or.jp/~kbk/gawk-30/gawk_toc.html&#xA;こちらの方が取っつきやすいかも http://antibayesian.hateblo.jp/entry/2014/09/15/162605&#xA;フィールドの指定方法 awk.txtの全レコードに対して，2番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $2 }&#39; awk.txt awk.txtの全レコードに対して，10番目と3番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $10 $3 }&#39; awk.txt これだと連結されるので，間にブランクを入れる&#xA;awk &#39;{ print $10 &#34; &#34; $3 }&#39; awk.txt 詳しい解説は以下&#xA;http://www.ibm.com/developerworks/jp/linux/library/l-awk1/ http://shellscript.sunone.me/awk.html&#xA;2012/11/22 追記&#xA;パターンによるレコード範囲指定 レコード番号NRを使った範囲指定 組み込み変数のNRはレコード番号を指定する．ただし，NRとNFは変数とはいっても通常，値は代入はせず読み取り専用で用いる&#xA;awk.txtのレコード番号3（3行目）の，2番目のフィールドを（標準）出力するには&#xA;awk &#39;NR == 3 { print $2 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）の，1番目のフィールドを（標準）出力するには&#xA;awk &#39;NR &lt; 5 { print $1 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）またはレコード番号が7の，全てのフィールドをout.txtに出力するには&#xA;awk &#39;NR &lt; 5 || NR == 7 { print }&#39; awk.txt &gt; out.txt ※これは一行目がラベルになっているデータを分割する際に有用&#xA;フィールド区切り文字の指定 -Fオプションにより，フィールドの区切り文字を指定することが出来る．&#xA;awk.txtの区切り文字をスペースに指定して，全レコードに対して，2番目のフィールドを（標準）出力するには</description>
+    </item>
+  </channel>
+</rss>

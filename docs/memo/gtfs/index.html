@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.1">
+    <meta name="generator" content="Relearn 8.1.1+9d74be278d6e8456f2f18305c9b27e38bc2de91c">
+    <meta name="description" content="GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，
+GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。
+作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．
+フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）
+ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="GTFS :: HaseLab">
+    <meta name="twitter:description" content="GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，
+GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。
+作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．
+フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）
+ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．">
+    <meta property="og:url" content="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="GTFS :: HaseLab">
+    <meta property="og:description" content="GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，
+GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。
+作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．
+フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）
+ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta property="article:tag" content="Gtfs">
+    <meta property="article:tag" content="公共交通">
+    <meta itemprop="name" content="GTFS :: HaseLab">
+    <meta itemprop="description" content="GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，
+GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。
+作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．
+フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）
+ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．">
+    <meta itemprop="wordCount" content="381">
+    <meta itemprop="keywords" content="Gtfs,公共交通">
+    <title>GTFS :: HaseLab</title>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/auto-complete/auto-complete.min.css?1761295810" rel="stylesheet">
+    <script src="https://hironobuhasegawa.github.io/haselab/js/auto-complete/auto-complete.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search-lunr.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search.min.js?1761295810" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="https://hironobuhasegawa.github.io/haselab/searchindex.en.js?1761295810";
+    </script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.stemmer.support.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.multi.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/tinyseg.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.ja.min.js?1761295810" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['ja'];
+    </script>
+    <link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761295810" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761295810" rel="stylesheet"></noscript>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761295810" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/theme.min.css?1761295810" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/format-html.min.css?1761295810" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/memo\/gtfs\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/hironobuhasegawa.github.io\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#stopstxtの作成">stops.txtの作成</a>
+      <ul>
+        <li><a href="#バス停の位置情報を取得">バス停の位置情報を取得</a></li>
+        <li><a href="#必要な情報のみを抜き出す-stopstxtに必須のstop_id-stop_name">必要な情報のみを抜き出す stops.txtに必須のstop\_id, stop\_name,</a></li>
+        <li><a href="#stop_idの生成">stop_idの生成</a></li>
+        <li><a href="#ヘッダーの記述-1行目に--stop_id-stop_name-stop_lat">ヘッダーの記述 1行目に， ``` stop_id, stop_name, stop_lat,</a></li>
+      </ul>
+    </li>
+    <li><a href="#shapestxtの作成">shapes.txtの作成</a></li>
+    <li><a href="#テキストファイルをzipで固める">テキストファイルをzipで固める</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#地図上での表示のされ方を検証">地図上での表示のされ方を検証</a></li>
+    <li><a href="#仕様に準拠しているかどうかを検証">仕様に準拠しているかどうかを検証</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://hironobuhasegawa.github.io/haselab/index.html"><span itemprop="name">Home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://hironobuhasegawa.github.io/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">GTFS</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/gtfs.md" rel="external" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html" title="graphviz (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html" title="ImageMagick (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <ul>
+    <li><a class="term-link" href="https://hironobuhasegawa.github.io/haselab/tags/gtfs/index.html">Gtfs</a></li>
+    <li><a class="term-link" href="https://hironobuhasegawa.github.io/haselab/tags/%E5%85%AC%E5%85%B1%E4%BA%A4%E9%80%9A/index.html">公共交通</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="gtfs">GTFS</h1>
+
+<h1 id="gtfsとは">GTFSとは</h1>
+<p><a href="https://developers.google.com/transit/gtfs/?hl=ja" rel="external">https://developers.google.com/transit/gtfs/?hl=ja</a> より，</p>
+<blockquote>
+<p>GTFS（General Transit Feed
+Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS
+の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。</p>
+</blockquote>
+<p>作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい．
+秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．</p>
+<h1 id="フィードの作成">フィードの作成</h1>
+<ul>
+<li>フィードは複数のテキストファイルをzipで固めたもの</li>
+<li>テキストファイルのエンコーディングはUTF8</li>
+</ul>
+<p>フィードに含まれるテキストファイルは以下の通り（<a href="https://developers.google.com/transit/gtfs/reference?hl=ja" rel="external">https://developers.google.com/transit/gtfs/reference?hl=ja</a>
+から抜粋）</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ファイル名</td>
+          <td>必須</td>
+          <td>定義</td>
+      </tr>
+      <tr>
+          <td>agency.txt</td>
+          <td>必須</td>
+          <td>このフィードのデータを提供する 1 社以上の交通機関．</td>
+      </tr>
+      <tr>
+          <td>stops.txt</td>
+          <td>必須</td>
+          <td>乗客が乗り降りする停車地点．</td>
+      </tr>
+      <tr>
+          <td>routes.txt</td>
+          <td>必須</td>
+          <td>交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです．</td>
+      </tr>
+      <tr>
+          <td>trips.txt</td>
+          <td>必須</td>
+          <td>各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します．</td>
+      </tr>
+      <tr>
+          <td>stop\_times.txt</td>
+          <td>必須</td>
+          <td>各旅程の個々の停車地への到着時刻と出発時刻．</td>
+      </tr>
+      <tr>
+          <td>calendar.txt</td>
+          <td>必須</td>
+          <td>週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します．</td>
+      </tr>
+      <tr>
+          <td>calendar\_dates.txt</td>
+          <td>省略可能</td>
+          <td>calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です．</td>
+      </tr>
+      <tr>
+          <td>fare\_attributes.txt</td>
+          <td>省略可能</td>
+          <td>交通機関のルートの料金情報．</td>
+      </tr>
+      <tr>
+          <td>fare\_rules.txt</td>
+          <td>省略可能</td>
+          <td>交通機関のルートの料金情報を適用するための規則．</td>
+      </tr>
+      <tr>
+          <td>shapes.txt</td>
+          <td>省略可能</td>
+          <td>交通機関のルートを示す線を地図に描くための規則．</td>
+      </tr>
+      <tr>
+          <td>frequencies.txt</td>
+          <td>省略可能</td>
+          <td>サービスの間隔が一定でないルートの運行間隔（旅程の間隔）．</td>
+      </tr>
+      <tr>
+          <td>transfers.txt</td>
+          <td>省略可能</td>
+          <td>乗換地点で別のルートに乗り継ぐための規則．</td>
+      </tr>
+      <tr>
+          <td>feed\_info.txt</td>
+          <td>省略可能</td>
+          <td>フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）．</td>
+      </tr>
+  </tbody>
+</table>
+<p>サンプルは
+<a href="https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja" rel="external">https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja</a>
+を参照のこと（すぐに試せる<a href="https://developers.google.com/transit/gtfs/examples/sample-feed.zip?hl=ja" rel="external">zipで固めたもの</a>も入手可能）．</p>
+<h2 id="stopstxtの作成">stops.txtの作成</h2>
+<p>乗客が乗り降りする停車地点を表し，フィードに必須． 詳細は
+<a href="https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields" rel="external">https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields</a>
+を参照のこと．</p>
+<p>[フィードの例](<a href="https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja" rel="external">https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja)のstops.txtの内容を抜粋</a>のstops.txtの内容を抜粋)</p>
+<p>```txt stop_id,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url
+FUR_CREEK_RES,Furnace Creek Resort (Demo),,36.425288,-117.133162,,
+BEATTY_AIRPORT,Nye County Airport (Demo),,36.868446,-116.784582,,
+BULLFROG,Bullfrog (Demo),,36.88108,-116.81797,, STAGECOACH,Stagecoach
+Hotel &amp; Casino (Demo),,36.915682,-116.751677,, NADAV,North Ave / D Ave N
+(Demo),,36.914893,-116.76821,, NANAA,North Ave / N A Ave
+(Demo),,36.914944,-116.761472,, DADAN,Doing Ave / D Ave N
+(Demo),,36.909489,-116.768242,, EMSI,E Main St / S Irving St
+(Demo),,36.905697,-116.76218,, AMV,Amargosa Valley
+(Demo),,36.641496,-116.40094,, ``` 必須なのは，以下の4つ（
+<a href="https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields%E3%81%8B%E3%82%89%E6%8A%9C%E7%B2%8B" rel="external">https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fieldsから抜粋</a>）．</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>stop\_id</td>
+          <td>必須</td>
+          <td>stop\_id フィールドには停車地や駅を一意に識別する ID を指定します。複数のルートに同じ停車地を使用できます。stop\_id は一意なデータセットです。</td>
+      </tr>
+      <tr>
+          <td>stop\_name</td>
+          <td>必須</td>
+          <td>stop\_name フィールドには停車地や駅の名前を指定します。その地域の住民や旅行者が理解できる名前を使用してください。</td>
+      </tr>
+      <tr>
+          <td>stop\_lat</td>
+          <td>必須</td>
+          <td>stop\_lat フィールドには停車地や駅の緯度を指定します。値には有効な WGS 84 の緯度を指定します。</td>
+      </tr>
+      <tr>
+          <td>stop\_lon</td>
+          <td>必須</td>
+          <td>stop\_lon フィールドには停車地や駅の経度を指定します。値には有効な WGS 84 の経度値（-180～180）を指定します。</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="バス停の位置情報を取得">バス停の位置情報を取得</h3>
+<p>[国土数値情報バス停留所データ](<a href="http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11.html" rel="external">http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11.html)を用いて，バス停の位置情報を取得する</a>を用いて，バス停の位置情報を取得する)．
+国土数値情報については<a href="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html">qgis</a> を参照のこと．
+なお，座標系を国土数値情報で用いられているJGD2000からGFTSで用いられているWGS84に変換する必要があるが，2014/12/03時点では未着手．</p>
+<h4 id="国土数値情報バス停留所データをcsvに変換する">国土数値情報バス停留所データをCSVに変換する</h4>
+<p>1. ダウンロードしたzipファイルを解凍 2.
+シェイプファイルをベクタレイヤとしてQGISで読み込む（エンコーディングはShift_JIS，座標系はJGD2000）．秋田県のシェイプファイルはP11-10_05-jgd-g_BusStop.shp
+3.
+レイヤパネルからレイヤを右クリックし，「名前を付けて保存」で「コンマ区切りファイル」形式を選び，P11-10_05-jgd-g_BusStop.csvとしてCSVでエクスポート（以下に秋田県の2行だけを抜粋）</p>
+<p>```csv
+X,Y,P11_001,P11_002,P11_003_1,P11_003_2,P11_003_3,P11_003_4,P11_003_5,P11_003_6,P11_003_7,P11_003_8,P11_003_9,P11_003_10,P11_003_11,P11_003_12,P11_003_13,P11_003_14,P11_003_15,P11_003_16,P11_003_17,P11_003_18,P11_003_19,P11_004_1,P11_004_2,P11_004_3,P11_004_4,P11_004_5,P11_004_6,P11_004_7,P11_004_8,P11_004_9,P11_004_10,P11_004_11,P11_004_12,P11_004_13,P11_004_14,P11_004_15,P11_004_16,P11_004_17,P11_004_18,P11_004_19
+140.06536198,39.62948181,長浜,&ldquo;3,1&rdquo;,&ldquo;秋田市,羽後交通（株）&rdquo;,,,,,,,,,,,,,,,,,,,&ldquo;下浜線,（急行）本荘・秋田線&rdquo;,,,,,,,,,,,,,,,,,,
+```
+左から順に，経度，緯度，バス停名，バス路線情報バス区分，バス路線情報事業者名．．．となる．
+同一バス停に複数路線が乗り入れている場合，バス路線情報（バス区分・事業者名・バス系統）が二重引用符『“』でくくられ，その中でカンマ区切りで列挙される．</p>
+<h4 id="バス会社aのみを抜き出す">バス会社Aのみを抜き出す</h4>
+<p>&lt;del&gt;P11-10_05-jgd-g_BusStop.csvを<a href="https://hironobuhasegawa.github.io/haselab/memo/vim/index.html">Vim</a>で開き，ノーマルモードで以下の操作を行い，「バス会社A」が含まれる行をqレジスタにヤンクする
+``` /バス会社A qqq:g//y Q ```</p>
+<p>新規バッファを開き，ノーマルモードで以下の操作を行い，qレジスタの内容を貼り付ける</p>
+<p>``` &ldquo;qp ```</p>
+<p>適当な名前でファイル（ここでは仮にBusStop.csvとする）を保存する．&lt;/del&gt;</p>
+<p><a href="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html">awk</a>をつかえば，もっと簡単だった（[この記事](<a href="http://antibayesian.hateblo.jp/entry/2014/09/15/162605" rel="external">http://antibayesian.hateblo.jp/entry/2014/09/15/162605</a>)）</p>
+<p>``` awk /バス会社A/ P11-10_05-jgd-g_BusStop.csv &gt; BusStop.csv ```</p>
+<h3 id="必要な情報のみを抜き出す-stopstxtに必須のstop_id-stop_name">必要な情報のみを抜き出す stops.txtに必須のstop\_id, stop\_name,</h3>
+<p>stop\_lat,
+stop\_lonのうち，stop\_id以外の3つはBusStop.csvに含まれている．</p>
+<p><a href="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html">awk</a>を使って，BusStop.csvに含まれるバス停名称，緯度，経度を抜き出し，結果をstops.txtに書き出す．</p>
+<p>```awk awk -F&rdquo;,&quot; &lsquo;{ print $3 &ldquo;,&rdquo; $2 &ldquo;,&rdquo; $1}&rsquo; BusStop.csv &gt; stops.txt
+```</p>
+<h3 id="stop_idの生成">stop_idの生成</h3>
+<p>面倒なので，上から順番にS0001，S0002．．．といった連番にする．
+QGISなら，フィールド計算機で ```format (&lsquo;S%1&rsquo;, lpad($rownum, 4, &lsquo;0&rsquo;)
+)``` といった具合にすればよい．</p>
+<p>以下の記述は念のために残しておく．</p>
+<p>エクセルのふりがな作成機能を使ってバス停名称にふりがなをつけ，それを英字にしてIDとする．※同一名称のバス停がある（該当するバス停を使う路線もくっつれば対応可能だと思う）</p>
+<ul>
+<li>stops.txtをエクセルかLibreOffic
+Calceなどで開き（エクセルはUTF8を自動認識しないので注意．また，余計ことをしがちなので，LibreOffice
+Calcを推奨），バス停名称をコピーする．</li>
+<li>[エクセルの学校](<a href="http://www.excel.studio-kazu.jp/DL/index.html#q08" rel="external">http://www.excel.studio-kazu.jp/DL/index.html#q08)にて公開されている，http://www.excel.studio-kazu.jp/DL/kana2roma_4.xls</a>にて公開されている，http://www.excel.studio-kazu.jp/DL/kana2roma_4.xls)
+をダウンロードし，Sheet2のA列にコピーしたバス停名称を貼り付ける．</li>
+</ul>
+<h4 id="ふりがなを振る">ふりがなを振る</h4>
+<p>ふりがなを振りたいセルを選択し，<code>Alt + Shift + 矢印の上</code>でふりがなが振られる．
+しかし，複数セルに対して一括では行えないので，マクロを使う．</p>
+<p>```vba Sub 振り仮名を付ける()</p>
+<pre><code>  Selection.SetPhonetic
+  Range(&quot;A1&quot;).Select
+</code></pre>
+<p>End Sub ```</p>
+<p>ふりがなを振りたいセルを選択して上記のマクロを実行すれば，一括でふりがなが振られる．
+なお，後述する半角カタカナからローマ字への変換のため，「ふりがなの設定」で半角カタカナを選択しておくこと．</p>
+<h4 id="ふりがなを取り出す">ふりがなを取り出す</h4>
+<ul>
+<li>PHONETIC関数を使って，ふりがなをB列に取り出す（例えば，B1セルに<code>=PHONETIC(A1)</code>と入力して，セルの右下をドラッグ）</li>
+</ul>
+<h4 id="ふりがなを半角カタカナから英字に変換する">ふりがなを半角カタカナから英字に変換する</h4>
+<ul>
+<li>kana2roma_4.xls内で定義されているRomanConv関数を使って，ふりがなを半角カタカナから英字に変換する（例えば，C1セルに<code>=RomanConv(B1)</code>と入力して，セルの右下をドラッグ）</li>
+<li>C列全体をコピーし，stops.txtのA列に「形式を選択して貼り付け」で値のみを貼り付ける</li>
+</ul>
+<h3 id="ヘッダーの記述-1行目に--stop_id-stop_name-stop_lat">ヘッダーの記述 1行目に， ``` stop_id, stop_name, stop_lat,</h3>
+<p>stop_lon ``` を追加</p>
+<h2 id="shapestxtの作成">shapes.txtの作成</h2>
+<p>shapes.txtは交通機関のルートを示す線を地図に描くための規則で，省略可能（が，無いとバス停間を直線で結ぶことになる）．</p>
+<p>詳細は
+<a href="https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields" rel="external">https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields</a>
+を参照のこと．</p>
+<p>[フィードの例](<a href="https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja" rel="external">https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja)のshapes.txtの内容を抜粋</a>のshapes.txtの内容を抜粋)</p>
+<p>```txt
+shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence,shape_dist_traveled
+A_shp,37.61956,-122.48161,1,0 A_shp,37.64430,-122.41070,2,6.8310
+A_shp,37.65863,-122.30839,3,15.8765 ```</p>
+<p>必須のフィールドは以下の4つ（<a href="https://developers.google.com/transit/gtfs/reference?hl=ja#shapes_fields" rel="external">https://developers.google.com/transit/gtfs/reference?hl=ja#shapes_fields</a>
+から抜粋）</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>shape\_id</td>
+          <td>必須</td>
+          <td>shape\_id フィールドには、1 つのシェイプを一意に識別する ID を指定します。</td>
+      </tr>
+      <tr>
+          <td>shape\_pt\_lat</td>
+          <td>必須</td>
+          <td>shape\_pt\_lat フィールドを使用して、シェイプ ID にシェイプ ポイントの緯度を関連付けます。値には有効な WGS 84 の緯度を指定します。shapes.txt の各行が、シェイプを定義する 1 つのシェイプ ポイントを表します。</td>
+      </tr>
+      <tr>
+          <td>shape\_pt\_lon</td>
+          <td>必須</td>
+          <td>shape\_pt\_lon フィールドを使用して、シェイプ ID にシェイプ ポイントの経度を関連付けます。値には有効な WGS 84 の経度値（-180～180）を指定します。shapes.txt の各行が、シェイプを定義する 1 つのシェイプ ポイントを表します。</td>
+      </tr>
+      <tr>
+          <td>shape\_pt\_sequence</td>
+          <td>必須</td>
+          <td>shape\_pt\_sequence フィールドを使用して、シェイプ ポイントの緯度と経度をそのシェイプに沿った進行順序に関連付けます。shape\_pt\_sequence の値には 0 以上の整数を使用し、旅程の進行に合わせて値を増やします。</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>たとえば、シェイプ「A_shp」の定義に 3
+つのポイントが含まれる場合、shapes.txt
+ファイルにはこのシェイプを定義するために次のような行を指定します:</p>
+</blockquote>
+<ul>
+<li>A\_shp,37.61956,-122.48161,0</li>
+<li>A\_shp,37.64430,-122.41070,6</li>
+<li>A\_shp,37.65863,-122.30839,11</li>
+</ul>
+<hr>
+<p>省略可能なフィールドとして，shape\_dist\_traveledがある</p>
+<h2 id="テキストファイルをzipで固める">テキストファイルをzipで固める</h2>
+<p>余計なサブディレクトリが出来ないように気をつける必要がある．</p>
+<p>Macで圧縮する場合，[WinArchiver
+Lite](<a href="https://itunes.apple.com/jp/app/winarchiver-lite/id414855915?mt=12" rel="external">https://itunes.apple.com/jp/app/winarchiver-lite/id414855915?mt=12)に全テキストファイルをドラッグするか，以下のようにコマンドラインで圧縮する</a>に全テキストファイルをドラッグするか，以下のようにコマンドラインで圧縮する)．</p>
+<p>``` zip -r feedname *.txt ```</p>
+<p>Windows7の場合は全てのテキストを選択して右クリック，「送る」「zipで圧縮」みたいな感じで大丈夫</p>
+<h1 id="作成したフィードの検証">作成したフィードの検証</h1>
+<ul>
+<li>作成したフィードが仕様に準拠したものかどうかを確認するには[feedvalidator](<a href="https://github.com/google/transitfeed/wiki/FeedValidator" rel="external">https://github.com/google/transitfeed/wiki/FeedValidator)を使う</a>を使う)</li>
+<li>フィードデータが地図にどのように表示されるかを確認するには，[schedule_viewer](<a href="https://github.com/google/transitfeed/wiki/ScheduleViewer" rel="external">https://github.com/google/transitfeed/wiki/ScheduleViewer)を使う</a>を使う)</li>
+</ul>
+<h2 id="インストール">インストール</h2>
+<p>```sh cd git clone <a href="https://github.com/google/transitfeed.git" rel="external">https://github.com/google/transitfeed.git</a> ```
+makeが上手くいかないので，pythonスクリプトをそのまま使う．</p>
+<p>Windowsなら，コンパイル済みのものが公開されているので，<a href="https://github.com/google/transitfeed/releases/download/1.2.13/transitfeed-windows-binary-1.2.13.zip" rel="external">https://github.com/google/transitfeed/releases/download/1.2.13/transitfeed-windows-binary-1.2.13.zip</a>
+からダウンロードして，解凍すればOK.</p>
+<h2 id="地図上での表示のされ方を検証">地図上での表示のされ方を検証</h2>
+<p>作成したフィードを適当な場所に保存（以下はtransitfeedの下にfeedsディレクトリを作成して，そこにtest.zipを保存した場合）し，スクリプトを実行する．</p>
+<p>``` cd ~/transitfeed/ python ./schedule_viewer.py &ndash;feed_filename
+feeds/test.zip ``` Webサーバが立ち上がるので，ブラウザで
+<a href="http://localhost:8765/" rel="external">http://localhost:8765/</a> にアクセス</p>
+<p>もし，<code>ImportError: No module named simplejson</code>というエラーが出たら，
+``` easy_install simplejson ``` でsimplejsonをインストールする．</p>
+<h2 id="仕様に準拠しているかどうかを検証">仕様に準拠しているかどうかを検証</h2>
+<p>``` python ./feedvalidator.py feeds/test.zip ```</p>
+<!-- raw HTML omitted -->
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="https://hironobuhasegawa.github.io/haselab/index.html">
+            <div class="logo-title">HaseLab</div>
+          </a>
+        </div>
+        <search><form action="https://hironobuhasegawa.github.io/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/research/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/activities/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/members/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/access/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/r/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/centos/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="active " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/latex/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/osx/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/office/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/vim/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/image/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/clipboard/clipboard.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761295810" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/theme.min.js?1761295810" defer></script>
+  </body>
+</html>

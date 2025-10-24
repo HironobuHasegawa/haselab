@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>カレンダー :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 30 Sep 2021 01:14:30 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/haselab/tags/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rを使ってicalファイルのタイムゾーンを修正する</title>
+      <link>http://localhost:1313/haselab/memo/r/fix_ical_using_r/index.html</link>
+      <pubDate>Thu, 30 Sep 2021 01:14:30 +0900</pubDate>
+      <guid>http://localhost:1313/haselab/memo/r/fix_ical_using_r/index.html</guid>
+      <description>背景 Googleカレンダーの整理をしていたら，カレンダー内の予定がUTCとなっていた． カレンダー表示のときには通常通りJSTの時間で表示されているが，予定の詳細を見たり編集する際にUTCとなっている．&#xA;手作業で直す場合，タイムゾーンを変えても時間を表す数字は変わらないので，+9:00する必要がある． そもそも件数が多いのでやっていられない．&#xA;色々と探った結果，ical形式でエクスポートすると，カレンダーの設定によらずUTCで出力されることが判明した．フィードバックは送ったが，待っていられないし，そもそも仕様の可能性もある．&#xA;そのため，以下のようなRスクリプトを書いて，icalを修正することにした．&#xA;成果物 if (!require(&#34;pacman&#34;)) install.packages(&#34;pacman&#34;); library(pacman) p_load(tidyverse) setwd(&#34;icalファイルの場所&#34;) # ical（拡張子はics）ファイルを文字列ベクトルで読み込み data &lt;- read_lines(&#34;Calendar.ics&#34;) # 修正対象はDTSTART,DTEND,DTSTAMP,CREATED,LAST-MODIFIED ## lubridateパッケージのsecond minute hour day month yearを使って最初に&#34;TZID=Asia/Tokyo:&#34;以下の部分を作っておいて，その後にmutateする方が良いと思うが，直す気力がない． dat &lt;- tibble(raw=data, jst=with_tz(ymd_hms(str_sub(data,9)), &#34;Asia/Tokyo&#34;)) %&gt;% mutate(DTSTART= paste0(&#34;DTSTART;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), DTEND= paste0(&#34;DTEND;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), DTSTAMP= paste0(&#34;DTSTAMP;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), CREATED = paste0(&#34;CREATED;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), &#34;LAST-MODIFIED&#34;= paste0(&#34;LAST-MODIFIED;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19))) out &lt;- ifelse(str_detect(dat$raw, pattern=&#34;DTSTART:2&#34;),dat$DTSTART, # カレンダーの設定情報である&#34;DTSTART:19700101T000000&#34;を除外するため&#34;DTSTART:2&#34;とする ifelse(str_detect(dat$raw, pattern=&#34;DTEND:&#34;),dat$DTEND, ifelse(str_detect(dat$raw, pattern=&#34;DTSTAMP:&#34;),dat$DTSTAMP, ifelse(str_detect(dat$raw, pattern=&#34;CREATED:&#34;),dat$CREATED, ifelse(str_detect(dat$raw, pattern=&#34;LAST-MODIFIED:&#34;),dat$&#34;LAST-MODIFIED&#34;, dat$raw))))) # ファイルに書き出し write_lines(out, &#34;FixedCalendar.ics&#34;, na = &#34;NA&#34;, append = FALSE) 同じ事象に悩む方のお役に立てば幸いです．</description>
+    </item>
+  </channel>
+</rss>

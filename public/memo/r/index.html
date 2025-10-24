@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="![](tag&gt;R tips windows osx)
+Rに関するあれこれ VimでR http://qiita.com/kirishima274/items/56233d5cd830d099b28f
+Vim-R-pluginを使う．
+NeoBundle &#39;vim-scripts/Vim-R-plugin&#39; 以下は， http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation を参考．
+vimcomを入れる ダウンロード
+download.file(&#34;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&#34;, destfile = &#34;vimcom_1.2-6.tar.gz&#34;) MacVimを使わない vimcomインストール
+install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, configure.args=&#34;--enable-clientserver&#34;, repos = NULL) 失敗したら，XQuartzを一旦アンインストールして，Homebrew caskから入れ直す．
+brew cask install xquartz VimもHomebrewから入れる
+brew install vim --with-client-server --with-lua MacVimを使う brew install macvim --with-cscope --with-client-server --with-lua --HEAD MacVim-Kaoriyaを使う install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) その他のRパッケージをインストール Rのコンソールの出力を色付けて表示
+download.file(&#34;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&#34;, destfile = &#34;colorout_0.9-9.tar.gz&#34;) install.packages(&#34;colorout_0.9-9.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) install.packages(&#34;setwidth&#34;) .Rprofileに追記 if(interactive()){ library(colorout) library(setwidth) options(vimcom.verbose = 1) # optional library(vimcom) } エイリアスを設定 .zshrcに追記">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="R :: HaseLab">
+    <meta name="twitter:description" content="![](tag&gt;R tips windows osx)
+Rに関するあれこれ VimでR http://qiita.com/kirishima274/items/56233d5cd830d099b28f
+Vim-R-pluginを使う．
+NeoBundle &#39;vim-scripts/Vim-R-plugin&#39; 以下は， http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation を参考．
+vimcomを入れる ダウンロード
+download.file(&#34;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&#34;, destfile = &#34;vimcom_1.2-6.tar.gz&#34;) MacVimを使わない vimcomインストール
+install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, configure.args=&#34;--enable-clientserver&#34;, repos = NULL) 失敗したら，XQuartzを一旦アンインストールして，Homebrew caskから入れ直す．
+brew cask install xquartz VimもHomebrewから入れる
+brew install vim --with-client-server --with-lua MacVimを使う brew install macvim --with-cscope --with-client-server --with-lua --HEAD MacVim-Kaoriyaを使う install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) その他のRパッケージをインストール Rのコンソールの出力を色付けて表示
+download.file(&#34;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&#34;, destfile = &#34;colorout_0.9-9.tar.gz&#34;) install.packages(&#34;colorout_0.9-9.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) install.packages(&#34;setwidth&#34;) .Rprofileに追記 if(interactive()){ library(colorout) library(setwidth) options(vimcom.verbose = 1) # optional library(vimcom) } エイリアスを設定 .zshrcに追記">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/r/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="R :: HaseLab">
+    <meta property="og:description" content="![](tag&gt;R tips windows osx)
+Rに関するあれこれ VimでR http://qiita.com/kirishima274/items/56233d5cd830d099b28f
+Vim-R-pluginを使う．
+NeoBundle &#39;vim-scripts/Vim-R-plugin&#39; 以下は， http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation を参考．
+vimcomを入れる ダウンロード
+download.file(&#34;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&#34;, destfile = &#34;vimcom_1.2-6.tar.gz&#34;) MacVimを使わない vimcomインストール
+install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, configure.args=&#34;--enable-clientserver&#34;, repos = NULL) 失敗したら，XQuartzを一旦アンインストールして，Homebrew caskから入れ直す．
+brew cask install xquartz VimもHomebrewから入れる
+brew install vim --with-client-server --with-lua MacVimを使う brew install macvim --with-cscope --with-client-server --with-lua --HEAD MacVim-Kaoriyaを使う install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) その他のRパッケージをインストール Rのコンソールの出力を色付けて表示
+download.file(&#34;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&#34;, destfile = &#34;colorout_0.9-9.tar.gz&#34;) install.packages(&#34;colorout_0.9-9.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) install.packages(&#34;setwidth&#34;) .Rprofileに追記 if(interactive()){ library(colorout) library(setwidth) options(vimcom.verbose = 1) # optional library(vimcom) } エイリアスを設定 .zshrcに追記">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="R :: HaseLab">
+    <meta itemprop="description" content="![](tag&gt;R tips windows osx)
+Rに関するあれこれ VimでR http://qiita.com/kirishima274/items/56233d5cd830d099b28f
+Vim-R-pluginを使う．
+NeoBundle &#39;vim-scripts/Vim-R-plugin&#39; 以下は， http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation を参考．
+vimcomを入れる ダウンロード
+download.file(&#34;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&#34;, destfile = &#34;vimcom_1.2-6.tar.gz&#34;) MacVimを使わない vimcomインストール
+install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, configure.args=&#34;--enable-clientserver&#34;, repos = NULL) 失敗したら，XQuartzを一旦アンインストールして，Homebrew caskから入れ直す．
+brew cask install xquartz VimもHomebrewから入れる
+brew install vim --with-client-server --with-lua MacVimを使う brew install macvim --with-cscope --with-client-server --with-lua --HEAD MacVim-Kaoriyaを使う install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) その他のRパッケージをインストール Rのコンソールの出力を色付けて表示
+download.file(&#34;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&#34;, destfile = &#34;colorout_0.9-9.tar.gz&#34;) install.packages(&#34;colorout_0.9-9.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) install.packages(&#34;setwidth&#34;) .Rprofileに追記 if(interactive()){ library(colorout) library(setwidth) options(vimcom.verbose = 1) # optional library(vimcom) } エイリアスを設定 .zshrcに追記">
+    <meta itemprop="datePublished" content="2021-09-30T01:14:30+09:00">
+    <meta itemprop="dateModified" content="2021-09-30T01:14:30+09:00">
+    <meta itemprop="wordCount" content="517">
+    <title>R :: HaseLab</title>
+    <link href="/haselab/memo/r/index.xml" rel="alternate" type="application/rss+xml" title="R :: HaseLab">
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/r/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#vimでr">VimでR</a>
+      <ul>
+        <li><a href="#vimcomを入れる">vimcomを入れる</a></li>
+        <li><a href="#その他のrパッケージをインストール">その他のRパッケージをインストール</a></li>
+        <li><a href="#rprofileに追記">.Rprofileに追記</a></li>
+        <li><a href="#エイリアスを設定">エイリアスを設定</a></li>
+        <li><a href="#tmuxを入れる">tmuxを入れる</a></li>
+      </ul>
+    </li>
+    <li><a href="#proxyの設定">Proxyの設定</a></li>
+    <li><a href="#xdr形式での保存">xdr形式での保存</a></li>
+    <li><a href="#rguiの設定">Rguiの設定</a>
+      <ul>
+        <li><a href="#ヘルプの表示方法を変更">ヘルプの表示方法を変更</a></li>
+        <li><a href="#rで使用するメモリサイズの変更">Rで使用するメモリサイズの変更</a></li>
+      </ul>
+    </li>
+    <li><a href="#rで統計多変量解析">Rで統計・多変量解析</a>
+      <ul>
+        <li><a href="#推定検定">推定・検定</a></li>
+        <li><a href="#rで重回帰分析">Rで重回帰分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#制御文字">制御文字</a></li>
+    <li><a href="#データの取扱い">データの取扱い</a></li>
+    <li><a href="#グラフィックス関連">グラフィックス関連</a>
+      <ul>
+        <li><a href="#色">色</a></li>
+        <li><a href="#軸ラベルの工夫">軸ラベルの工夫</a></li>
+        <li><a href="#plot関数の点プロットの記号">plot関数の点プロットの記号</a></li>
+        <li><a href="#ggplot2">ggplot2</a></li>
+        <li><a href="#ループの途中で画像等を出力">ループの途中で画像等を出力</a></li>
+      </ul>
+    </li>
+    <li><a href="#eclipseでr">EclipseでR</a></li>
+    <li><a href="#rで文芸的プログラミング">Rで文芸的プログラミング</a></li>
+    <li><a href="#rとlatex">RとLaTeX</a></li>
+    <li><a href="#rでgis">RでGIS</a></li>
+    <li><a href="#rでテキストマイニング">Rでテキストマイニング</a></li>
+    <li><a href="#rで機械学習">Rで機械学習</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">R</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/r/_index.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/index.html" title="メモ (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/r/rgis/index.html" title="RでGIS (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="r">R</h1>
+
+<p>![](tag&gt;R tips windows osx)</p>
+<h1 id="rに関するあれこれ">Rに関するあれこれ</h1>
+<h2 id="vimでr">VimでR</h2>
+<p><a href="http://qiita.com/kirishima274/items/56233d5cd830d099b28f" rel="external" target="_blank">http://qiita.com/kirishima274/items/56233d5cd830d099b28f</a></p>
+<p>Vim-R-pluginを使う．</p>
+<pre><code>NeoBundle 'vim-scripts/Vim-R-plugin'
+</code></pre>
+<p>以下は，
+<a href="http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation" rel="external" target="_blank">http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation</a>
+を参考．</p>
+<h3 id="vimcomを入れる">vimcomを入れる</h3>
+<p>ダウンロード</p>
+<pre><code>download.file(&quot;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&quot;,
+              destfile = &quot;vimcom_1.2-6.tar.gz&quot;)
+</code></pre>
+<h4 id="macvimを使わない">MacVimを使わない</h4>
+<p>vimcomインストール</p>
+<pre><code>install.packages(&quot;vimcom_1.2-6.tar.gz&quot;, type = &quot;source&quot;,
+                 configure.args=&quot;--enable-clientserver&quot;,
+                 repos = NULL)
+</code></pre>
+<p>失敗したら，XQuartzを一旦アンインストールして，Homebrew
+caskから入れ直す．</p>
+<pre><code>brew cask install xquartz
+</code></pre>
+<p>VimもHomebrewから入れる</p>
+<pre><code>brew install vim --with-client-server --with-lua
+</code></pre>
+<h4 id="macvimを使う">MacVimを使う</h4>
+<pre><code>brew install macvim --with-cscope --with-client-server --with-lua --HEAD
+</code></pre>
+<h4 id="macvim-kaoriyaを使う">MacVim-Kaoriyaを使う</h4>
+<pre><code>install.packages(&quot;vimcom_1.2-6.tar.gz&quot;, type = &quot;source&quot;,
+                 repos = NULL)
+</code></pre>
+<h3 id="その他のrパッケージをインストール">その他のRパッケージをインストール</h3>
+<p>Rのコンソールの出力を色付けて表示</p>
+<pre><code>download.file(&quot;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&quot;, destfile = &quot;colorout_0.9-9.tar.gz&quot;)
+
+install.packages(&quot;colorout_0.9-9.tar.gz&quot;, type = &quot;source&quot;,
+               repos = NULL)
+
+install.packages(&quot;setwidth&quot;)
+</code></pre>
+<h3 id="rprofileに追記">.Rprofileに追記</h3>
+<pre><code> if(interactive()){
+     library(colorout)
+     library(setwidth)
+     options(vimcom.verbose = 1) # optional
+     library(vimcom)
+ }
+</code></pre>
+<h3 id="エイリアスを設定">エイリアスを設定</h3>
+<p>.zshrcに追記</p>
+<pre><code># vim-rでHomebrewで入れたVimをVim-R-pluginのオプション付きで使う
+alias vim-r='reattach-to-user-namespace /usr/local/bin/vim --servername VIM'
+</code></pre>
+<h3 id="tmuxを入れる">tmuxを入れる</h3>
+<pre><code>brew install tmux
+brew install reattach-to-user-namespace
+</code></pre>
+<p>なお、reattach-to-user-namespaceはtmuxのコピーコマンドでのクリップボード共有に使う。</p>
+<p>設定は，<a href="https://github.com/b4b4r07/dotfiles/blob/master/.tmux.conf" rel="external" target="_blank">https://github.com/b4b4r07/dotfiles/blob/master/.tmux.conf</a>
+を流用させてもらう．この設定の解説は
+<a href="http://qiita.com/b4b4r07/items/01359e8a3066d1c37edc" rel="external" target="_blank">http://qiita.com/b4b4r07/items/01359e8a3066d1c37edc</a> にある．</p>
+<h2 id="proxyの設定">Proxyの設定</h2>
+<p>プロクシ，プロクシー，プロキシ</p>
+<p>Windowsではシステム設定を利用するために，Ｒの起動オプションに</p>
+<pre><code>internet2
+</code></pre>
+<p>を付ければ良い（頭に半角のハイフン２つ付けること）．</p>
+<p>osxでは，ホームディレクトリの.Rprofileに</p>
+<pre><code>Sys.setenv(&quot;http_proxy&quot;=&quot;http://proxy.com:8080&quot;)
+</code></pre>
+<p>を書いて置いておけば良い．
+逆に，プロクシを使いたくなければ上記の記述をコメントアウトすればよい．
+（UNSWで秋田高専のプロクシ設定を使おうとして困った．システム設定やbash_profileやらなんやら見直したけれどどうにもならず．たまたま見かけた記事で起動オプションをRprofileに書くことを見かけて解決
+2012/10/10）</p>
+<p>osxでのRprofileの設定例を奥村先生がさらしてくれている．
+<a href="http://oku.edu.mie-u.ac.jp/~okumura/stat/Rprofile.html" rel="external" target="_blank">http://oku.edu.mie-u.ac.jp/~okumura/stat/Rprofile.html</a></p>
+<h2 id="xdr形式での保存">xdr形式での保存</h2>
+<pre><code>save(オブジェクト, file=&quot;******.xdr&quot;)
+</code></pre>
+<p>でオブジェクトをまるっとバイナリで保存できる．
+バイナリなので，当然テキストエディタで編集は出来ないが，それを補って余りある利点がある．</p>
+<ol>
+<li>ファイルサイズがかなり抑えられ，そのため読み込み・書き出しが早い（特に，疎行列みたいなデータだと効果大．多分aaaaaをAみたいな圧縮かけているんだろう）．一々テキストファイルを読み込むとすごく時間がかかる．もちろん保存も同様．</li>
+<li>プラットフォーム非依存のため，Linux-Windows間のデータのやりとりが楽．学生に渡すためにnkf使ってエンコード変更とか正直めんどくさかった．</li>
+</ol>
+<p>読み込みは</p>
+<pre><code>load(file=&quot;******.xdr&quot;)
+</code></pre>
+<p>ドクターの頃使っていたのに，何故今まで思い出さなかったんだろうか．．．</p>
+<p>と思っていたら，去年北海道支部に後輩の連名として出した時のスクリプトで使っていた．
+ぼけてる</p>
+<h2 id="rguiの設定">Rguiの設定</h2>
+<h3 id="ヘルプの表示方法を変更">ヘルプの表示方法を変更</h3>
+<p>インストール後にヘルプの表示方法を変更するには，</p>
+<pre><code>C:\R\R-*.*.*\etc\Rprofile.site
+</code></pre>
+<p>の以下を編集する．</p>
+<pre><code># to prefer Compiled HTML help
+#options(chmhelp=TRUE)
+# to prefer HTML help
+options(htmlhelp=TRUE)
+</code></pre>
+<p>上記はブラウザでhtmlヘルプを見る場合の設定（Firefoxのアドオン<a href="http://maru.bonyari.jp/mouseoverdictionary/" rel="external" target="_blank">MouseoverDictionary</a>と組み合わせると幸せになる）</p>
+<p>参考サイト：<a href="http://www.okada.jp.org/RWiki/?%BD%E9%B5%E9%A3%D1%A1%F5%A3%C1%20%A5%A2%A1%BC%A5%AB%A5%A4%A5%D6(7)#pbadd398" rel="external" target="_blank">http://www.okada.jp.org/RWiki/?%BD%E9%B5%E9%A3%D1%A1%F5%A3%C1%20%A5%A2%A1%BC%A5%AB%A5%A4%A5%D6(7)#pbadd398</a></p>
+<h3 id="rで使用するメモリサイズの変更">Rで使用するメモリサイズの変更</h3>
+<p>1500MBに設定する場合，Rguiの起動オプションに以下を追加する．なお，Wiki構文の制限により引用符を入れているが，実際は不要</p>
+<pre><code>''--max-mem-size=1500M''
+</code></pre>
+<p>Rで作業中に使用しているメモリを確認するには，</p>
+<pre><code>memory.size()
+</code></pre>
+<p>2012/11/26追記</p>
+<p>Mac OSX 10.8.2，R version 2.15.2環境 シェルから</p>
+<pre><code>R --max-mem-size=1500M 
+  WARNING: unknown option '--max-mem-size=1500M'
+</code></pre>
+<p>Rを起動後，</p>
+<pre><code>memory.size()
+[1] Inf
+ 警告メッセージ： 
+ 'memory.size()' は Windows 固有の関数です
+</code></pre>
+<p>使えないようだ．</p>
+<h2 id="rで統計多変量解析">Rで統計・多変量解析</h2>
+<p>「Rの基本データ構造、よく使う関数紹介」というエントリが分かりやすくて，とっかかりに適していると思った．
+<a href="http://d.hatena.ne.jp/syou6162/20080725/1216968631" rel="external" target="_blank">http://d.hatena.ne.jp/syou6162/20080725/1216968631</a></p>
+<h3 id="推定検定">推定・検定</h3>
+<p>正規分布におけるZ_{\alpha / 2}（パーセント点）の求め方</p>
+<pre><code>alpha &lt;- 0.05
+qnorm(1-alpha/2)
+</code></pre>
+<h3 id="rで重回帰分析">Rで重回帰分析</h3>
+<pre><code>y &lt;- iris[,1]
+x1 &lt;- iris[,2]
+x2 &lt;- iris[,3]
+x3 &lt;- iris[,4]
+summary( lm(y~x1+x2+x3) )
+</code></pre>
+<h2 id="制御文字">制御文字</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>\'</td>
+          <td>一重引用符</td>
+      </tr>
+      <tr>
+          <td>\&quot;</td>
+          <td>二重引用符</td>
+      </tr>
+      <tr>
+          <td>\n</td>
+          <td>改行</td>
+      </tr>
+      <tr>
+          <td>\t</td>
+          <td>タブ文字</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="データの取扱い">データの取扱い</h2>
+<p><a href="/haselab/memo/r/datamanipulationwithr/index.html">Rでのデータの取扱い</a></p>
+<h2 id="グラフィックス関連">グラフィックス関連</h2>
+<h3 id="色">色</h3>
+<p>2013/07/25</p>
+<p>標準で入っているカラーパレット</p>
+<pre><code>rainbow(7)
+heat.colors(7)
+</code></pre>
+<p>に満足できなくて良いのがないか探したら，
+<a href="http://d.hatena.ne.jp/harapon1012/20120927/1348701606" rel="external" target="_blank">http://d.hatena.ne.jp/harapon1012/20120927/1348701606</a>
+で良いものが紹介されていた．</p>
+<pre><code>library(plotrix)
+smoothColors(&quot;blue&quot;,2,&quot;white&quot;,2,&quot;red&quot;)
+</code></pre>
+<p>で青と白の間の色をグラデーションで2つ，白と赤の間の色をグラデーションで2つ，元の3つとあわせて7色の色が用意される．</p>
+<p>その他参考になるのは
+<a href="http://www.okada.jp.org/RWiki/?R%A4%CB%A4%AA%A4%B1%A4%EB%BF%A7%A4%CE%CC%BE%C1%B0" rel="external" target="_blank">http://www.okada.jp.org/RWiki/?R%A4%CB%A4%AA%A4%B1%A4%EB%BF%A7%A4%CE%CC%BE%C1%B0</a></p>
+<h3 id="軸ラベルの工夫">軸ラベルの工夫</h3>
+<p>2010/02/01</p>
+<p>任意の軸ラベルをつける方法</p>
+<p>RjpWikiの記事
+<a href="http://www.okada.jp.org/RWiki/?%A5%B0%A5%E9%A5%D5%A5%A3%A5%C3%A5%AF%A5%B9%A4%CE%A5%CF%A5%C3%A5%AF#content_1_1" rel="external" target="_blank">http://www.okada.jp.org/RWiki/?%A5%B0%A5%E9%A5%D5%A5%A3%A5%C3%A5%AF%A5%B9%A4%CE%A5%CF%A5%C3%A5%AF#content_1_1</a>
+を参考に，Y君（あ，どっちもだ）の卒業研究に使えるように少しアレンジした．</p>
+<pre><code>plot( iris[, 1], 
+xlab = &quot;&quot;, 
+ylab = &quot;Sepal.Length&quot;, 
+xaxt = &quot;n&quot;,  # x軸を描かない
+cex.lab = 1, 
+type=&quot;h&quot;)
+axis( side = 1,   # x軸を描く
+at = seq(1, nrow(iris), by = 50),   # 1からnrow(iris)まで50刻みで軸ラベルを描く
+label = iris[ , 5][seq(1, nrow(iris), by = 50)],   # アヤメの種名を軸ラベルにする．&quot;at&quot;引数と長さを揃えること
+cex.axis = 0.8,  # 軸ラベル文字サイズの拡大率
+lwd.ticks = 0, 
+las = 2)
+</code></pre>
+<h3 id="plot関数の点プロットの記号">plot関数の点プロットの記号</h3>
+<p>引数pchで指定する．</p>
+<p>例</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>pch=1</td>
+          <td>○</td>
+      </tr>
+      <tr>
+          <td>pch=2</td>
+          <td>△</td>
+      </tr>
+      <tr>
+          <td>pch=3</td>
+          <td>＋</td>
+      </tr>
+      <tr>
+          <td>pch=4</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>pch=5</td>
+          <td>◇</td>
+      </tr>
+      <tr>
+          <td>pch=6</td>
+          <td>▽</td>
+      </tr>
+      <tr>
+          <td>pch=7</td>
+          <td>□に＋を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=8</td>
+          <td>＊</td>
+      </tr>
+      <tr>
+          <td>pch=9</td>
+          <td>◇に＋を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=10</td>
+          <td>○に＋を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=11</td>
+          <td>▽に△を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=12</td>
+          <td>□に＋を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=13</td>
+          <td>○に×を重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=14</td>
+          <td>□にＶを重ねたもの</td>
+      </tr>
+      <tr>
+          <td>pch=15</td>
+          <td>■</td>
+      </tr>
+      <tr>
+          <td>pch=16</td>
+          <td>●</td>
+      </tr>
+      <tr>
+          <td>pch=17</td>
+          <td>▲</td>
+      </tr>
+      <tr>
+          <td>pch=18</td>
+          <td>◆</td>
+      </tr>
+      <tr>
+          <td>pch=19</td>
+          <td>●</td>
+      </tr>
+      <tr>
+          <td>pch=20</td>
+          <td>●(小さい)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ggplot2">ggplot2</h3>
+<p>そのうち使おう</p>
+<pre><code>library(ggplot2)
+quartz(width=6,height=6, family=&quot;HiraKakuPro-W3&quot;)
+origin.gg &lt;- ggplot(data, aes(x = OriginLongitude, y = OriginLatitude)) + xlim(kRangeLong) + ylim(kRangeLat)
+## 出発地点のヒートマップ
+print(
+origin.gg + geom_bin2d() + labs(x = &quot;Longitude&quot;, y = &quot;Latitude&quot;)
+)
+
+dest.gg &lt;- ggplot(data, aes(x = DestLongitude, y = DestLatitude)) + xlim(kRangeLong) + ylim(kRangeLat)
+## 到着地点のヒートマップ
+print(
+dest.gg + geom_bin2d() + labs(x = &quot;Longitude&quot;, y = &quot;Latitude&quot;)
+)
+</code></pre>
+<p>テキスト追加レイヤー</p>
+<pre><code>annotate(&quot;text&quot;, label = &quot;Map data(c)OpenStreetMap&quot;
+           , x = 141.350, y = 43.042, base_size = 0.8
+)
+</code></pre>
+<p>因子水準で色を変えた折れ線グラフ（グラフとして適当ではないが）</p>
+<pre><code>print(
+ggplot(data.frame(iris, id = 1:nrow(iris)), aes(x = id, y = Petal.Length, colour = Species))
+  + geom_point()
+  + geom_line(aes(group = interaction(Species)))
+</code></pre>
+<p>とても参考になる <a href="http://d.hatena.ne.jp/triadsou/20100528/1275042816" rel="external" target="_blank">http://d.hatena.ne.jp/triadsou/20100528/1275042816</a></p>
+<h3 id="ループの途中で画像等を出力">ループの途中で画像等を出力</h3>
+<p>ループを使って，パラメータ（実験条件）を変えながら計算させることがよくある．そしてその時に，各条件での計算結果（場合によっては過程も）を異なるファイル名で出力したくなる．</p>
+<p>そのような場合にはeval(parse(text =
+&ldquo;実行される文字列&rdquo;))を使えば良い．そして，textに渡す文字列はpaste関数などで用意する．</p>
+<pre><code>for (i in 1:3) {
+  # ファイル名をループ制御変数で変えながらCSVで書き出し
+  eval(parse(text = paste(&quot;write.csv(iris[,1:4],file=\&quot;IrisData&quot;, i, &quot;.csv\&quot;, row.names=F)&quot;, sep = &quot;&quot;)))
+
+      # プロットはprintで囲った方が良い（囲わないと上手く動かないことがある）
+  print(plot(iris[, 1:4]))
+
+  # ファイル名をループ制御変数で変えながらPDFで保存
+  eval(parse(text = paste(&quot;dev.copy(pdf, file=\&quot;IrisData&quot;, i, &quot;.pdf\&quot;)&quot;, sep = &quot;&quot;)))
+
+  # 作図デバイスを閉じる
+  dev.off()
+}
+</code></pre>
+<p>実行すると，ワーキングディレクトリに
+IrisData1.csv，IrisData2.csv，IrisData3.csv，IrisData1.pdf，IrisData2.pdf，IrisData3.pdfというファイルが出力される．</p>
+<hr>
+<p>連番ファイル名を0埋め桁揃えしたい場合，zshのzmvを使うのが便利．</p>
+<p>参考 <a href="http://qiita.com/ponko2@github/items/31af073608aa20fa57e4" rel="external" target="_blank">http://qiita.com/ponko2@github/items/31af073608aa20fa57e4</a></p>
+<p>zmvを使うため .zshrc に</p>
+<pre><code>autoload zmv
+</code></pre>
+<p>を記述</p>
+<p>上記のPDFファイル（IrisData1.pdf，IrisData2.pdf，IrisData3.pdf）を4桁数字で埋める（IrisData0001.pdf，IrisData0002.pdf，IrisData0003.pdf）には，</p>
+<pre><code>zmv 'IrisData(*).pdf' 'IrisData${(l:4::0:)1}.pdf'
+</code></pre>
+<p>とすれば良い． 2013/07/25追記</p>
+<h2 id="eclipseでr">EclipseでR</h2>
+<p><a href="/haselab/memo/r/statet/index.html">EclipseでR</a></p>
+<h2 id="rで文芸的プログラミング">Rで文芸的プログラミング</h2>
+<p><a href="/haselab/memo/r/sweave/index.html">Rで文芸的プログラミング</a></p>
+<h2 id="rとlatex">RとLaTeX</h2>
+<p>Rで作成した表（に限らずオブジェクト）をHmiscパッケージのlatex関数でLaTeXで使えるテーブル形式に変換できる．</p>
+<p>色々オプションがあるが，それらはマニュアルを参照．以下，fileオプションについてだけ書く</p>
+<pre><code>file=&quot;filename.tex&quot;
+</code></pre>
+<p>でファイルに保存出来るが，自動的にLaTeXでコンパイルして結果をdviウェアで開こうとする．
+macで使っていると，X11が必要なxdviで開こうとするのでうっとうしい．</p>
+<pre><code>file=&quot;&quot;
+</code></pre>
+<p>とすると，コンソールへの出力のみでファイル保存もコンパイルもされない．
+けれど，ファイルは保存して欲しい．</p>
+<p>マニュアルに対処法が載っていた． 通常，latex関数は</p>
+<pre><code>latex(obj, file=&quot;filename.tex&quot;)
+</code></pre>
+<p>のように関数を呼び出して使うが，</p>
+<pre><code>a &lt;- latex(obj, file=&quot;filename.tex&quot;)
+</code></pre>
+<p>のように，適当なオブジェクトに代入するとLaTeXからのメッセージが出なくなる．</p>
+<h2 id="rでgis">RでGIS</h2>
+<p><a href="/haselab/memo/r/rgis/index.html">RでGIS</a></p>
+<h2 id="rでテキストマイニング">Rでテキストマイニング</h2>
+<p><a href="/haselab/memo/r/rtextmining/index.html">Rでテキストマイニング</a></p>
+<h2 id="rで機械学習">Rで機械学習</h2>
+<p><a href="/haselab/memo/r/rmachinelearning/index.html">Rで機械学習</a></p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="active parent alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu">
+            <li class="" data-nav-id="/haselab/memo/r/rgis/index.html"><a class="padding" href="/haselab/memo/r/rgis/index.html">RでGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/rtextmining/index.html"><a class="padding" href="/haselab/memo/r/rtextmining/index.html">Rでテキストマイニング</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/datamanipulationwithr/index.html"><a class="padding" href="/haselab/memo/r/datamanipulationwithr/index.html">Rでのデータの取扱い</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/statet/index.html"><a class="padding" href="/haselab/memo/r/statet/index.html">eclipse&#43;StatET</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/rmachinelearning/index.html"><a class="padding" href="/haselab/memo/r/rmachinelearning/index.html">Rで機械学習</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/sweave/index.html"><a class="padding" href="/haselab/memo/r/sweave/index.html">Sweaveに関するメモ</a></li></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/r/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

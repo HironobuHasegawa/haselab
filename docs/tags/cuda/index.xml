@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cuda :: Tag :: HaseLab</title>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/cuda/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/cuda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CUDA</title>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html</guid>
+      <description>CentOS5.4へのCUDA環境のセットアップはcentosを参照&#xA;VNC経由ではいくつかのサンプルプログラムが動かない．&#xA;OpenGLがらみのようだ． http://epa.scitec.kobe-u.ac.jp/~gpgpu/hiki/hiki.cgi?%BA%EE%B6%C8%A5%E1%A5%E2%28%C7%BC%C2%BF%29#28CUDA-29+-A5-A4-A5-F3-A5-B9-A5-C8-A1-BC-A5-EB にあるのは試したけれど，解決しないので放置する．&#xA;きちんとコンパイル出来て，きちんと計算してくれればそれでいい．</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．
+統合開発環境のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．
+インストール方法 エクリプスはPleiades All in One 日本語ディストリビューション（http://mergedoc.sourceforge.jp/）を使うと楽．
+公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する． エクリプスの実行ファイル（eclipse.exe）と同じフォルダにあるdropinsフォルダに解凍したフォルダ（site-statet-00.07.02）を移動する． ヘルプ＞ソフトウェア更新からインストールする．proxy設定が必要であれば，ウィンドウ＞設定＞一般＞ネットワーク接続で設定する． 参考サイト
+http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html
+http://d.hatena.ne.jp/kompiro/20080707/1215405679
+初期設定 Rコンソール実行構成の作成 実行＞実行構成を開き，R コンソールを右クリックし新規を選択し，Rコンソール実行構成を作成する． 構成の名前は適当に決める R ConfigタブのR Environmentの構成を選択し，StatET＞R相互作用＞R EnvironmentsにRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する 共通タブのお気に入りメニューに表示＞実行にチェックを入れ，実行メニューにショートカットを作成する メインタブのLanunch typeをRtermに設定し，Options/Argumentsに**–ess–internet2–max-mem-size=2000M**を追加する 補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．
+dviビューアの設定 ウインドウ＞設定＞Texlipse＞ビューア設定＞新規
+ビューア名： dviout ビューア・コマンド： C:\tex\dviout\dviout.exe ビューア引数： %file -1 &#34;# %line %texfile&#34; パースペクティブを作成 ウインドウ＞パースペクティブを開く＞その他からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．
+基本的な使い方 実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンからRコンソール実行構成の作成で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる スクリプトはエディタに書く 実行する エディタで入力前，あるいは入力中にCtrl&#43;Spaceを押すとオブジェクトや関数の補完入力候補がポップアップする．
+Ctrl&#43;R R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする Ctrl&#43;R Ctrl&#43;R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま Ctrl&#43;I 選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="eclipse&#43;StatET :: HaseLab">
+    <meta name="twitter:description" content="Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．
+統合開発環境のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．
+インストール方法 エクリプスはPleiades All in One 日本語ディストリビューション（http://mergedoc.sourceforge.jp/）を使うと楽．
+公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する． エクリプスの実行ファイル（eclipse.exe）と同じフォルダにあるdropinsフォルダに解凍したフォルダ（site-statet-00.07.02）を移動する． ヘルプ＞ソフトウェア更新からインストールする．proxy設定が必要であれば，ウィンドウ＞設定＞一般＞ネットワーク接続で設定する． 参考サイト
+http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html
+http://d.hatena.ne.jp/kompiro/20080707/1215405679
+初期設定 Rコンソール実行構成の作成 実行＞実行構成を開き，R コンソールを右クリックし新規を選択し，Rコンソール実行構成を作成する． 構成の名前は適当に決める R ConfigタブのR Environmentの構成を選択し，StatET＞R相互作用＞R EnvironmentsにRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する 共通タブのお気に入りメニューに表示＞実行にチェックを入れ，実行メニューにショートカットを作成する メインタブのLanunch typeをRtermに設定し，Options/Argumentsに**–ess–internet2–max-mem-size=2000M**を追加する 補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．
+dviビューアの設定 ウインドウ＞設定＞Texlipse＞ビューア設定＞新規
+ビューア名： dviout ビューア・コマンド： C:\tex\dviout\dviout.exe ビューア引数： %file -1 &#34;# %line %texfile&#34; パースペクティブを作成 ウインドウ＞パースペクティブを開く＞その他からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．
+基本的な使い方 実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンからRコンソール実行構成の作成で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる スクリプトはエディタに書く 実行する エディタで入力前，あるいは入力中にCtrl&#43;Spaceを押すとオブジェクトや関数の補完入力候補がポップアップする．
+Ctrl&#43;R R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする Ctrl&#43;R Ctrl&#43;R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま Ctrl&#43;I 選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/r/statet/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="eclipse&#43;StatET :: HaseLab">
+    <meta property="og:description" content="Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．
+統合開発環境のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．
+インストール方法 エクリプスはPleiades All in One 日本語ディストリビューション（http://mergedoc.sourceforge.jp/）を使うと楽．
+公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する． エクリプスの実行ファイル（eclipse.exe）と同じフォルダにあるdropinsフォルダに解凍したフォルダ（site-statet-00.07.02）を移動する． ヘルプ＞ソフトウェア更新からインストールする．proxy設定が必要であれば，ウィンドウ＞設定＞一般＞ネットワーク接続で設定する． 参考サイト
+http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html
+http://d.hatena.ne.jp/kompiro/20080707/1215405679
+初期設定 Rコンソール実行構成の作成 実行＞実行構成を開き，R コンソールを右クリックし新規を選択し，Rコンソール実行構成を作成する． 構成の名前は適当に決める R ConfigタブのR Environmentの構成を選択し，StatET＞R相互作用＞R EnvironmentsにRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する 共通タブのお気に入りメニューに表示＞実行にチェックを入れ，実行メニューにショートカットを作成する メインタブのLanunch typeをRtermに設定し，Options/Argumentsに**–ess–internet2–max-mem-size=2000M**を追加する 補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．
+dviビューアの設定 ウインドウ＞設定＞Texlipse＞ビューア設定＞新規
+ビューア名： dviout ビューア・コマンド： C:\tex\dviout\dviout.exe ビューア引数： %file -1 &#34;# %line %texfile&#34; パースペクティブを作成 ウインドウ＞パースペクティブを開く＞その他からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．
+基本的な使い方 実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンからRコンソール実行構成の作成で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる スクリプトはエディタに書く 実行する エディタで入力前，あるいは入力中にCtrl&#43;Spaceを押すとオブジェクトや関数の補完入力候補がポップアップする．
+Ctrl&#43;R R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする Ctrl&#43;R Ctrl&#43;R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま Ctrl&#43;I 選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="IDE">
+    <meta property="article:tag" content="Editor">
+    <meta property="article:tag" content="Windows">
+    <meta property="article:tag" content="Linux">
+    <meta itemprop="name" content="eclipse&#43;StatET :: HaseLab">
+    <meta itemprop="description" content="Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．
+統合開発環境のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．
+インストール方法 エクリプスはPleiades All in One 日本語ディストリビューション（http://mergedoc.sourceforge.jp/）を使うと楽．
+公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する． エクリプスの実行ファイル（eclipse.exe）と同じフォルダにあるdropinsフォルダに解凍したフォルダ（site-statet-00.07.02）を移動する． ヘルプ＞ソフトウェア更新からインストールする．proxy設定が必要であれば，ウィンドウ＞設定＞一般＞ネットワーク接続で設定する． 参考サイト
+http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html
+http://d.hatena.ne.jp/kompiro/20080707/1215405679
+初期設定 Rコンソール実行構成の作成 実行＞実行構成を開き，R コンソールを右クリックし新規を選択し，Rコンソール実行構成を作成する． 構成の名前は適当に決める R ConfigタブのR Environmentの構成を選択し，StatET＞R相互作用＞R EnvironmentsにRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する 共通タブのお気に入りメニューに表示＞実行にチェックを入れ，実行メニューにショートカットを作成する メインタブのLanunch typeをRtermに設定し，Options/Argumentsに**–ess–internet2–max-mem-size=2000M**を追加する 補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．
+dviビューアの設定 ウインドウ＞設定＞Texlipse＞ビューア設定＞新規
+ビューア名： dviout ビューア・コマンド： C:\tex\dviout\dviout.exe ビューア引数： %file -1 &#34;# %line %texfile&#34; パースペクティブを作成 ウインドウ＞パースペクティブを開く＞その他からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．
+基本的な使い方 実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンからRコンソール実行構成の作成で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる スクリプトはエディタに書く 実行する エディタで入力前，あるいは入力中にCtrl&#43;Spaceを押すとオブジェクトや関数の補完入力候補がポップアップする．
+Ctrl&#43;R R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする Ctrl&#43;R Ctrl&#43;R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま Ctrl&#43;I 選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う">
+    <meta itemprop="wordCount" content="54">
+    <meta itemprop="keywords" content="R,IDE,Editor,Windows,Linux">
+    <title>eclipse&#43;StatET :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/r/statet/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#インストール方法">インストール方法</a></li>
+    <li><a href="#初期設定">初期設定</a>
+      <ul>
+        <li><a href="#rコンソール実行構成の作成">Rコンソール実行構成の作成</a></li>
+        <li><a href="#dviビューアの設定">dviビューアの設定</a></li>
+        <li><a href="#パースペクティブを作成">パースペクティブを作成</a></li>
+      </ul>
+    </li>
+    <li><a href="#基本的な使い方">基本的な使い方</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/r/index.html"><span itemprop="name">R</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">eclipse&#43;StatET</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/r/statet.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/r/datamanipulationwithr/index.html" title="Rでのデータの取扱い (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/r/rmachinelearning/index.html" title="Rで機械学習 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <ul>
+    <li><a class="term-link" href="/haselab/tags/editor/index.html">Editor</a></li>
+    <li><a class="term-link" href="/haselab/tags/ide/index.html">IDE</a></li>
+    <li><a class="term-link" href="/haselab/tags/linux/index.html">Linux</a></li>
+    <li><a class="term-link" href="/haselab/tags/r/index.html">R</a></li>
+    <li><a class="term-link" href="/haselab/tags/windows/index.html">Windows</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="eclipsestatet">eclipse&#43;StatET</h1>
+
+<p>Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．</p>
+<p><a href="http://ja.wikipedia.org/wiki/%E7%B5%B1%E5%90%88%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83" rel="external" target="_blank">統合開発環境</a>のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．</p>
+<h2 id="インストール方法">インストール方法</h2>
+<p>エクリプスは<strong>Pleiades All in One
+日本語ディストリビューション</strong>（<a href="http://mergedoc.sourceforge.jp/%EF%BC%89%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E6%A5%BD" rel="external" target="_blank">http://mergedoc.sourceforge.jp/）を使うと楽</a>．</p>
+<ol>
+<li>公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する．</li>
+<li>エクリプスの実行ファイル（eclipse.exe）と同じフォルダにある<strong>dropinsフォルダ</strong>に解凍したフォルダ（site-statet-00.07.02）を移動する．</li>
+<li><strong>ヘルプ＞ソフトウェア更新</strong>からインストールする．proxy設定が必要であれば，<strong>ウィンドウ＞設定＞一般＞ネットワーク接続</strong>で設定する．</li>
+</ol>
+<p>参考サイト</p>
+<p><a href="http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html" rel="external" target="_blank">http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html</a></p>
+<p><a href="http://d.hatena.ne.jp/kompiro/20080707/1215405679" rel="external" target="_blank">http://d.hatena.ne.jp/kompiro/20080707/1215405679</a></p>
+<h2 id="初期設定">初期設定</h2>
+<h3 id="rコンソール実行構成の作成">Rコンソール実行構成の作成</h3>
+<ol>
+<li><strong>実行＞実行構成</strong>を開き，<strong>R
+コンソール</strong>を右クリックし<strong>新規</strong>を選択し，Rコンソール実行構成を作成する．</li>
+<li>構成の名前は適当に決める</li>
+<li><strong>R Configタブ</strong>のR
+Environmentの<strong>構成</strong>を選択し，<strong>StatET＞R相互作用＞R
+Environments</strong>にRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する</li>
+<li><strong>共通タブ</strong>の<strong>お気に入りメニューに表示＞実行</strong>にチェックを入れ，実行メニューにショートカットを作成する</li>
+<li><strong>メインタブ</strong>の<strong>Lanunch
+type</strong>をRtermに設定し，<strong>Options/Arguments</strong>に**<del>&ndash;ess</del>&ndash;internet2&ndash;max-mem-size=2000M**を追加する</li>
+</ol>
+<p>補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．</p>
+<h3 id="dviビューアの設定">dviビューアの設定</h3>
+<p>ウインドウ＞設定＞Texlipse＞ビューア設定＞新規</p>
+<pre><code>ビューア名： dviout
+ビューア・コマンド： C:\tex\dviout\dviout.exe
+ビューア引数： %file -1 &quot;# %line %texfile&quot;
+</code></pre>
+<h3 id="パースペクティブを作成">パースペクティブを作成</h3>
+<p><strong>ウインドウ＞パースペクティブを開く＞その他</strong>からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．</p>
+<h2 id="基本的な使い方">基本的な使い方</h2>
+<ol>
+<li>実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンから<strong>Rコンソール実行構成の作成</strong>で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる</li>
+<li>スクリプトはエディタに書く</li>
+<li>実行する</li>
+</ol>
+<p>エディタで入力前，あるいは入力中に<strong>Ctrl+Space</strong>を押すとオブジェクトや関数の補完入力候補がポップアップする．</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ctrl+R R</td>
+          <td>選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする</td>
+      </tr>
+      <tr>
+          <td>Ctrl+R Ctrl+R</td>
+          <td>選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま</td>
+      </tr>
+      <tr>
+          <td>Ctrl+I</td>
+          <td>選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う</td>
+      </tr>
+  </tbody>
+</table>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu">
+            <li class="" data-nav-id="/haselab/memo/r/rgis/index.html"><a class="padding" href="/haselab/memo/r/rgis/index.html">RでGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/rtextmining/index.html"><a class="padding" href="/haselab/memo/r/rtextmining/index.html">Rでテキストマイニング</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/datamanipulationwithr/index.html"><a class="padding" href="/haselab/memo/r/datamanipulationwithr/index.html">Rでのデータの取扱い</a></li>
+            <li class="active " data-nav-id="/haselab/memo/r/statet/index.html"><a class="padding" href="/haselab/memo/r/statet/index.html">eclipse&#43;StatET</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/rmachinelearning/index.html"><a class="padding" href="/haselab/memo/r/rmachinelearning/index.html">Rで機械学習</a></li>
+            <li class="" data-nav-id="/haselab/memo/r/sweave/index.html"><a class="padding" href="/haselab/memo/r/sweave/index.html">Sweaveに関するメモ</a></li></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/r/statet/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

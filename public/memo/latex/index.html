@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）
+\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）
+\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）
+\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}
+傍注は\marginpar{}
+ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．
+https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに
+%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．
+図表 figure環境 図を入れる領域を準備する
+EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LaTeX覚え書き :: HaseLab">
+    <meta name="twitter:description" content="LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）
+\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）
+\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）
+\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}
+傍注は\marginpar{}
+ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．
+https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに
+%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．
+図表 figure環境 図を入れる領域を準備する
+EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/latex/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="LaTeX覚え書き :: HaseLab">
+    <meta property="og:description" content="LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）
+\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）
+\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）
+\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}
+傍注は\marginpar{}
+ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．
+https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに
+%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．
+図表 figure環境 図を入れる領域を準備する
+EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta property="article:tag" content="LaTeX">
+    <meta property="article:tag" content="Tips">
+    <meta itemprop="name" content="LaTeX覚え書き :: HaseLab">
+    <meta itemprop="description" content="LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）
+\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）
+\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）
+\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}
+傍注は\marginpar{}
+ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．
+https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに
+%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．
+図表 figure環境 図を入れる領域を準備する
+EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について">
+    <meta itemprop="wordCount" content="662">
+    <meta itemprop="keywords" content="LaTeX,Tips">
+    <title>LaTeX覚え書き :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/latex/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#文書の設定プリアンブル">文書の設定（プリアンブル）</a></li>
+    <li><a href="#脚注と傍注">脚注と傍注</a></li>
+    <li><a href="#図表">図表</a>
+      <ul>
+        <li><a href="#figure環境">figure環境</a></li>
+        <li><a href="#table環境">Table環境</a></li>
+      </ul>
+    </li>
+    <li><a href="#箇条書き">箇条書き</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mactex">MacTeX</a></li>
+    <li><a href="#クラスファイルなどの場所を検索">クラスファイルなどの場所を検索</a>
+      <ul>
+        <li><a href="#beamerでプレゼンテーション作成">beamerでプレゼンテーション作成</a></li>
+      </ul>
+    </li>
+    <li><a href="#スタイルファイル">スタイルファイル</a>
+      <ul>
+        <li><a href="#脚注の線を段の幅と等しく変更">脚注の線を段の幅と等しく変更</a></li>
+      </ul>
+    </li>
+    <li><a href="#bstファイル">bstファイル</a></li>
+    <li><a href="#pbibtex">pbibtex</a></li>
+    <li><a href="#winshell">WinShell</a>
+      <ul>
+        <li><a href="#winshellとsumatra-pdfの連携">WinShellとSumatra PDFの連携</a></li>
+      </ul>
+    </li>
+    <li><a href="#パスを通す">パスを通す</a></li>
+    <li><a href="#jbibtexで参照するbibtexデータベースへのハードリンク">jbibtexで参照するbibtexデータベースへのハードリンク</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#使い方">使い方</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#テンプレート">テンプレート</a></li>
+    <li><a href="#uplatexでbeamer20241104追加">uplatexでbeamer（2024/11/04追加）</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">LaTeX覚え書き</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/latex.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/imagemagick/index.html" title="ImageMagick (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/linuxtips/index.html" title="Linux tips (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <ul>
+    <li><a class="term-link" href="/haselab/tags/latex/index.html">LaTeX</a></li>
+    <li><a class="term-link" href="/haselab/tags/tips/index.html">Tips</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="latex覚え書き">LaTeX覚え書き</h1>
+
+<h1 id="latex">LaTeX</h1>
+<h2 id="文書の設定プリアンブル">文書の設定（プリアンブル）</h2>
+<p>余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）</p>
+<pre><code>\usepackage{geometry}
+\geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins
+</code></pre>
+<hr>
+<p>インデント（indent）の量を10mmにする（2012/11/13）</p>
+<pre><code>\parindent=10truemm
+</code></pre>
+<hr>
+<p>Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）</p>
+<pre><code>\usepackage{txfonts}
+</code></pre>
+<h2 id="脚注と傍注">脚注と傍注</h2>
+<p>脚注は\footnote{}</p>
+<p>傍注は\marginpar{}</p>
+<p>ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．</p>
+<p><a href="https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html" rel="external" target="_blank">https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html</a> と
+<a href="https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66" rel="external" target="_blank">https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66</a>
+を参考（つなげただけですが）に プリアンブルに</p>
+<pre><code>%傍注に番号を付けるための設定
+  \newcounter{marginpar}% 新しいカウンタ
+  \makeatletter
+    \let\org@marginpar\marginpar% オリジナルを退避
+  %%
+  \renewcommand{\marginpar}[1]{%
+    \refstepcounter{marginpar}%  カウンタを一つ増やす
+    \kern0pt$^{\themarginpar}$% 本文での傍注番号
+    \org@marginpar{\footnotesize\themarginpar~#1}% 傍注
+  }%
+  \makeatother
+%傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義
+  \newcommand{\marginnote}[2][*]{%
+    \inhibitglue\kern0pt #1\marginpar{\footnotesize
+      \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}}
+</code></pre>
+<p>と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．</p>
+<h2 id="図表">図表</h2>
+<h3 id="figure環境">figure環境</h3>
+<p>図を入れる領域を準備する</p>
+<h4 id="eps画像の取り込み">EPS画像の取り込み</h4>
+<pre><code>\begin{figure}[!htb]  % here, top, bottom
+\begin{center}
+\includegraphics[width=22zw, clip]{filename.eps}  % 22文字文の幅で，空白を切り抜き
+\end{center}
+\caption{図のキャプションは図の下に}\label{fig:figlabel}  % 文章中で参照するためにラベルを付けておく
+\end{figure}
+</code></pre>
+<h4 id="pdf画像の取り込み">PDF画像の取り込み</h4>
+<p>MS Officeで作成した図について</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OS</td>
+          <td>TeXディストリビューション</td>
+          <td>MS Office</td>
+          <td>PDF作成方法</td>
+          <td>PDFのバージョン</td>
+          <td>結果</td>
+          <td>確認日</td>
+      </tr>
+      <tr>
+          <td>Windows 7 Enterprise 64bit SP1</td>
+          <td>W32TeX</td>
+          <td>PowerPoint 2010</td>
+          <td>「名前を付けて保存」でPDF形式を選択して保存（ファイル名日本語）</td>
+          <td>1.5</td>
+          <td>ダメ（空欄）</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Windows 7 Enterprise 64bit SP1</td>
+          <td>W32TeX</td>
+          <td>PowerPoint 2010</td>
+          <td>「名前を付けて保存」でPDF形式を選択して保存（ファイル名英語）</td>
+          <td>1.5</td>
+          <td>ダメ（空欄）</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Windows 7 Enterprise 64bit SP1</td>
+          <td>W32TeX</td>
+          <td>PowerPoint 2010</td>
+          <td>CubePDF 1.0.0RC2で印刷</td>
+          <td>1.7</td>
+          <td>ダメ（空欄）</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Mac OS X Lion</td>
+          <td>MacTeX</td>
+          <td>Excel:mac 2011</td>
+          <td>グラフエリアをCtrl+クリックで「図として保存」でPDFを選択</td>
+          <td>1.3</td>
+          <td>OK</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Mac OS X Lion</td>
+          <td>MacTeX</td>
+          <td>PowerPoint:mac 2011</td>
+          <td>グラフエリアをCtrl+クリックで「図として保存」でPDFを選択</td>
+          <td>1.3</td>
+          <td>ダメ（空欄）</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Mac OS X Lion</td>
+          <td>MacTeX</td>
+          <td>PowerPoint:mac 2011</td>
+          <td>「名前を付けて保存」でPDF形式を選択して保存（ファイル名日本語）</td>
+          <td>1.3</td>
+          <td>だめ</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Mac OS X Lion</td>
+          <td>MacTeX</td>
+          <td>PowerPoint:mac 2011</td>
+          <td>「名前を付けて保存」でPDF形式を選択して保存（ファイル名英語）</td>
+          <td>1.3</td>
+          <td>OK</td>
+          <td>2012/04/06</td>
+      </tr>
+      <tr>
+          <td>Windows 7 Enterprise 64bit SP1</td>
+          <td>W32TeX</td>
+          <td>PowerPoint 2010</td>
+          <td>CubePDF 1.0.0RC2で印刷(PDF1.3指定)</td>
+          <td>1.3</td>
+          <td>図が90度回転</td>
+          <td>2012/04/06</td>
+      </tr>
+  </tbody>
+</table>
+<p>TeXworksのコンパイルログから関係ありそうなエラーメッセージを抜粋すると，</p>
+<pre><code>WARNING  PDF version of input file more recent than in output file.
+WARNING  Use &quot;-V&quot; switch to change output PDF version.
+WARNING  pdf: image inclusion failed for &quot;ファイル名.pdf&quot;.
+WARNING  Failed to read image file: ファイル名.pdf''
+</code></pre>
+<p>PDFのバージョンが関係しているようだ．</p>
+<p>CubePDFでPDFのバージョンを1.3（1.2も）にすると，図が回転した．ログに</p>
+<pre><code>WARNING &lt;&lt; /Rotate 90 &gt;&gt; found. (Not supported yet)
+</code></pre>
+<p>という警告も出る．</p>
+<p>PDFをテキストエディタで開くと，10行目くらいに<strong>Rotate
+90</strong>という記述がある．</p>
+<p>OfficeとCubePDFの組合せが悪いのかと考え，他のアプリケーションとCubePDFの組合せも試した．
+その結果，CubePDFを使えば必ず，<strong>Rotate 90</strong>となるわけではなく，
+例えばテキストエディタに適当な文字を打ってPDF化すると<strong>Rotate
+0</strong>のPDFになった（回転しない）．</p>
+<p>また，CubePDFで作成した<strong>Rotate
+90</strong>のPDFを再度CubePDFで印刷すると，90度回転済みのPDF（<strong>Rotate
+0</strong>）が得られる．PDFの仕様がよく分からないけれど，どうすればどうなるかという挙動は何となく分かった．</p>
+<p>PowerPoint:mac
+2011の場合，日本語ファイル名で保存した場合はダメで，英語ファイル名で保存した場合はOK.
+Excel:mac
+2011の場合，日本語ファイル名でも英語ファイル名でもどっちでもOK.
+この違いは何なんだろう．．．とは言え，MacTeXは日本語ファイル名をコンパイル出来ないようなので，
+常に英語ファイル名にすれば良い． 2012/04/06</p>
+<p>MacのPPT「で図として保存」しても印刷すると線が消える場合もある．．．
+2012/06/19</p>
+<h3 id="table環境">Table環境</h3>
+<p>表を入れる領域を準備する．</p>
+<p>実際の表はtablar環境やtablarx環境，longtable環境などで作成する．</p>
+<p>エクセルやOpenOffice
+Calcなどで作成した表をLaTeXで扱える用に変換するツールも数多く公開されており，TeX
+Wikiにまとめられている．<a href="https://oku.edu.mie-u.ac.jp/~okumura/texwiki/?%E5%A4%89%E6%8F%9B%E3%83%84%E3%83%BC%E3%83%AB#wf7315cb" rel="external" target="_blank">https://oku.edu.mie-u.ac.jp/~okumura/texwiki/?%E5%A4%89%E6%8F%9B%E3%83%84%E3%83%BC%E3%83%AB#wf7315cb</a></p>
+<p>最近（2012/06/21現在）試したものでは，<a href="https://launchpad.net/excel2latex" rel="external" target="_blank">Excel2LaTeX</a>というエクセルアドインの出来が良いと感じた．</p>
+<p>エクセル等で作成した表を図として保存し，includegraphicsで取り込むことも可能</p>
+<h2 id="箇条書き">箇条書き</h2>
+<p><a href="https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/56668.html%E3%82%88%E3%82%8A" rel="external" target="_blank">https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/56668.htmlより</a></p>
+<p>itemize環境のitem間にスペースを開けたいとき，</p>
+<pre><code>\begin{itemize}\itemsep=1zw
+  \item
+  \item
+\end{itemize}
+</code></pre>
+<p>知らなかった．2012/02/23</p>
+<h1 id="環境設定他">環境設定他</h1>
+<h2 id="mactex">MacTeX</h2>
+<p>スタイルファイル（例えばjsclasses）は以下に保存</p>
+<pre><code>usr/local/texlive/texmf-local
+</code></pre>
+<p>容量も軽いのでSugarSyncで同期すると便利</p>
+<h2 id="クラスファイルなどの場所を検索">クラスファイルなどの場所を検索</h2>
+<pre><code>kpsewhich jsarticle.cls
+</code></pre>
+<h3 id="beamerでプレゼンテーション作成">beamerでプレゼンテーション作成</h3>
+<p>beamerでbibtexを使おうとしたら，</p>
+<pre><code>! LaTeX Error: File `beamericonarticle.xbb' not found. Use -shell-escape option
+ to generate automatically.
+</code></pre>
+<p>というエラーが出た．以下で対処する（参考
+<a href="http://todo.issp.u-tokyo.ac.jp/ja/members/wistaria/log/tex-on-mac" rel="external" target="_blank">http://todo.issp.u-tokyo.ac.jp/ja/members/wistaria/log/tex-on-mac</a>）．</p>
+<pre><code>cd /usr/local/texlive/2012/texmf-dist/tex/latex/beamer/art
+sudo ebb -x beamericonarticle.pdf
+sudo ebb -x beamericonbook.pdf
+sudo mktexlsr
+</code></pre>
+<h2 id="スタイルファイル">スタイルファイル</h2>
+<p>&lt;del&gt;土木計画学研究・講演集と土木計画学研究・論文集のスタイルファイルって
+ないのだろーか．．．</p>
+<p>土木学会論文集のスタイルファイルはあるけど，結構手を入れないとダメっぽい．</p>
+<p><a href="http://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/44261.html" rel="external" target="_blank">こんな記述</a>を見つけるにつれ，現行のフォーマットも．．．と思ってしまう．</p>
+<p>（土木学会に対して）組版から印刷，製本までをセットにして売り込む出版社ってないのかな？&lt;/del&gt;</p>
+<p>今年（2011年）の春大会から土木学会論文集フォーマットになった．いきなりフルペーパーはちょっとつらいが，LaTeXで書けるのはありがたい．秋大会はどうなるんだろう？？</p>
+<hr>
+<p>東北支部の技術研究発表会の原稿に取りかかろうと思い，書式を確認した．</p>
+<p>レギュレーションは示されているが，MSワードのスケルトンもLaTeXスタイルファイルもない．
+一からワードのページ設定をするのは面倒なので，スタイルファイルを探す．</p>
+<p>東北大学の岩熊先生が公開してくださっているのを発見http://www.civil.tohoku.ac.jp/~bear/node13.html#sec002005
+以前からこのサイトは知っていたものの，まさか支部に使えるスタイルファイルがあるとは．．．ありがたく使わせていただく．道具が良くても内容が悪ければ意味がないので，頑張って書こう．でも来月中旬までは身動きできそうにない．．．</p>
+<h3 id="脚注の線を段の幅と等しく変更">脚注の線を段の幅と等しく変更</h3>
+<p><del>jsarticleとjsce（土木学会論文集）で使えた．
+他のクラスファイルでも基本的に同じだと思う．</del> ~~
+\renewcommand{\footnoterule}{% \kern-3\p@ \hrule width
+.4\columnwidth \kern 2.6\p@} を \renewcommand{\footnoterule}{%
+\kern-3\p@ \hrule width 1.0\columnwidth \kern 2.6\p@}
+に変更すれば良い．~~</p>
+<p><a href="http://muses.muses.tottori-u.ac.jp/faculty/ogata/latex.html#no7" rel="external" target="_blank">参考にしたサイト</a></p>
+<p>プリアンブルに以下を記述する方がスマートな気がする．</p>
+<pre><code>\makeatletter
+\renewcommand{\footnoterule}{%
+  \kern-3\p@
+  \hrule width \columnwidth
+  \kern 2.6\p@}
+\makeatother 
+</code></pre>
+<h2 id="bstファイル">bstファイル</h2>
+<p>土木学会向けのbstファイルを京都大学の高橋先生が公開してくださっている．ありがたい．
+<a href="http://wwwcatfish.dpri.kyoto-u.ac.jp/~yos/tex/jsce.bst" rel="external" target="_blank">http://wwwcatfish.dpri.kyoto-u.ac.jp/~yos/tex/jsce.bst</a>
+そのままだと刊行（開催）月を表示するので，368行目の（コメントは長谷川が追加したもの）</p>
+<pre><code>{ month &quot; &quot; * year * } % 月を表示する場合
+</code></pre>
+<p>を</p>
+<pre><code>{ &quot;, &quot; * year * } % 月を表示しない場合
+</code></pre>
+<p>に書き換えると（僕にとって）いい感じ．2011/03/17</p>
+<p>あと，articleのnoteが出力されるので，730行目の</p>
+<pre><code>note output
+</code></pre>
+<p>をコメントアウトすると更にいい感じ．2011/3/18</p>
+<h2 id="pbibtex">pbibtex</h2>
+<p>書きかけ
+コンパイル時にやけに参考文献回りでワーニングが出るのでTexlipseのコンソールへの出力を確認したところ，
+色々と警告されている．jsce.bst由来の所は放っておき，bibデータベース内をチェックしておかしな所（{}で囲まれていない等）を
+修正．</p>
+<p>pbibtex（pBibTeX 0.99d-j0.33 (sjis.euc)）で作成したbblファイルを見ると，</p>
+<pre><code>\begin{thebibliography}{10}
+</code></pre>
+<p>となっている．
+<a href="http://cns-guide.sfc.keio.ac.jp/1999/8/3/6.html%E3%81%AB%E3%82%88%E3%82%8B%E3%81%A8" rel="external" target="_blank">http://cns-guide.sfc.keio.ac.jp/1999/8/3/6.htmlによると</a>，
+thebibliography環境の</p>
+<pre><code>\begin{thebibliography}{num}
+</code></pre>
+<p>のnumは「2つめの引数である
+numには参考文献番号の桁数分だけ9を記述する．つまり1桁であれば9と，2桁であれば99と記述する必要がある」
+とのことなので，おかしい．</p>
+<h2 id="winshell">WinShell</h2>
+<p>WinShellのPDFビューアに<a href="http://blog.kowalczyk.info/software/sumatrapdf/index.html" rel="external" target="_blank">Sumatra
+PDF</a>を使うと，
+閲覧中のPDFを閉じなくてもPDFが更新できる．地味だけどとても嬉しい．</p>
+<p>岩熊先生のサイトでフォント埋め込みPDF作成のTipsを発見
+<a href="http://www.civil.tohoku.ac.jp/~bear/node13.html#sec002006" rel="external" target="_blank">http://www.civil.tohoku.ac.jp/~bear/node13.html#sec002006</a></p>
+<p>WinShellだと，PDFLaTeXのコマンドラインに</p>
+<pre><code>dvipdfmx -f msembed.map -f dlbase14.map &quot;%s.dvi&quot;
+</code></pre>
+<p>とすれば良い．</p>
+<h3 id="winshellとsumatra-pdfの連携">WinShellとSumatra PDFの連携</h3>
+<p>Sumatra PDFの「設定」→「オプション」→「逆順検索コマンドラインの設定」に</p>
+<pre><code>&quot;C:\Program Files (x86)\WinShell\WinShell.exe&quot; -c &quot;%f&quot; -l %l
+</code></pre>
+<p>とすれば，PDFをダブルクリックでソースの該当箇所に飛ぶことが出来る．
+2012/02/21追記</p>
+<h2 id="パスを通す">パスを通す</h2>
+<p>ある日，WinshellからdvipdfmxでPDFを作成出来なくなっていることに気がついた．
+環境変数を見てみると，MySQLのパスに上書きされていた．TeX実行ファイルへのパスを追加したところ，PDFが作成できるようになった．めでたしめでたし．</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>変数</td>
+          <td>値</td>
+      </tr>
+      <tr>
+          <td>Path</td>
+          <td>C:\Program Files\MySQL\MySQL Server 5.1\bin;C:\tex\bin</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="jbibtexで参照するbibtexデータベースへのハードリンク">jbibtexで参照するbibtexデータベースへのハードリンク</h2>
+<p>jbibtexがbibtexデータベースを読みに行く先は，</p>
+<ol>
+<li>メインのtexソースと同じ場所</li>
+<li>C:\tex\share\texmf\jbibtex\bib以下のディレクトリ</li>
+</ol>
+<p>らしい．</p>
+<p>一方，僕は参考文献を全て特定のフォルダ以下に保存し，
+そのフォルダ内にbibtexデータベースを作って管理している．</p>
+<p>博士論文を書くときには，参考文献データベースを更新する度に
+texソースと同じ場所にbibデータベースをコピーしていたけれど，
+これはかなり面倒だった．</p>
+<p>&lt;del&gt;さっきふと，ハードリンクを使えば良いことに気がついた．</p>
+<p>WindowsXPでハードリンクを作成するには，コマンドプロンプトで</p>
+<pre><code>fsutil hardlink create &lt;コピー先ファイル&gt; &lt;コピー元ファイル&gt;
+</code></pre>
+<p>と入力する．
+なお，パスにスペースを含む場合，全体を引用符でくくる必要がある．</p>
+<p>僕の環境では，</p>
+<pre><code>fsutil hardlink create C:\tex\share\texmf\jbibtex\bib\HasegawaRefDB.bib C:\MyDocuments\References\HasegawaRefDB.bib
+</code></pre>
+<p>参考URL
+<a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/982hardlink/hardlink.html" rel="external" target="_blank">http://www.atmarkit.co.jp/fwin2k/win2ktips/982hardlink/hardlink.html</a>
+&lt;/del&gt;</p>
+<p>これはかなり筋が悪いことに今更ながらに気がついた（2010/12/19 11:11）．
+後できちんと調べるが，どこかにある（はずの）設定ファイルにbibデータベースの参照先を追加するか，あるいはtexソースのプリアンブルかどこかに書き加えれば対応可能なはずだ．先人がこんなファイル管理が面倒になるようなことをしてきたはずがない．</p>
+<hr>
+<p>結局，一つのファイルで管理して，そこへ絶対パスで指定する方法に落ち着いた（2013/04/28追記）</p>
+<h1 id="tex2img">TeX2img</h1>
+<p>TeXで作った数式をPPTに貼り付けたいときに有用．配布サイトは
+<a href="http://island.geocities.jp/loveinequality/" rel="external" target="_blank">http://island.geocities.jp/loveinequality/</a></p>
+<p>似たようなWebサービス（<a href="http://maru.bonyari.jp/texclip/texclip.php%EF%BC%89%E3%82%82%E3%81%82%E3%82%8B%E3%81%8C%EF%BC%8C%E3%81%93%E3%82%8C%E3%81%AF%E5%87%BA%E5%8A%9B%E3%81%8Cpng%E5%BD%A2%E5%BC%8F%E3%81%A8eps%E5%BD%A2%E5%BC%8F%E3%81%AE%E3%81%BF" rel="external" target="_blank">http://maru.bonyari.jp/texclip/texclip.php）もあるが，これは出力がpng形式とeps形式のみ</a></p>
+<h2 id="使い方">使い方</h2>
+<p>例えば，align環境で数式番号なしで使う場合は</p>
+<pre><code>\begin{align*}
+  \sum_{i=1}^n a_i
+\end{align*}
+</code></pre>
+<p>とする．pngで出力した結果が以下の画像</p>
+<p><a href="#R-image-572b87d42921bba5c4bf8d25da9b1155" class="lightbox-link"><img alt="equation.png" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/memo/equation.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-572b87d42921bba5c4bf8d25da9b1155"><img alt="equation.png" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/memo/equation.png"></a></p>
+<p>配布サイトの
+<code>「日本語はワープロやプレゼンソフトで書くから，数式だけ画像化してくれればいいんだ」という場合は，文書全体が \[ \] で囲まれるように，プリアンブルでこのように設定しておくと，毎回 \[ \] で囲う必要がなくて便利かもしれません。 </code>
+「このように」の部分が画像だったのでテキスト化しておく（僕は使わないけど）．</p>
+<pre><code>\documentclass[fleqn]{jarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{enumerate}
+\pagestyle{empty}
+
+%%%%% 以下，文書全体を \[ \] で囲むための設定．
+\makeatletter
+
+\AtBeginDocument{\[}
+
+\expandafter\expandafter\expandafter\def
+\expandafter\expandafter\expandafter\@enddocumenthook
+\expandafter\expandafter\expandafter{%
+\expandafter\]\@enddocumenthook}
+
+\makeatother
+</code></pre>
+<p>TeX2imgはMac版もあるが，MacではLaTeXiTを使う予定．alignなどの環境を簡単に指定できるのが便利そう．</p>
+<h1 id="pdfのフォント埋め込み状況の確認">pdfのフォント埋め込み状況の確認</h1>
+<pre><code>pdffonts filename.pdf
+</code></pre>
+<p>を使う．以下はRで作成したグラフに対して適用した結果</p>
+<pre><code>name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+ZapfDingbats                         Type 1            ZapfDingbats     no  no  no      10  0
+Helvetica                            Type 1            Custom           no  no  no      11  0
+Helvetica-Bold                       Type 1            Custom           no  no  no      12  0
+</code></pre>
+<p>左端がフォント名．emb（embedの略）と書いてあるところがnoなので，埋め込まれていない．</p>
+<p>論文の書式校正で印刷会社さんからフォントを埋め込むかフォント情報無しにするように指摘を頂いたので，フォントを埋め込む．
+色々方法はあるようだが，フォントが埋め込まれていないpdfをプレビュー.appで開いて，「ファイル」→「印刷」→ダイアログの左下「PDF」→「PDFとして保存」でも埋め込まれる．</p>
+<p>再度pdffontsで確認</p>
+<pre><code>name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+TLJFRR+Helvetica-Bold                TrueType          MacRoman         yes yes no      11  0
+PIAION+ZapfDingbatsITC               TrueType          WinAnsi          yes yes yes     10  0
+QUYFWW+Helvetica                     TrueType          MacRoman         yes yes no       8  0
+</code></pre>
+<p>埋め込まれた．</p>
+<h1 id="dvipdfmxでpdfにアクセス制限">dvipdfmxでpdfにアクセス制限</h1>
+<p><a href="http://d.hatena.ne.jp/cou929_la/20100225/1267073048" rel="external" target="_blank">http://d.hatena.ne.jp/cou929_la/20100225/1267073048</a></p>
+<h1 id="beamer-classでプレゼンテーション">Beamer classでプレゼンテーション</h1>
+<p>現在国際会議のプレゼンテーションを準備中．
+英語なので不具合も出にくいだろうと思い，ついにBeamerに手を出してみる．</p>
+<blockquote>
+<p>マニュアルの抜粋と私的コメントを混ぜたもの</p>
+</blockquote>
+<p><a href="http://neurodynamics.jp/etc/beamer" rel="external" target="_blank">http://neurodynamics.jp/etc/beamer</a></p>
+<h2 id="テンプレート">テンプレート</h2>
+<p>標準で用意されているテーマと色の組合せをマトリクスで整理している<a href="http://www.hartwork.org/beamer-theme-matrix/" rel="external" target="_blank">http://www.hartwork.org/beamer-theme-matrix/</a></p>
+<p>スッキリして見やすいので，今回はこれを使おう<a href="http://www.inference.phy.cam.ac.uk/ph347/beamer.html" rel="external" target="_blank">http://www.inference.phy.cam.ac.uk/ph347/beamer.html</a></p>
+<p>Appleの製品発表っぽいテンプレートもある<a href="https://sites.google.com/site/tokeijikakenoringo/Home/keynote-like-gradient-theme-for-latex-beamer" rel="external" target="_blank">https://sites.google.com/site/tokeijikakenoringo/Home/keynote-like-gradient-theme-for-latex-beamer</a></p>
+<h2 id="uplatexでbeamer20241104追加">uplatexでbeamer（2024/11/04追加）</h2>
+<p>TeX Live2024くらいから，</p>
+<p>以下のような（おそらくは）一般的な設定でコンパイルすると，</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>\documentclass[dvipdfmx]{beamer}
+\usepackage{graphicx}</code></pre></div>
+<p>次のような警告が出るようになった．</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty|| LaTeX Warning: Package &#34;xcolor&#34; has already been loaded: ignoring load-time option &#34;dvipdfmx&#34;.</code></pre></div>
+<p>しかも，Vim-LaTeX（&lsquo;vim-latex/vim-latex&rsquo;）でコンパイルすると，編集中のファイルからxxcolorパッケージに遷移するのでとても不便だ．
+silenceパッケージで警告を消そうとしてもうまくいかない．
+lualatexへの乗り換えも検討したが，手持ちのuplatex資産を引き続き使いたい．</p>
+<p>ここ数ヶ月思い出しては検索したり試行錯誤したりしていたが，解決出来ず．
+TeXフォーラムでお知恵を拝借しようかと思い，最小のサンプルを作りながら念のためと検索したところ，とりあえずは警告が出ない設定を見つけた．
+正直に言って中身は理解していない．</p>
+<p>具体的な設定は，クラスファイルの読み込み前に以下のコマンドでgraphicxパッケージにdvipdfmxオプションを渡し，
+<strong>\PassOptionsToPackage{dvipdfmx}{graphicx}</strong></p>
+<p>クラスファイル（beamer）のオプションにはdvipdfmxを入れない．
+graphicxパッケージはオプションをつけずに読み出す．</p>
+<p>TeX Live2024のuplatexでbeamerを使っている人は多くないと思われるが，誰かの役に立つかも知れないので，備忘録を兼ねて記録する（Hugoの使い方もすっかりと忘れている）．</p>
+<p>簡単なサンプルコードは以下の通り</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{plautopatch} % Automated patches for pLaTeX/upLaTeX
+\PassOptionsToPackage{dvipdfmx}{graphicx}
+
+\documentclass{beamer}
+\usepackage{graphicx}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% タイトルページ設定
+\title{タイトル}
+\author{著者}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文書開始
+\begin{document}
+
+% タイトルページ
+\frame{\titlepage}
+
+% 図入りのページ
+\begin{frame}{フレームタイトル}
+
+PDFの図\ref{fig_tiger}を入れる．
+
+\alert{強調}
+
+数式：$a = b^2 = c$
+
+\begin{figure}[!htb]
+\centering
+    \includegraphics[height=0.5\textheight,keepaspectratio,clip]{tiger.pdf}
+\caption{Tiger}
+\label{fig_tiger}
+\end{figure}
+
+\end{frame}
+
+\end{document}</code></pre></div>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="active " data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/latex/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

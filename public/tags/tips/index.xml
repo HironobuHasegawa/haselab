@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/tips/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rでのデータの取扱い</title>
+      <link>http://localhost:1313/haselab/memo/r/datamanipulationwithr/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/r/datamanipulationwithr/index.html</guid>
+      <description>データ型 日付型データ Rデータ自由自在を参考にした&#xA;日付型データへの変換 年月日 時刻 備考 20090407 20:38 今 20090408 08:50 明日の集合時間 20090408 10:00 入学式開始時間 のようなデータフレーム&#34;TT&#34;が与えられた場合に 日付部分をうまく日付型データにするには，&#xA;yyyymmddHHMM &lt;- paste(TT[,1], TT[,2], sep=&#39;&#39;) DATE &lt;- strptime(yyyymmddHHMM, format=&#39;%Y%m%d%H:%M&#39;) とすれば良い．結果は&#xA;&#34;2009-04-07 20:38:00&#34; &#34;2009-04-08 08:50:00&#34; &#34;2009-04-08 10:00:00&#34; となる．&#xA;strptime関数はPOSIX日付を返し，オプションtzでタイムゾーンを指定可能（日本は&#34;JST&#34;） POSIX日付の値は，内部的には1970年1月1日0時0分0秒からの経過秒数として保存されている（実数型に変換すると確認できるが，時差に注意（出てきた値を3600で除すれば，時差が出る）） 日付型データにすると嬉しいこと DATE[1]-DATE[2] #時間差 difftime(DATE[1], DATE[2], units=&#34;mins&#34;) #時間差（分） format(DATE[1], &#39;%A&#39;) #曜日を表示 format(DATE[1], &#39;%a&#39;) #曜日を表示 format(DATE[1], &#39;%b&#39;) #月を表示 format(DATE[1], &#39;%B&#39;) #月を表示 format(DATE[1], &#39;%H&#39;) #10進法で時間（24時間表示）を表示，Mで分，Sで秒 任意の期間および時間の日付型データを生成する （例）2011年4月1日から2011年12月31日まで，7時から21時までのデータを生成&#xA;# 指定した全ての値の組合せからなるデータフレームを作成 temp2011 &lt;- expand.grid(2011,c(4:12),c(1:31),c(7:21)) # 日付型（ベクトル）に変換 date &lt;- strptime(paste(temp$Var1,temp$Var2,temp$Var3,temp$Var4,sep=&#34; &#34;) , format=&#34;%Y %m %d %H&#34;, tz=&#34;JST&#34;) # 昇順に並べ替え date &lt;- sort(date) # データフレームに変換 date &lt;- data.frame(Date=date) # NAを含む行を削除 date &lt;- na.omit(date) 日付型データに変換した時点であり得ない日付（例えば，11月31日など）はNAになる．これをna.omit()関数で削除するのがポイント</description>
+    </item>
+    <item>
+      <title>LaTeX覚え書き</title>
+      <link>http://localhost:1313/haselab/memo/latex/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/latex/index.html</guid>
+      <description>LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）&#xA;\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）&#xA;\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）&#xA;\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}&#xA;傍注は\marginpar{}&#xA;ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．&#xA;https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに&#xA;%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．&#xA;図表 figure環境 図を入れる領域を準備する&#xA;EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について</description>
+    </item>
+  </channel>
+</rss>

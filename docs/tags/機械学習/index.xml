@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>機械学習 :: Tag :: HaseLab</title>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rで機械学習</title>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/r/rmachinelearning/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/r/rmachinelearning/index.html</guid>
+      <description>混合行列 Confusion Matrix 混同行列とも． クラス分類結果を評価するときに，モデルによる推定値と観測値を表形式で整理した混合行列とそこから算出される各種の有効性指標が良く使われる（統計学での分割表 contingency table の2変数が推定値と観測値の場合と考えれば良い）． 日本語の文献では，例えば，元田ら：データマイニングの基礎，第1版，オーム社，2006．の201ページからが参考になる．&#xA;標準環境で混合行列を作るには，table()関数を使う． また，library(caret)中のconfusionMatrix()関数を使えば，色々な有効性指標を自動的に算出してくれる．ただし，多クラス分類の場合は&#34;one versus all&#34;アプローチによる算出であることに注意．&#xA;実行例&#xA;library(randomForest);library(caret) data \&lt;- iris ## データをランダムに並べ替え data \&lt;- data\[sample(1:nrow(data),replace=F),\] ## データの半分を学習用データ，残りの半分を検証用データに分割 data.learn \&lt;- data\[1:(nrow(data)/2),\] data.test \&lt;- data\[((nrow(data)/2)+1):nrow(data),\] ## ランダムフォレストで分類モデルを作成 model.rf \&lt;- randomForest(Species\~., data=data.learn, type=&#34;class&#34;) ## 作成したモデルで予測 predicted \&lt;- predict(model.rf, data=data.test) ## 観測値 observed \&lt;- factor(data.test$Species) ## \[Tips\] 観測値の因子水準を使って，予測値を因子に変換 predicted \&lt;- factor(predicted,levels=levels(observed)) ## table関数を使って混合行列を作成 (cm \&lt;- table(predicted,observed)) ## confusionMatrix関数を使って混合行列を作成し，有効性指標も算出 cm2 \&lt;- confusionMatrix(predicted,observed) 実行結果</description>
+    </item>
+  </channel>
+</rss>

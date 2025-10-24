@@ -1,0 +1,27 @@
+baseURL = "https://hironobuhasegawa.github.io/haselab/"
+canonifyURLs = true
+languageCode = "ja"
+title = "HaseLab"
+publishDir = "docs"
+theme = "hugo-theme-relearn"
+
+ignoreLogs = ["warning-goldmark-raw-html",'warning-partial-superfluous-prefix']
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+
+[params]
+  editURL = "https://github.com/HironobuHasegawa/haselab/blob/master/content/"
+  author.name = "長谷川裕修"
+
+  [params.imageEffects]
+    bg-white = true
+    border = true
+    lightbox = false
+    lazy = false
+
+[outputs]
+home = [ "HTML", "RSS"]
+

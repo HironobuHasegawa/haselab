@@ -1,0 +1,61 @@
+---
+title: "Hugo"
+date: 2021-09-26T15:29:56+09:00
+draft: true
+tags: ["Hugo"]
+---
+
+### 使用テーマの解説
+https://learn.netlify.app/en/
+
+### x. Markdown CheetSheet
+
+#### Text Format
+
+_Italic（斜体）_
+*Italic（斜体）*
+
+__Emphasis（強調）__
+**Emphasis（強調）**
+
+~~Strikethrough（取り消し線）~~
+
+<details><summary>これは詳細表示の例です。</summary>詳細をこっちに書きます。</details>
+
+This is `inline`.
+
+### List
+* text
+    * test
+    * test
+
+- text
+    - test
+    - test
+
+1. text
+1. test
+    1. test
+
+#### Horizontal rules
+* * *
+***
+*****
+- - -
+---------------------------------------
+
+#### Blockquotes（引用）
+> This is Blockquotes
+
+#### Links（参照）
+[yonehub blog](https://yonehub.y10e.com/)
+
+#### Images（画像）
+![sample](/img/sample/sample.png)
+
+#### Tables（表）
+| id     | name    | date       |
+| ------ | ------- | ---------- |
+| 1      | test    | 2019-01-01 |
+| 2      | test    | 2019-01-02 |
+| 3      | test    | 2019-01-03 |

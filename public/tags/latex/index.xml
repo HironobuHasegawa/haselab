@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LaTeX :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/latex/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LaTeX覚え書き</title>
+      <link>http://localhost:1313/haselab/memo/latex/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/latex/index.html</guid>
+      <description>LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）&#xA;\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）&#xA;\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）&#xA;\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}&#xA;傍注は\marginpar{}&#xA;ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．&#xA;https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに&#xA;%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．&#xA;図表 figure環境 図を入れる領域を準備する&#xA;EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について</description>
+    </item>
+    <item>
+      <title>Sweaveに関するメモ</title>
+      <link>http://localhost:1313/haselab/memo/r/sweave/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/r/sweave/index.html</guid>
+      <description>Sweave ![](tag&gt;R LaTeX osx)&#xA;参考URL：http://qh73xe.sakura.ne.jp/wordpress/?p=72&#xA;設定 環境はMac OSX 10.8.4&#xA;TeX本体 MacTeX2013を http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?Mac に従って設定&#xA;ZXjatypeパッケージ (公式サイト)[http://zrbabbler.sp.land.to/zxjatype.html]&#xA;Sweaveはチャンク内に記したRコードをTeXソース中でverbatim環境（のラッパーであるSinput環境・Soutput環境）に出力するが，XeLaTeXではverbatim環境で日本語を使えないようだ． そこで，ZRさんが開発・公開しているZXjatypeパッケージを使う．&#xA;残った問題：長いコードの場合，折り返しが効かずに右側にはみ出る．ざっと調べたところ，皆悩んでいるようだ．&#xA;Sweave.styとae.sty http://svn.r-project.org/R/trunk/share/texmf/tex/latex/Sweave.sty&#xA;http://web.mit.edu/ghudson/dev/nokrb/third/tetex/texmf/tex/latex/ae/ae.sty&#xA;ダウンロードしたら&#xA;/usr/local/texlive/texmf-local/tex/latex/local に配置し，&#xA;sudo mktexlsr を実行&#xA;Rstudio Program defaults Weave Rnw files using: Sweave Typeset LaTeX into PDF using: XeLaTeX LaTeX editing and compilation は全てチェックを入れる PDF preview Preview は System Viewer Always enable Rnw concordance もチェックを入れる 実行例 ```&#xA;\documentclass[a4paper]{bxjsarticle} \usepackage{zxjatype} \setCJKmainfont{HiraMinPro-W3} \setjamonofont{Ricty} % 効いていないかも \setmonofont{Ricty} % 効いていないかも \usepackage{mediabb} \XeTeXlinebreaklocale &#34;ja&#34; \title{タイトル} \author{著者} \begin{document} \SweaveOpts{concordance=TRUE} \maketitle \section{Sweaveで日本語} 本文はもちろん， &lt;&lt;&gt;&gt;= cat(&#34;コード中の日本語出力も大丈夫&#34;) @ \section{グラフにも日本語} &lt;&lt;&gt;&gt;= par(family=&#34;HiraKakuPro-W3&#34;) # グラフに日本語を使う場合 data &lt;- iris summary(data) @ echoオプションで実行したコードを出力するかどうかを制御できる． コードを出力しないでグラフだけを描画する場合（\tt{plot(data[,1:2])}だけを実行） &lt;&lt;fig = TRUE, echo = FALSE&gt;&gt;= plot(data[,1:2]) title(&#34;チャンクオプションはfig = TRUE, echo = FALSE&#34;) @ コードを出力する場合 \begin{center} &lt;&lt;fig = TRUE, echo = TRUE&gt;&gt;= plot(data[,1:2]) title(&#34;グラフにも日本語&#34;) text(x=7,y=2,&#34;text()で日本語出力&#34;) @ \end{center} \end{document} ```</description>
+    </item>
+  </channel>
+</rss>

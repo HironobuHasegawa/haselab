@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IDE :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/ide/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/tags/ide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eclipse</title>
+      <link>http://localhost:1313/haselab/memo/eclipse/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/eclipse/index.html</guid>
+      <description>インストール Pleiades All in One C/C++のJRE付き 上記ファイルをダウンロード後，Cドライブ直下に解凍し，eclipseとリネームする．&#xA;設定 MinGW MinGWが同梱されており，eclipse内からはすぐに使用できる．だが，外部（例えばコマンドプロンプト）から使用する場合は，Pathが通っていない．そのため，makeやgcc,sed,nkf等のツールを使う際にはあらかじめPathを設定するか，実行ファイルまでの絶対パスを記述する必要がある． パスを追加する場合は以下を追加すればよい．&#xA;C:\eclipse\mingw\bin C:\eclipse\msys\bin バージョンによってbinディレクトリまでのパスが異なる可能性があるが，その場合は適宜読み替えのこと&#xA;※nkfは入ってなかった</description>
+    </item>
+    <item>
+      <title>eclipse&#43;StatET</title>
+      <link>http://localhost:1313/haselab/memo/r/statet/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/r/statet/index.html</guid>
+      <description>Rである程度まとまった量のスクリプトを書こうとすると，RGUI付属エディタではちょっとしんどい．更新後，保存前にクラッシュして涙目になった人も多いはず．まだの人も悪いことは言わないので，外部エディタを使いましょう．&#xA;統合開発環境のEclipseを使うと，コードのハイライトや入力補完，整形など色々便利な機能が使える．少々大袈裟なきらいはあるけれど．．．&#xA;インストール方法 エクリプスはPleiades All in One 日本語ディストリビューション（http://mergedoc.sourceforge.jp/）を使うと楽．&#xA;公式サイトhttp://www.walware.de/goto/statetからStatETをダウンロードし，適当な場所に解凍する． エクリプスの実行ファイル（eclipse.exe）と同じフォルダにあるdropinsフォルダに解凍したフォルダ（site-statet-00.07.02）を移動する． ヘルプ＞ソフトウェア更新からインストールする．proxy設定が必要であれば，ウィンドウ＞設定＞一般＞ネットワーク接続で設定する． 参考サイト&#xA;http://kaiseki.ori.u-tokyo.ac.jp/~katukawa/R/eclipse.html&#xA;http://d.hatena.ne.jp/kompiro/20080707/1215405679&#xA;初期設定 Rコンソール実行構成の作成 実行＞実行構成を開き，R コンソールを右クリックし新規を選択し，Rコンソール実行構成を作成する． 構成の名前は適当に決める R ConfigタブのR Environmentの構成を選択し，StatET＞R相互作用＞R EnvironmentsにRのホームディレクトリ（僕の場合C:\R\R-2.8.1）を指定する 共通タブのお気に入りメニューに表示＞実行にチェックを入れ，実行メニューにショートカットを作成する メインタブのLanunch typeをRtermに設定し，Options/Argumentsに**–ess–internet2–max-mem-size=2000M**を追加する 補足：essオプション~~はStatETとRを連携させるため（っぽい）~~は不要，プロセス確認したら自動的に付いていた．internet2オプションはproxyを使うため．max-mem-size=2000MはRで使うメモリの最大値を指定する（ただし，メモリサイズはPCのスペックによるので，適宜変更のこと）．&#xA;dviビューアの設定 ウインドウ＞設定＞Texlipse＞ビューア設定＞新規&#xA;ビューア名： dviout ビューア・コマンド： C:\tex\dviout\dviout.exe ビューア引数： %file -1 &#34;# %line %texfile&#34; パースペクティブを作成 ウインドウ＞パースペクティブを開く＞その他からStatETを選択すると，メインウインドウ右上にStatETパースペクティブを開くアイコンが追加される．&#xA;基本的な使い方 実行ボタン（オーディオの再生ボタンみたいなボタン）の横にあるドロップダウンボタンからRコンソール実行構成の作成で作成した構成を選択し，コンソール（Rターミナル）を立ち上げる スクリプトはエディタに書く 実行する エディタで入力前，あるいは入力中にCtrl+Spaceを押すとオブジェクトや関数の補完入力候補がポップアップする．&#xA;Ctrl+R R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送り，コンソールにフォーカスする Ctrl+R Ctrl+R 選択中のコード（未選択の場合はカーソルのある行）をコンソールに送る．フォーカスはエディタのまま Ctrl+I 選択範囲（未選択の場合はカーソルのある行）のインデント（字下げ）を行う</description>
+    </item>
+  </channel>
+</rss>

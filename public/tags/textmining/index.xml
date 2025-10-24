@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Textmining :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/textmining/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/tags/textmining/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rでテキストマイニング</title>
+      <link>http://localhost:1313/haselab/memo/r/rtextmining/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/r/rtextmining/index.html</guid>
+      <description>MeCabとRMeCabのインストール MeCab Windows環境ではバイナリが公開されている． http://sourceforge.net/projects/mecab/files/ からmecab-0.98.exe（バージョンは2009/10/15現在）をダウンロードし，インストール（僕はC:\MeCabに入れた）．&#xA;____ 2012/04/28追記 osx lionでは自分でビルドするか，homebrewでのインストールが便利．&#xA;ビルドはgccが使えさえすればマニュアル通りで大丈夫．&#xA;homebrewのインストール過程でアンインストールしたので，改めてhomebrewを使ってMeCabをインストールする．&#xA;$ brew install mecab ==&gt; Downloading http://mecab.googlecode.com/files/mecab-0.993.tar.gz ######################################################################## 100.0% ==&gt; ./configure --prefix=/usr/local/Cellar/mecab/0.993 ==&gt; make install Error: The linking step did not complete successfully The formula built, but is not symlinked into /usr/local You can try again using `brew link mecab&#39; ==&gt; Summary /usr/local/Cellar/mecab/0.993: 17 files, 2.9M, built in 46 seconds すごく楽．辞書もインストール&#xA;$ brew install mecab-ipadic Error: You must `brew link mecab&#39; before mecab-ipadic can be installed 指示に従い実行</description>
+    </item>
+  </channel>
+</rss>

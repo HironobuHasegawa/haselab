@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ImageMagick :: Tag :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/imagemagick/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/tags/imagemagick/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ImageMagick</title>
+      <link>http://localhost:1313/haselab/memo/imagemagick/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/memo/imagemagick/index.html</guid>
+      <description>画像を操作したり，表示するソフトウェアの集合体&#xA;composite 画像の差分を取る 参考 http://blog.mirakui.com/entry/20110326/1301111196&#xA;composite -compose difference 1.jpg 2.jpg difference.jpg 画像のサイズ・フォーマット変換 サイズ変換（origin.jpegを320x240サイズのconv.jpegに変換）&#xA;convert -geometry 320x240 origin.jpeg conv.jpeg フォーマット変換（1.jpegを1.gifに変換）&#xA;convert 1.jpeg 1.gif 複数画像のフォーマット変換 現在のディレクトリ内のtiffファイル全てをjpegに一括変換&#xA;mogrify -format jpeg *.tiff Exif情報 ざっくりとした情報を表示するには， ``` identify photo.jpg ```&#xA;より詳細を表示するには -verbose ``` identify -verbose photo.jpg ```&#xA;撮影日時など，特定の情報を表示するには -format ``` identify -format “%[EXIF:DateTimeOriginal]” photo.jpg ```&#xA;![](tag&gt;image tool)</description>
+    </item>
+  </channel>
+</rss>

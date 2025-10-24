@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="CentOS 5.4 64bit
+インストール メディアチェック後，インストール開始
+「システムクロックでUTCを使用」のチェックは外した
+追加リポジトリにチェックを入れると固まるので，入れない．
+NTPサーバ名: ntp.nict.jp
+インストール完了後再起動でとりあえずOK
+諸設定 proxy設定 システム→設定→ネットワークのプロキシ で設定可能
+ユーザhaseがsudo出来るように設定 bashからsuでルートにログイン
+/usr/sbin/visudo でsudo設定ファイルにアクセス viなので，「i」キーで編集開始
+## Allow root to run any commands anywhere root ALL=(ALL) ALL の下に
+hase ALL=(ALL) ALL を追記 エスケープキーを押して編集モードから抜ける
+:wq で変更を保存して閉じる
+キーボード入力関連の設定 CapsLockキーと左Ctrlキーを入れ替え システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap Ctrl and CapsLock を選択し閉じる
+日本語入力切り替え設定 言語バーを右クリックして，「SCIMを設定」を選択する。
+フロントエンド→全体設定→オプション
+キーボード配列を日本語に設定． ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定 SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．
+sambaの設定 システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．
+ユーザ（既存）を追加
+pdbedit -a hase sambaのパスワードを設定
+[hase@hasegawa02 ~]$ smbpasswd Old SMB password: New SMB password: Retype new SMB password: Password changed for user hase CUDA環境の構築 ドライバのインストール ドライバインストールには，kernel-develが必要なので，">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CentOS :: HaseLab">
+    <meta name="twitter:description" content="CentOS 5.4 64bit
+インストール メディアチェック後，インストール開始
+「システムクロックでUTCを使用」のチェックは外した
+追加リポジトリにチェックを入れると固まるので，入れない．
+NTPサーバ名: ntp.nict.jp
+インストール完了後再起動でとりあえずOK
+諸設定 proxy設定 システム→設定→ネットワークのプロキシ で設定可能
+ユーザhaseがsudo出来るように設定 bashからsuでルートにログイン
+/usr/sbin/visudo でsudo設定ファイルにアクセス viなので，「i」キーで編集開始
+## Allow root to run any commands anywhere root ALL=(ALL) ALL の下に
+hase ALL=(ALL) ALL を追記 エスケープキーを押して編集モードから抜ける
+:wq で変更を保存して閉じる
+キーボード入力関連の設定 CapsLockキーと左Ctrlキーを入れ替え システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap Ctrl and CapsLock を選択し閉じる
+日本語入力切り替え設定 言語バーを右クリックして，「SCIMを設定」を選択する。
+フロントエンド→全体設定→オプション
+キーボード配列を日本語に設定． ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定 SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．
+sambaの設定 システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．
+ユーザ（既存）を追加
+pdbedit -a hase sambaのパスワードを設定
+[hase@hasegawa02 ~]$ smbpasswd Old SMB password: New SMB password: Retype new SMB password: Password changed for user hase CUDA環境の構築 ドライバのインストール ドライバインストールには，kernel-develが必要なので，">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/centos/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="CentOS :: HaseLab">
+    <meta property="og:description" content="CentOS 5.4 64bit
+インストール メディアチェック後，インストール開始
+「システムクロックでUTCを使用」のチェックは外した
+追加リポジトリにチェックを入れると固まるので，入れない．
+NTPサーバ名: ntp.nict.jp
+インストール完了後再起動でとりあえずOK
+諸設定 proxy設定 システム→設定→ネットワークのプロキシ で設定可能
+ユーザhaseがsudo出来るように設定 bashからsuでルートにログイン
+/usr/sbin/visudo でsudo設定ファイルにアクセス viなので，「i」キーで編集開始
+## Allow root to run any commands anywhere root ALL=(ALL) ALL の下に
+hase ALL=(ALL) ALL を追記 エスケープキーを押して編集モードから抜ける
+:wq で変更を保存して閉じる
+キーボード入力関連の設定 CapsLockキーと左Ctrlキーを入れ替え システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap Ctrl and CapsLock を選択し閉じる
+日本語入力切り替え設定 言語バーを右クリックして，「SCIMを設定」を選択する。
+フロントエンド→全体設定→オプション
+キーボード配列を日本語に設定． ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定 SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．
+sambaの設定 システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．
+ユーザ（既存）を追加
+pdbedit -a hase sambaのパスワードを設定
+[hase@hasegawa02 ~]$ smbpasswd Old SMB password: New SMB password: Retype new SMB password: Password changed for user hase CUDA環境の構築 ドライバのインストール ドライバインストールには，kernel-develが必要なので，">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta property="article:tag" content="Linux">
+    <meta itemprop="name" content="CentOS :: HaseLab">
+    <meta itemprop="description" content="CentOS 5.4 64bit
+インストール メディアチェック後，インストール開始
+「システムクロックでUTCを使用」のチェックは外した
+追加リポジトリにチェックを入れると固まるので，入れない．
+NTPサーバ名: ntp.nict.jp
+インストール完了後再起動でとりあえずOK
+諸設定 proxy設定 システム→設定→ネットワークのプロキシ で設定可能
+ユーザhaseがsudo出来るように設定 bashからsuでルートにログイン
+/usr/sbin/visudo でsudo設定ファイルにアクセス viなので，「i」キーで編集開始
+## Allow root to run any commands anywhere root ALL=(ALL) ALL の下に
+hase ALL=(ALL) ALL を追記 エスケープキーを押して編集モードから抜ける
+:wq で変更を保存して閉じる
+キーボード入力関連の設定 CapsLockキーと左Ctrlキーを入れ替え システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap Ctrl and CapsLock を選択し閉じる
+日本語入力切り替え設定 言語バーを右クリックして，「SCIMを設定」を選択する。
+フロントエンド→全体設定→オプション
+キーボード配列を日本語に設定． ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定 SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．
+sambaの設定 システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．
+ユーザ（既存）を追加
+pdbedit -a hase sambaのパスワードを設定
+[hase@hasegawa02 ~]$ smbpasswd Old SMB password: New SMB password: Retype new SMB password: Password changed for user hase CUDA環境の構築 ドライバのインストール ドライバインストールには，kernel-develが必要なので，">
+    <meta itemprop="wordCount" content="1900">
+    <meta itemprop="keywords" content="Linux">
+    <title>CentOS :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/centos/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#proxy設定">proxy設定</a></li>
+    <li><a href="#ユーザhaseがsudo出来るように設定">ユーザhaseがsudo出来るように設定</a></li>
+    <li><a href="#キーボード入力関連の設定">キーボード入力関連の設定</a>
+      <ul>
+        <li><a href="#capslockキーと左ctrlキーを入れ替え">CapsLockキーと左Ctrlキーを入れ替え</a></li>
+        <li><a href="#日本語入力切り替え設定">日本語入力切り替え設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#sambaの設定">sambaの設定</a></li>
+    <li><a href="#cuda環境の構築">CUDA環境の構築</a>
+      <ul>
+        <li><a href="#ドライバのインストール">ドライバのインストール</a></li>
+        <li><a href="#ツールキットのインストール">ツールキットのインストール</a></li>
+        <li><a href="#sdkのインストール">SDKのインストール</a></li>
+        <li><a href="#後で読む">後で読む</a></li>
+      </ul>
+    </li>
+    <li><a href="#sshでリモート接続">SSHでリモート接続</a></li>
+    <li><a href="#c開発環境">C++開発環境</a></li>
+    <li><a href="#rのインストール">Rのインストール</a>
+      <ul>
+        <li><a href="#eclipseで使う設定">Eclipseで使う設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#固定ipの設定">固定IPの設定</a></li>
+    <li><a href="#vncを使う設定">VNCを使う設定</a></li>
+    <li><a href="#その他">その他</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#インストール-1">インストール</a></li>
+    <li><a href="#設定">設定</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">CentOS</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/centos.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/awk/index.html" title="awk (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/cuda/index.html" title="CUDA (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <ul>
+    <li><a class="term-link" href="/haselab/tags/linux/index.html">Linux</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="centos">CentOS</h1>
+
+<p><strong>CentOS 5.4 64bit</strong></p>
+<h1 id="インストール">インストール</h1>
+<p>メディアチェック後，インストール開始</p>
+<p>「システムクロックでUTCを使用」のチェックは外した</p>
+<p>追加リポジトリにチェックを入れると固まるので，入れない．</p>
+<p>NTPサーバ名: ntp.nict.jp</p>
+<p>インストール完了後再起動でとりあえずOK</p>
+<h1 id="諸設定">諸設定</h1>
+<h2 id="proxy設定">proxy設定</h2>
+<p>システム→設定→ネットワークのプロキシ で設定可能</p>
+<h2 id="ユーザhaseがsudo出来るように設定">ユーザhaseがsudo出来るように設定</h2>
+<p>bashからsuでルートにログイン</p>
+<pre><code>/usr/sbin/visudo
+</code></pre>
+<p>でsudo設定ファイルにアクセス viなので，「i」キーで編集開始</p>
+<pre><code>## Allow root to run any commands anywhere
+root     ALL=(ALL)     ALL
+</code></pre>
+<p>の下に</p>
+<pre><code>hase     ALL=(ALL)     ALL
+</code></pre>
+<p>を追記 エスケープキーを押して編集モードから抜ける</p>
+<pre><code>:wq
+</code></pre>
+<p>で変更を保存して閉じる</p>
+<h2 id="キーボード入力関連の設定">キーボード入力関連の設定</h2>
+<h3 id="capslockキーと左ctrlキーを入れ替え">CapsLockキーと左Ctrlキーを入れ替え</h3>
+<p>システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap
+Ctrl and CapsLock を選択し閉じる</p>
+<h3 id="日本語入力切り替え設定">日本語入力切り替え設定</h3>
+<p>言語バーを右クリックして，「SCIMを設定」を選択する。</p>
+<p>フロントエンド→全体設定→オプション</p>
+<ul>
+<li>キーボード配列を日本語に設定．</li>
+<li>ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定</li>
+</ul>
+<p>SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．</p>
+<h2 id="sambaの設定">sambaの設定</h2>
+<p>システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．</p>
+<p>ユーザ（既存）を追加</p>
+<pre><code>pdbedit -a hase
+</code></pre>
+<p>sambaのパスワードを設定</p>
+<pre><code>[hase@hasegawa02 ~]$ smbpasswd
+Old SMB password:
+New SMB password:
+Retype new SMB password:
+Password changed for user hase
+</code></pre>
+<h2 id="cuda環境の構築">CUDA環境の構築</h2>
+<h3 id="ドライバのインストール">ドライバのインストール</h3>
+<p>ドライバインストールには，kernel-develが必要なので，</p>
+<pre><code>sudo yum install kernel-devel
+</code></pre>
+<p>で入れておく．</p>
+<p><a href="http://jp.download.nvidia.com/XFree86/Linux-x86_64/195.36.15/NVIDIA-Linux-x86_64-195.36.15-pkg2.run" rel="external" target="_blank">http://jp.download.nvidia.com/XFree86/Linux-x86_64/195.36.15/NVIDIA-Linux-x86_64-195.36.15-pkg2.run</a>
+をダウンロードし、実行可能にする。</p>
+<pre><code>sudo /sbin/init 3
+</code></pre>
+<p>でXを切り、改めてルートでログインする。</p>
+<pre><code>cd DownloadDir
+sh ./NVIDIA-Linux-x86_64-195.36.15-pkg2.run
+</code></pre>
+<p>yesばっかり選べばよい． 終わったら再起動し、</p>
+<pre><code>reboot now
+</code></pre>
+<p>Xを使う設定に戻す。</p>
+<pre><code>/sbin/init 5
+</code></pre>
+<p>元のユーザでログインし、</p>
+<pre><code>nvidia-settings
+</code></pre>
+<p>でNVIDIAの管理面画が出てくることを確認する。</p>
+<h3 id="ツールキットのインストール">ツールキットのインストール</h3>
+<p><a href="http://developer.download.nvidia.com/compute/cuda/2_3/toolkit/cudatoolkit_2.3_linux_64_rhel5.3.run" rel="external" target="_blank">http://developer.download.nvidia.com/compute/cuda/2_3/toolkit/cudatoolkit_2.3_linux_64_rhel5.3.run</a>
+をダウンロードし、実行可能にする。</p>
+<pre><code>sh cudatoolkit_2.3_linux_64_rhel5.3.run
+</code></pre>
+<p>インストールディレクトリが見付からない、作成できないと怒られるので、sudoで実行</p>
+<pre><code>sodo sh cudatoolkit_2.3_linux_64_rhel5.3.run
+</code></pre>
+<p>経過省略</p>
+<ul>
+<li>Please make sure your PATH includes /usr/local/cuda/bin</li>
+<li>Please make sure your LD_LIBRARY_PATH</li>
+<li>for 32-bit Linux distributions includes /usr/local/cuda/lib</li>
+<li>for 64-bit Linux distributions includes /usr/local/cuda/lib64</li>
+<li>OR</li>
+<li>for 32-bit Linux distributions add /usr/local/cuda/lib</li>
+<li>for 64-bit Linux distributions add /usr/local/cuda/lib64</li>
+<li>to /etc/ld.so.conf and run ldconfig as root</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>Please read the release notes in /usr/local/cuda/doc/</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>To uninstall CUDA, delete /usr/local/cuda</li>
+<li>Installation Complete</li>
+</ul>
+<p>パスを作れと言われている。現在のパスを確認</p>
+<pre><code>echo $PATH
+</code></pre>
+<p>~~パスを追加する。 vi ~/.bash_profile
+のパスの部分を以下のように書き換えた。
+PATH=$PATH:$HOME/bin:/usr/local/cuda/bin:/usr/local/cuda/lib64
+保存後、変更を適用する source .bash_profile 確認 echo $PATH
+/usr/kerberos/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/java/jdk1.6.0_19/bin:/home/hase/bin:/home/hase/bin:/usr/local/cuda/bin:/usr/local/cuda/lib64
+~~</p>
+<p>&lt;del&gt;2010/04/19修正：
+PATHへのパス（ややこしいな）はコマンド検索のために使用するので，</p>
+<pre><code>/usr/local/cuda/bin
+</code></pre>
+<p>を追加する．</p>
+<p>LD_LIBRARY_PATHへのパスはdll（ダイナミックリンク・ライブラリ）を使うために</p>
+<pre><code>/usr/local/cuda/lib64
+</code></pre>
+<p>を追加する．</p>
+<p>結局，</p>
+<pre><code>vi ~/.bash_profile
+</code></pre>
+<p>の</p>
+<pre><code># User specific environment and startup programs
+</code></pre>
+<p>以下を PATH=$PATH:$HOME/bin:/usr/local/cuda/bin:/sbin:/user/sbin
+LD_LIBRARY_PATH=/usr/local/cuda/lib64</p>
+<p>export PATH export LD_LIBRARY_PATH に書き換えれば良い感じ． &lt;/del&gt;
+2010/04/19再修正：
+~/.bash_profileへの記入だと，そのユーザがログインした時にしか読み込まないので，
+複数ユーザで使いたい場合，それぞれの~/.bash_profileに書き込む必要がある
+（ついでに書いておくと，~/.bashrcだとシェル起動毎に読み込まれる）．
+今後，学生も含めて何人かが使用することになりそうなので，以下の内容を
+/etc/profileの末尾に書き込んでおく（root権限が必要）．</p>
+<pre><code># For CUDA(2010/04/19)
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64
+export PATH=$PATH:/usr/local/cuda/bin
+export MANPATH=$MANPATH:/usr/local/cuda/man
+</code></pre>
+<p>上から順に，dll（ダイナミックリンク・ライブラリ）へのパス，コマンド検索パス，
+マニュアルのパスだそーです（青木・額田：はじめてのCUDAプログラミング，p.220より）．</p>
+<pre><code>source /etc/profile
+</code></pre>
+<p>で設定内容を適用．</p>
+<p>bashの環境変数の設定についてはhttp://www.atmarkit.co.jp/flinux/rensai/theory09/theory09b.htmlが分かりやすい．</p>
+<h3 id="sdkのインストール">SDKのインストール</h3>
+<p><a href="http://developer.download.nvidia.com/compute/cuda/2_3/sdk/cudasdk_2.3_linux.run" rel="external" target="_blank">http://developer.download.nvidia.com/compute/cuda/2_3/sdk/cudasdk_2.3_linux.run</a>
+をダウンロードし，一般ユーザでインストール（shコマンド）する．
+インストール先を聞かれるが，デフォルト</p>
+<pre><code>~/NVIDIA_GPU_Computing_SDK
+</code></pre>
+<p>で良いならEnterキーを押せばよい．</p>
+<p>インストール完了後，コンパイルする必要がある。</p>
+<pre><code>[hase@hasegawa02 ~]$ cd ~/NVIDIA_GPU_Computing_SDK/C
+[hase@hasegawa02 C]$ make
+</code></pre>
+<p>したところ、</p>
+<pre><code>make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+./../common/inc/paramgl.h:24 から include されたファイル中,
+                 src/paramgl.cpp:19 から:
+./../common/inc/GL/glut.h:60:20: error: GL/glu.h: そのようなファイルやディレクトリはありません
+make[1]: *** [obj/release/paramgl.cpp.o] エラー 1
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make: *** [lib/libparamgl.so] エラー 2
+</code></pre>
+<p>と言われて、コンパイルできない。
+/home/hase/NVIDIA_GPU_Computing_SDK/C/common/inc/paramgl.hの24行目でインクルードしようとしている
+glu.hというファイルが無い！と怒られているので， glu.hで検索してみる．
+nvidiaのフォーラムhttp://forums.nvidia.com/lofiversion/index.php?t30464.htmlに
+似たよーなエラーが出ている人がいた。freeglutが必要そうなので、</p>
+<pre><code>sudo yum install freeglut freeglut-devel
+</code></pre>
+<p>でインストールする。 もう一度makeすると、</p>
+<pre><code>[hase@hasegawa02 C]$ make
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+a - obj/release/paramgl.cpp.o
+a - obj/release/param.cpp.o
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+src/rendercheck_gl.cpp:54: 警告: unused parameter ‘bQAReadback’
+src/rendercheck_gl.cpp:54: 警告: unused parameter ‘bUseFBO’
+src/rendercheck_gl.cpp: In member function ‘virtual bool CheckRender::PGMvsPGM(const char*, const char*, float, float)’:
+src/rendercheck_gl.cpp:144: 警告: フォーマットへの引数が多すぎます
+src/rendercheck_gl.cpp: In member function ‘virtual bool CheckRender::PPMvsPPM(const char*, const char*, float, float)’:
+src/rendercheck_gl.cpp:190: 警告: フォーマットへの引数が多すぎます
+src/rendercheck_gl.cpp:183: 警告: unused variable ‘src_data’
+src/rendercheck_gl.cpp:183: 警告: unused variable ‘ref_data’
+src/rendercheck_gl.cpp: In member function ‘virtual bool CheckRender::compareBin2BinUint(const char*, const char*, unsigned int, float, float)’:
+src/rendercheck_gl.cpp:226: 警告: フォーマットへの引数が少なすぎます
+src/rendercheck_gl.cpp:228: 警告: フォーマットへの引数が多すぎます
+src/rendercheck_gl.cpp: In member function ‘virtual bool CheckRender::compareBin2BinFloat(const char*, const char*, unsigned int, float, float)’:
+src/rendercheck_gl.cpp:288: 警告: フォーマットへの引数が少なすぎます
+src/rendercheck_gl.cpp:290: 警告: フォーマットへの引数が多すぎます
+src/rendercheck_gl.cpp: At global scope:
+src/rendercheck_gl.cpp:518: 警告: unused parameter ‘Bpp’
+src/rendercheck_gl.cpp:545: 警告: unused parameter ‘width’
+src/rendercheck_gl.cpp:545: 警告: unused parameter ‘height’
+src/rendercheck_gl.cpp:545: 警告: unused parameter ‘Bpp’
+src/rendercheck_gl.cpp:560: 警告: unused parameter ‘width’
+src/rendercheck_gl.cpp:560: 警告: unused parameter ‘height’
+src/rendercheck_gl.cpp:560: 警告: unused parameter ‘Bpp’
+src/rendercheck_gl.cpp:702: 警告: unused parameter ‘width’
+src/rendercheck_gl.cpp:702: 警告: unused parameter ‘height’
+a - obj/release/rendercheck_gl.cpp.o
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make -C src/clock/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/clock' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/clock' から出ます
+make -C src/simpleCUFFT/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleCUFFT' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleCUFFT' から出ます
+make -C src/matrixMul/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/matrixMul' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/matrixMul' から出ます
+make -C src/fastWalshTransform/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/fastWalshTransform' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/fastWalshTransform' から出ます
+make -C src/simpleAtomicIntrinsics/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleAtomicIntrinsics' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleAtomicIntrinsics' から出ます
+make -C src/dxtc/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/dxtc' に入ります
+./dxtc.cu(101): Advisory: Loop was not unrolled, unexpected control flow construct
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/dxtc' から出ます
+make -C src/marchingCubes/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/marchingCubes' に入ります
+marchingCubes.cpp: In function ‘void runAutoTest(int, char**)’:
+marchingCubes.cpp:327: 警告: format ‘%d’ expects type ‘int’, but argument 2 has type ‘long unsigned int’
+/usr/bin/ld: cannot find -lXi
+collect2: ld はステータス 1 で終了しました
+make[1]: *** [../../bin/linux/release/marchingCubes] エラー 1
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/marchingCubes' から出ます
+make: *** [src/marchingCubes/Makefile.ph_build] エラー 2
+</code></pre>
+<p>って出た。</p>
+<p>その後，何の気無しにPoderosaから</p>
+<pre><code>[hase@hasegawa02 C]$ make
+</code></pre>
+<p>したら，</p>
+<pre><code>make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/common' から出ます
+make -C src/clock/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/clock' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/clock' から出ます
+make -C src/simpleCUFFT/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleCUFFT' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleCUFFT' から出ます
+make -C src/matrixMul/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/matrixMul' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/matrixMul' から出ます
+make -C src/fastWalshTransform/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/fastWalshTransform' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/fastWalshTransform' から出ます
+make -C src/simpleAtomicIntrinsics/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleAtomicIntrinsics' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/simpleAtomicIntrinsics' から出ます
+make -C src/dxtc/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/dxtc' に入ります
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/dxtc' から出ます
+make -C src/marchingCubes/ 
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/marchingCubes' に入ります
+/usr/bin/ld: cannot find -lXi
+collect2: ld はステータス 1 で終了しました
+make[1]: *** [../../bin/linux/release/marchingCubes] エラー 1
+make[1]: ディレクトリ `/home/hase/NVIDIA_GPU_Computing_SDK/C/src/marchingCubes' から出ます
+make: *** [src/marchingCubes/Makefile.ph_build] エラー 2
+</code></pre>
+<p>って感じで，marchingCubesまではコンパイル出来た．何で？VNC経由だと何か違うの？？と思ったけど，
+まあいいや．んで，</p>
+<pre><code>cannot find -lXi
+</code></pre>
+<p>でググったらhttp://www.atmarkit.co.jp/flinux/rensai/linuxtips/a115makeerror.htmlを見つけた．
+libXiというパッケージを入れればいいらしい．</p>
+<pre><code>rpm -qa | grep libXi
+</code></pre>
+<p>でシステムにlibXiパッケージが入っているかを確認したら，入っていなかった．</p>
+<pre><code>[hase@hasegawa02 marchingCubes]$ yum search libXi
+</code></pre>
+<p>で関係するパッケージを探すと，</p>
+<pre><code>Loaded plugins: fastestmirror
+================================ Matched: libXi =================================
+libXi.i386 : X.Org X11 libXi ランタイムライブラリ
+libXi.x86_64 : X.Org X11 libXi ランタイムライブラリ
+libXi-devel.i386 : X.Org X11 libXi 開発パッケージ
+libXi-devel.x86_64 : X.Org X11 libXi 開発パッケージ
+libXinerama.i386 : X.Org X11 libXinerama ランタイムライブラリ
+libXinerama.x86_64 : X.Org X11 libXinerama ランタイムライブラリ
+libXinerama-devel.i386 : X.Org X11 libXinerama 開発パッケージ
+libXinerama-devel.x86_64 : X.Org X11 libXinerama 開発パッケージ
+</code></pre>
+<p>とあるらしい．</p>
+<pre><code>[hase@hasegawa02 marchingCubes]$ sudo yum install libXi libXi-devel
+</code></pre>
+<p>さっきこけたmarchingCubesディレクトリに入ってmake</p>
+<pre><code>[hase@hasegawa02 marchingCubes]$ make
+/usr/bin/ld: cannot find -lXmu
+collect2: ld はステータス 1 で終了しました
+make: *** [../../bin/linux/release/marchingCubes] エラー 1
+</code></pre>
+<p>こんどはXmu関連のパッケージ「libXmu」が必要らしい．</p>
+<pre><code>[hase@hasegawa02 marchingCubes]$ sudo yum install libXmu libXmu-devel
+</code></pre>
+<p>再度makeしたら無事にコンパイル出来た．良かった良かった．</p>
+<p>改めて</p>
+<pre><code>cd ~/NVIDIA_GPU_Computing_SDK/C
+</code></pre>
+<p>に入ってmakeすると，たくさんの警告を蹴散らしながら雄々しくコンパイルが進んでいく．
+そして最後に，</p>
+<pre><code>Finished building all
+</code></pre>
+<p>と表示され，無事（？）コンパイルが完了した．良かった良かった．
+実行ファイルたちは，</p>
+<pre><code>~/NVIDIA_GPU_Computing_SDK/C/bin/linux/release
+</code></pre>
+<p>に入っている．</p>
+<pre><code>[hase@hasegawa02 release]$ ls
+3dfd                  dxtc                  simpleAtomicIntrinsics
+BlackScholes          eigenvalues           simpleCUBLAS
+Mandelbrot            fastWalshTransform    simpleCUFFT
+MersenneTwister       fluidsGL              simpleGL
+MonteCarlo            histogram             simpleMultiGPU
+MonteCarloMultiGPU    imageDenoising        simplePitchLinearTexture
+SobelFilter           lineOfSight           simpleStreams
+SobolQRNG             marchingCubes         simpleTemplates
+alignedTypes          matrixMul             simpleTexture
+asyncAPI              matrixMulDrv          simpleTexture3D
+bandwidthTest         matrixMulDynlinkJIT   simpleTextureDrv
+bicubicTexture        nbody                 simpleVoteIntrinsics
+binomialOptions       oceanFFT              simpleZeroCopy
+boxFilter             particles             smokeParticles
+clock                 postProcessGL         sortingNetworks
+convolutionFFT2D      ptxjit                template
+convolutionSeparable  quasirandomGenerator  threadFenceReduction
+convolutionTexture    radixSort             threadMigration
+cppIntegration        recursiveGaussian     transpose
+dct8x8                reduction             transposeNew
+deviceQuery           scalarProd            volumeRender
+deviceQueryDrv        scan
+dwtHaar1D             scanLargeArray
+</code></pre>
+<p>壮観だ．</p>
+<p>さっそく，deviceQueryを使ってGPU情報を取得しようとしたところ，</p>
+<pre><code>[hase@hasegawa02 release]$ ~/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/deviceQuery
+/home/hase/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/deviceQuery: error while loading shared libraries: libcudart.so.2: cannot open shared object file: No such file or directory
+</code></pre>
+<p>と怒られた．<a href="http://d.hatena.ne.jp/interleave/20090520/1242750937%E3%82%92%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%A6" rel="external" target="_blank">http://d.hatena.ne.jp/interleave/20090520/1242750937を参考にして</a>，</p>
+<pre><code>[hase@hasegawa02 release]$ cd /etc/ld.so.conf.d/
+[hase@hasegawa02 ld.so.conf.d]$ ls
+R-x86_64.conf  qt-x86_64.conf
+[hase@hasegawa02 ld.so.conf.d]$ sudo vi cuda.conf
+</code></pre>
+<p>を</p>
+<pre><code>/usr/local/cuda/lib64
+</code></pre>
+<p>の内容で作成し，</p>
+<pre><code>[hase@hasegawa02 ld.so.conf.d]$ sudo ldconfig
+</code></pre>
+<p>でshared libraryのキャッシュを再構築</p>
+<pre><code>[hase@hasegawa02 ld.so.conf.d]$ ~/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/deviceQuery
+CUDA Device Query (Runtime API) version (CUDART static linking)
+There are 2 devices supporting CUDA
+
+Device 0: &quot;Tesla C1060&quot;
+CUDA Driver Version:                           3.0
+CUDA Runtime Version:                          2.30
+CUDA Capability Major revision number:         1
+CUDA Capability Minor revision number:         3
+Total amount of global memory:                 4294770688 bytes
+Number of multiprocessors:                     30
+Number of cores:                               240
+Total amount of constant memory:               65536 bytes
+Total amount of shared memory per block:       16384 bytes
+Total number of registers available per block: 16384
+Warp size:                                     32
+Maximum number of threads per block:           512
+Maximum sizes of each dimension of a block:    512 x 512 x 64
+Maximum sizes of each dimension of a grid:     65535 x 65535 x 1
+Maximum memory pitch:                          2147483647 bytes
+Texture alignment:                             256 bytes
+Clock rate:                                    1.30 GHz
+Concurrent copy and execution:                 Yes
+Run time limit on kernels:                     No
+Integrated:                                    No
+Support host page-locked memory mapping:       Yes
+Compute mode:                                  Default (multiple host threads can use this device simultaneously)
+
+Device 1: &quot;GeForce GTS 250&quot;
+CUDA Driver Version:                           3.0
+CUDA Runtime Version:                          2.30
+CUDA Capability Major revision number:         1
+CUDA Capability Minor revision number:         1
+Total amount of global memory:                 1073020928 bytes
+Number of multiprocessors:                     16
+Number of cores:                               128
+Total amount of constant memory:               65536 bytes
+Total amount of shared memory per block:       16384 bytes
+Total number of registers available per block: 8192
+Warp size:                                     32
+Maximum number of threads per block:           512
+Maximum sizes of each dimension of a block:    512 x 512 x 64
+Maximum sizes of each dimension of a grid:     65535 x 65535 x 1
+Maximum memory pitch:                          2147483647 bytes
+Texture alignment:                             256 bytes
+Clock rate:                                    1.84 GHz
+Concurrent copy and execution:                 Yes
+Run time limit on kernels:                     Yes
+Integrated:                                    No
+Support host page-locked memory mapping:       No
+Compute mode:                                  Default (multiple host threads can use this device simultaneously)
+
+Test PASSED
+
+Press ENTER to exit...
+</code></pre>
+<p>無事に動いた．良かった良かった．
+でも，LD_LIBRARY_PATHで指定してあるはずなのにな．．．と思ってbashから</p>
+<pre><code>echo $LD_LIBRARY_PATH
+</code></pre>
+<p>したら，パスが通っていない．一瞬何故？と思ったけど，多分，起動させっぱなしのシェルだったから
+/etc/profileへの設定が反映されていなかったんだろう．</p>
+<pre><code>[hase@hasegawa02 ~]$ source /etc/profile
+[hase@hasegawa02 ~]$ echo $LD_LIBRARY_PATH
+/usr/local/cuda/lib64
+</code></pre>
+<p>さっき作ったcuda.confを削除して、再度確認</p>
+<pre><code>[hase@hasegawa02 ~]$ cd /etc/ld.so.conf.d/
+[hase@hasegawa02 ld.so.conf.d]$ ls
+R-x86_64.conf  cuda.conf  qt-x86_64.conf
+[hase@hasegawa02 ld.so.conf.d]$ sudo rm -f cuda.conf 
+パスワード:
+[hase@hasegawa02 ld.so.conf.d]$ sudo ldconfig
+[hase@hasegawa02 ld.so.conf.d]$ ~/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/deviceQuery
+CUDA Device Query (Runtime API) version (CUDART static linking)
+There are 2 devices supporting CUDA
+</code></pre>
+<p>きちんと動いている。よかったよかった。</p>
+<h3 id="後で読む">後で読む</h3>
+<p><a href="http://tekitobibouroku.blog42.fc2.com/blog-entry-175.html" rel="external" target="_blank">http://tekitobibouroku.blog42.fc2.com/blog-entry-175.html</a></p>
+<h2 id="sshでリモート接続">SSHでリモート接続</h2>
+<p><a href="http://centossrv.com/poderosa-public.shtml" rel="external" target="_blank">http://centossrv.com/poderosa-public.shtml</a>
+の通りにやれば大丈夫．ただし，面倒なのでOpenSSHでなく，デフォルトインストールのSSHサーバプログラムを使っている．</p>
+<h2 id="c開発環境">C++開発環境</h2>
+<p>JAVA環境のセッティング
+参考サイト：<a href="http://d.hatena.ne.jp/rdera/20090304/1236144748" rel="external" target="_blank">http://d.hatena.ne.jp/rdera/20090304/1236144748</a></p>
+<p>jdk-6u19-linux-x64-rpm.binをダウンロードし，</p>
+<pre><code>chmod -x jdk-6u19-linux-x64-rpm.bin
+</code></pre>
+<p>で権限を与えて実行する．</p>
+<p>JAVA関連の環境変数の指定 /etc/profileに以下を追記</p>
+<pre><code># For JAVA(2010/03/31)
+export JAVA_HOME=/usr/java/jdk1.6.0_19
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
+</code></pre>
+<p>Eclipse3.4を使いたいが，RPMパッケージが提供されていないので，
+tarボールを持ってきて解凍する．</p>
+<p>公式サイトから eclipse-cpp-ganymede-SR2-linux-gtk.tar.gz
+をダウンロードして解凍するとeclipseフォルダが出来るので，これを
+/usr/local/eclipseに突っ込む．これだけでOK．</p>
+<p>日本語化はPleiadesを使う．
+pleiades-1.3.0.zipを/usr/local/eclipse/eclipse の中に展開する．
+readme/eclipse.ini_sample.win.3.4をeclipse.iniに名前変更し，以下を修正。</p>
+<pre><code>''-javaagent:/usr/local/eclipse/eclipse/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar''
+</code></pre>
+<p>ついでに使用するメモリも増やしておく</p>
+<p>参考サイト：<a href="http://www.02.246.ne.jp/~torutk/cxx/eclipse/memo.html#SEC10" rel="external" target="_blank">http://www.02.246.ne.jp/~torutk/cxx/eclipse/memo.html#SEC10</a></p>
+<p>eclipseの起動</p>
+<pre><code>/usr/local/eclipse/eclipse/eclipse -vm /usr/java/jdk1.6.0_19/bin/java &amp;
+</code></pre>
+<p>いちいちこんなの打っていられないので，aliasを追加する．</p>
+<p>aliasの追加</p>
+<pre><code>~/.bashrc 
+</code></pre>
+<p>に</p>
+<pre><code>alias eclipse='/usr/local/eclipse/eclipse/eclipse -vm /usr/java/jdk1.6.0_19/bin/java &amp;'
+</code></pre>
+<p>を追記する．
+これでコマンドラインからeclipseと入力すれば起動するようになる。</p>
+<p>無事に日本語化されていて嬉しい。</p>
+<p>早速新規プロジェクトを作成するが以下のエラーが出てコンパイルできない。</p>
+<pre><code>g++: command not found
+</code></pre>
+<p>ので、</p>
+<pre><code>yum install gcc-c++
+</code></pre>
+<p>でインストールする。</p>
+<p>参考：<a href="http://d.hatena.ne.jp/plasticscafe/20080930/1222778825" rel="external" target="_blank">http://d.hatena.ne.jp/plasticscafe/20080930/1222778825</a></p>
+<pre><code>!!!Hello World!!!
+</code></pre>
+<p>今更だが，実際にプログラム書くのは普段使っているマシンだから，
+ワークステーションにIDEは要らないような気がする（2010/04/13追記）</p>
+<h2 id="rのインストール">Rのインストール</h2>
+<p>cranからRPMを取ってくる．R-2.10.0-2.el5.x86_64.rpm</p>
+<pre><code>[hase@hasegawa02 Desktop]$ rpm -ivh R-2.10.0-2.el5.x86_64.rpm 
+警告: R-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+エラー: 依存性の欠如:
+      R-devel = 2.10.0-2.el5 は R-2.10.0-2.el5.x86_64 に必要とされています
+      libRmath-devel = 2.10.0-2.el5 は R-2.10.0-2.el5.x86_64 に必要とされています
+</code></pre>
+<p>R-develとlibRmath-develが必要と怒られたので，とりあえずcranから
+R-devel-2.10.0-2.el5.x86_64.rpm を取ってくる．</p>
+<pre><code>[hase@hasegawa02 Desktop]$ rpm -ivh R-devel-2.10.0-2.el5.x86_64.rpm 
+警告: R-devel-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+エラー: 依存性の欠如:
+      R-core = 2.10.0-2.el5 は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      bzip2-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      gcc-gfortran は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      libX11-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      pcre-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      tcl-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      tetex-latex は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      tk-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+      zlib-devel は R-devel-2.10.0-2.el5.x86_64 に必要とされています
+</code></pre>
+<p>色々足りないみたいなので，一つ一つ解決していく．</p>
+<pre><code>[hase@hasegawa02 Desktop]$ sudo yum install bzip2-devel
+パスワード:
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * addons: ftp.oss.eznetsols.org
+ * base: ftp.oss.eznetsols.org
+ * extras: ftp.oss.eznetsols.org
+ * updates: ftp.oss.eznetsols.org
+Setting up Install Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package bzip2-devel.i386 0:1.0.3-4.el5_2 set to be updated
+---&gt; Package bzip2-devel.x86_64 0:1.0.3-4.el5_2 set to be updated
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+======================================================================================
+ Package               Arch             Version                  Repository      Size
+======================================================================================
+Installing:
+ bzip2-devel           i386             1.0.3-4.el5_2            base            38 k
+ bzip2-devel           x86_64           1.0.3-4.el5_2            base            38 k  
+</code></pre>
+<p>中略</p>
+<pre><code>Complete!
+</code></pre>
+<p>他のパッケージも同様にインストールする．</p>
+<p>R-coreはデフォルトのyumリポジトリにないと思ったから，cranから取ってくる．</p>
+<pre><code>wget ftp://ftp.u-aizu.ac.jp/pub/lang/R/CRAN/bin/linux/redhat/el5/x86_64/R-core-2.10.0-2.el5.x86_64.rpm
+
+[hase@hasegawa02 Desktop]$ rpm -ivh R-core-2.10.0-2.el5.x86_64.rpm 
+警告: R-core-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+エラー: 依存性の欠如:
+      perl(File::Copy::Recursive) は R-core-2.10.0-2.el5.x86_64 に必要とされています
+      xdg-utils は R-core-2.10.0-2.el5.x86_64 に必要とされています
+</code></pre>
+<p>また怒られた． perl(<a href="file::Copy" rel="external" target="_blank">File::Copy</a>::Recursive)
+って言うくらいだから，perl入れればいいのかと思ったらそうではなくって，
+perl-File-Copy-Recursiveというrpmパッケージになっているのを入れればよいらしい．</p>
+<pre><code>yum install perl-File-Copy-Recursive
+</code></pre>
+<p>でインストールできない場合は，「 perl-File-Copy-Recursive rpm centos
+el5」とかでググってrpmを 探せばいいと思う．</p>
+<p>再度</p>
+<pre><code>[hase@hasegawa02 Desktop]$ sudo rpm -ivh R-core-2.10.0-2.el5.x86_64.rpm 
+</code></pre>
+<p>でインストール出来た．</p>
+<pre><code>[hase@hasegawa02 Desktop]$ sudo rpm -ivh R-devel-2.10.0-2.el5.x86_64.rpm
+
+[hase@hasegawa02 Desktop]$ sudo rpm -ivh libRmath-2.10.0-2.el5.x86_64.rpm 
+警告: libRmath-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+準備中...                ########################################### [100%]
+   1:libRmath               ########################################### [100%]
+[hase@hasegawa02 Desktop]$ sudo rpm -ivh libRmath-devel-2.10.0-2.el5.x86_64.rpm 
+警告: libRmath-devel-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+準備中...                ########################################### [100%]
+   1:libRmath-devel         ########################################### [100%]
+[hase@hasegawa02 Desktop]$ sudo rpm -ivh R-2.10.0-2.el5.x86_64.rpm 
+警告: R-2.10.0-2.el5.x86_64.rpm: ヘッダ V3 DSA signature: NOKEY, key ID 97d3544e
+準備中...                ########################################### [100%]
+   1:R                      ########################################### [100%]
+</code></pre>
+<p>以上でインストール完了，多分 起動</p>
+<pre><code>[hase@hasegawa02 Desktop]$ R
+
+R version 2.10.0 (2009-10-26)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+Rは、自由なソフトウェアであり、「完全に無保証」です。 
+一定の条件に従えば、自由にこれを再配布することができます。 
+配布条件の詳細に関しては、'license()'あるいは'licence()'と入力してください。 
+
+Rは多くの貢献者による共同プロジェクトです。 
+詳しくは'contributors()'と入力してください。 
+また、RやRのパッケージを出版物で引用する際の形式については
+'citation()'と入力してください。 
+
+'demo()'と入力すればデモをみることができます。 
+'help()'とすればオンラインヘルプが出ます。 
+'help.start()'でHTMLブラウザによるヘルプがみられます。 
+'q()'と入力すればRを終了します。 
+
+&gt; head(iris)
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+&gt; q()
+Save workspace image? [y/n/c]: n
+</code></pre>
+<p>無事に動いた．</p>
+<h3 id="eclipseで使う設定">Eclipseで使う設定</h3>
+<p>StatETのインストールはWindowsとほぼ同じ．</p>
+<p>実行→実行構成→Rコンソール→R
+Configで，Rのホームディレクトリを指定する必要がある．
+Rを上記の方法でインストールした場合，Rホームディレクトリは</p>
+<pre><code>/usr/lib64/R
+</code></pre>
+<p>となっているはずなので，これを用いる．</p>
+<p>このまま実行してもエラーが出る．
+R終了時に作業スペースを保存するかどうかの設定が必要らしいので，
+実行→実行構成→Rコンソール→メインで引数を <code>--no-save</code> と与える．</p>
+<h2 id="固定ipの設定">固定IPの設定</h2>
+<p>ルータ使用せず、固定IPにするには、</p>
+<pre><code>/etc/sysconfig/network-scripts/ifcfg-eth0 
+</code></pre>
+<p>を編集する。</p>
+<p>編集前</p>
+<pre><code># Intel Corporation 82567LM-2 Gigabit Network Connection
+DEVICE=eth0
+BOOTPROTO=dhcp
+HWADDR=00:1C:C0:B1:BC:32
+ONBOOT=yes
+</code></pre>
+<p>編集後</p>
+<pre><code># Intel Corporation 82567LM-2 Gigabit Network Connection
+DEVICE=eth0
+#BOOTPROTO=dhcp
+BOOTPROTO=none
+HWADDR=00:1C:C0:B1:BC:32
+ONBOOT=yes
+DHCP_HOSTNAME=*.ipc.akita-nct.ac.jp
+IPADDR=*.*.*.*
+NETMASK=255.255.255.0
+GATEWAY=*.*.*.*
+</code></pre>
+<p>編集が終わったら、ネットワークを再起動</p>
+<pre><code>/etc/rc.d/init.d/network restart
+</code></pre>
+<h2 id="vncを使う設定">VNCを使う設定</h2>
+<p>vnc-serverが入っていることを確認してから，</p>
+<pre><code>/etc/sysconfig/vncservers 
+</code></pre>
+<p>を編集する．以下の例では，haseというユーザ名でウインドウ番号1にtcp接続する</p>
+<pre><code># VNCSERVERS=&quot;2:myusername&quot;
+# VNCSERVERARGS[2]=&quot;-geometry 800x600 -nolisten tcp -nohttpd -localhost&quot;
+ VNCSERVERS=&quot;1:hase&quot;
+ VNCSERVERARGS[1]=&quot;-geometry 1280x800 -nolisten tcp -nohttpd&quot;
+</code></pre>
+<p>ユーザ毎にパスワードを設定</p>
+<pre><code>vncpasswd
+</code></pre>
+<p>でパスワードを2回入力する．VNCサーバ起動後じゃないとダメかもしれない．うろ覚え．</p>
+<p>vnc-serverを再起動</p>
+<pre><code>sudo /etc/rc.d/init.d/vncserver restart
+</code></pre>
+<p>VNCの接続に使用する（サーバの）ポートを解放する．上記
+VNCSERVERS=&ldquo;1:hase&rdquo; の数字+5900のポートを使用するので，
+「システム→管理→セキュリティレベルとファイアーウォールの設定」を開き，
+「その他のポート」でポート5901，プロトコルtcpを追加する．</p>
+<p>GNOMEを使いたいので，</p>
+<pre><code>~/.vnc/xstartup
+</code></pre>
+<p>を編集する．</p>
+<pre><code>twm &amp;
+</code></pre>
+<p>をコメントアウト（#で）して，</p>
+<pre><code>vncconfig -iconic &amp;
+</code></pre>
+<p>を</p>
+<pre><code>vncconfig -nowin &amp;
+</code></pre>
+<p>に変更する．そして，</p>
+<pre><code>exec /etc/X11/xinit/xinitrc
+</code></pre>
+<p>を最終行に追記する．</p>
+<p>vncserverを再起動すればGNOMEが使えて、クリップボードが共有できて、日本語入力もできる。素敵。</p>
+<p>VNCクライアントは学生時代からReal VNCを使っているので，これを使う．
+クライアントを起動し，サーバの欄に</p>
+<pre><code>IPアドレス:ウインドウ番号（例えば，202.220.0.***:1）
+</code></pre>
+<p>又は</p>
+<pre><code>ホスト名:ウインドウ番号（例えば，hasegawa02:1）
+</code></pre>
+<p>と入力してからOKボタンを押すとパスワードを求められるので，vncpasswdで設定したパスワードを入力する．</p>
+<h2 id="その他">その他</h2>
+<p>サスペンドから復帰すると画面が表示されない．</p>
+<p>sshでリモート接続する分には問題ないが，画面も見たい．</p>
+<p>とりあえずの対処法として，sshでアクセス→vncサーバ起動→vncでリモート接続でしのぐ．</p>
+<h1 id="ut-vpnを用いたvpn接続">UT-VPNを用いたVPN接続</h1>
+<h2 id="インストール-1">インストール</h2>
+<p><a href="http://www2u.biglobe.ne.jp/~akio-1/linux/centos/server.html#utvpn" rel="external" target="_blank">http://www2u.biglobe.ne.jp/~akio-1/linux/centos/server.html#utvpn</a>
+を参照のこと</p>
+<p>公式のスタートアップガイドも用意されている
+UT-VPN_Startup_Guide_for_UNIX.pdf</p>
+<h2 id="設定">設定</h2>
+<p>注意：utvpncmdからUT-VPN Clientに接続する前に，</p>
+<pre><code>sudo utvpnclient start
+</code></pre>
+<p>でUT-VPN Clientを起動させておくこと</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="active " data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/centos/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>

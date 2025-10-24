@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.138.0">
+    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="description" content="PCのメモ 菊地君が使うPCのマザーボード P5GDC-V Deluxe
+~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した． ~~箱が見つかった．
+トラブルとその対処 PCが起動しない http://www.dell-faq.com/detail.asp?FAQID=198346&amp;baID=1 を参考に全てを実行したら起動した（2010/09/04）．
+acrobatのエラー 講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告 20225。Adobe Acrobat 7.0（または 6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF Converter。Adobe PDF プリンタを使用できない可能性があります。GetLastError : 指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．
+警告 20225で検索すると，アドビのサポートページに対処法が載っていた． http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0
+色々な原因があるらしいが，僕の場合はPathにC:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbemを追加したら無事に修復インストール出来た．よかったよかった．
+WinXPインストール時のトラブル Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， Setup is inspecting your computer’s hardware configuration と出てインストール出来ない．
+検索すると，Linuxパーティションがあるとダメらしく，マスターブートレコードなるものを削除する必要があるとのこと． http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html に書いてあることを試したらインストールできた．
+Windows7でUpdateできない 2010/11/12発生・解決
+Windows Update エラー 80072efd
+NOD32のアドレスリストに 「*.update.microsoft.com」と 「download.windowsupdate.com」を例外設定したら出来るようになった．
+MSワード2010印刷出来ない 来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける． 現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．
+原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない． エラーさえ出ない． こういう時期にこういうトラブルは本当に勘弁して欲しい．
+仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？
+ルータの設定 使用機材：I-O DATAのETX-R">
+    <meta name="author" content="長谷川裕修">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PCのメモ :: HaseLab">
+    <meta name="twitter:description" content="PCのメモ 菊地君が使うPCのマザーボード P5GDC-V Deluxe
+~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した． ~~箱が見つかった．
+トラブルとその対処 PCが起動しない http://www.dell-faq.com/detail.asp?FAQID=198346&amp;baID=1 を参考に全てを実行したら起動した（2010/09/04）．
+acrobatのエラー 講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告 20225。Adobe Acrobat 7.0（または 6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF Converter。Adobe PDF プリンタを使用できない可能性があります。GetLastError : 指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．
+警告 20225で検索すると，アドビのサポートページに対処法が載っていた． http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0
+色々な原因があるらしいが，僕の場合はPathにC:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbemを追加したら無事に修復インストール出来た．よかったよかった．
+WinXPインストール時のトラブル Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， Setup is inspecting your computer’s hardware configuration と出てインストール出来ない．
+検索すると，Linuxパーティションがあるとダメらしく，マスターブートレコードなるものを削除する必要があるとのこと． http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html に書いてあることを試したらインストールできた．
+Windows7でUpdateできない 2010/11/12発生・解決
+Windows Update エラー 80072efd
+NOD32のアドレスリストに 「*.update.microsoft.com」と 「download.windowsupdate.com」を例外設定したら出来るようになった．
+MSワード2010印刷出来ない 来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける． 現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．
+原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない． エラーさえ出ない． こういう時期にこういうトラブルは本当に勘弁して欲しい．
+仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？
+ルータの設定 使用機材：I-O DATAのETX-R">
+    <meta property="og:url" content="http://localhost:1313/haselab/memo/pcsettings/index.html">
+    <meta property="og:site_name" content="HaseLab">
+    <meta property="og:title" content="PCのメモ :: HaseLab">
+    <meta property="og:description" content="PCのメモ 菊地君が使うPCのマザーボード P5GDC-V Deluxe
+~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した． ~~箱が見つかった．
+トラブルとその対処 PCが起動しない http://www.dell-faq.com/detail.asp?FAQID=198346&amp;baID=1 を参考に全てを実行したら起動した（2010/09/04）．
+acrobatのエラー 講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告 20225。Adobe Acrobat 7.0（または 6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF Converter。Adobe PDF プリンタを使用できない可能性があります。GetLastError : 指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．
+警告 20225で検索すると，アドビのサポートページに対処法が載っていた． http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0
+色々な原因があるらしいが，僕の場合はPathにC:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbemを追加したら無事に修復インストール出来た．よかったよかった．
+WinXPインストール時のトラブル Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， Setup is inspecting your computer’s hardware configuration と出てインストール出来ない．
+検索すると，Linuxパーティションがあるとダメらしく，マスターブートレコードなるものを削除する必要があるとのこと． http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html に書いてあることを試したらインストールできた．
+Windows7でUpdateできない 2010/11/12発生・解決
+Windows Update エラー 80072efd
+NOD32のアドレスリストに 「*.update.microsoft.com」と 「download.windowsupdate.com」を例外設定したら出来るようになった．
+MSワード2010印刷出来ない 来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける． 現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．
+原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない． エラーさえ出ない． こういう時期にこういうトラブルは本当に勘弁して欲しい．
+仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？
+ルータの設定 使用機材：I-O DATAのETX-R">
+    <meta property="og:locale" content="ja">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="メモ">
+    <meta itemprop="name" content="PCのメモ :: HaseLab">
+    <meta itemprop="description" content="PCのメモ 菊地君が使うPCのマザーボード P5GDC-V Deluxe
+~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した． ~~箱が見つかった．
+トラブルとその対処 PCが起動しない http://www.dell-faq.com/detail.asp?FAQID=198346&amp;baID=1 を参考に全てを実行したら起動した（2010/09/04）．
+acrobatのエラー 講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告 20225。Adobe Acrobat 7.0（または 6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF Converter。Adobe PDF プリンタを使用できない可能性があります。GetLastError : 指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．
+警告 20225で検索すると，アドビのサポートページに対処法が載っていた． http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0
+色々な原因があるらしいが，僕の場合はPathにC:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbemを追加したら無事に修復インストール出来た．よかったよかった．
+WinXPインストール時のトラブル Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， Setup is inspecting your computer’s hardware configuration と出てインストール出来ない．
+検索すると，Linuxパーティションがあるとダメらしく，マスターブートレコードなるものを削除する必要があるとのこと． http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html に書いてあることを試したらインストールできた．
+Windows7でUpdateできない 2010/11/12発生・解決
+Windows Update エラー 80072efd
+NOD32のアドレスリストに 「*.update.microsoft.com」と 「download.windowsupdate.com」を例外設定したら出来るようになった．
+MSワード2010印刷出来ない 来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける． 現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．
+原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない． エラーさえ出ない． こういう時期にこういうトラブルは本当に勘弁して欲しい．
+仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？
+ルータの設定 使用機材：I-O DATAのETX-R">
+    <meta itemprop="wordCount" content="121">
+    <title>PCのメモ :: HaseLab</title>
+    <link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fontawesome-all.min.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/nucleus.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/auto-complete.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/perfect-scrollbar.min.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/fonts.css?1731121778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/haselab/css/fonts.css?1731121778" rel="stylesheet"></noscript>
+    <link href="/haselab/css/theme.css?1731121778" rel="stylesheet">
+    <link href="/haselab/css/theme-auto.css?1731121778" rel="stylesheet" id="R-variant-style">
+    <link href="/haselab/css/chroma-auto.css?1731121778" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/haselab/css/print.css?1731121778" rel="stylesheet" media="print">
+    <script src="/haselab/js/variant.js?1731121778"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.variants && variants.init( [ 'auto' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/haselab/memo/pcsettings/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#トラブルとその対処">トラブルとその対処</a>
+      <ul>
+        <li><a href="#pcが起動しない">PCが起動しない</a></li>
+        <li><a href="#acrobatのエラー">acrobatのエラー</a></li>
+        <li><a href="#winxpインストール時のトラブル">WinXPインストール時のトラブル</a></li>
+        <li><a href="#windows7でupdateできない">Windows7でUpdateできない</a></li>
+        <li><a href="#msワード2010印刷出来ない">MSワード2010印刷出来ない</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#ホスト側コンピュータの設定">ホスト側コンピュータの設定</a></li>
+    <li><a href="#クライアント側コンピュータの設定操作">クライアント側コンピュータの設定（操作）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ネットワーク共有フォルダが勝手に追加されるのを防ぐ">ネットワーク共有フォルダが勝手に追加されるのを防ぐ</a></li>
+    <li><a href="#macアドレスの確認">MACアドレスの確認</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/index.html"><span itemprop="name">home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">PCのメモ</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/pcsettings.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/pandoc/index.html" title="Pandoc (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/haselab/memo/qgis/index.html" title="QGIS (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable memo" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="pcのメモ">PCのメモ</h1>
+
+<h1 id="pcのメモ">PCのメモ</h1>
+<p>菊地君が使うPCのマザーボード P5GDC-V Deluxe</p>
+<p>~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した．
+~~箱が見つかった．</p>
+<h2 id="トラブルとその対処">トラブルとその対処</h2>
+<h3 id="pcが起動しない">PCが起動しない</h3>
+<p><a href="http://www.dell-faq.com/detail.asp?FAQID=198346&baID=1" rel="external" target="_blank">http://www.dell-faq.com/detail.asp?FAQID=198346&baID=1</a>
+を参考に全てを実行したら起動した（2010/09/04）．</p>
+<h3 id="acrobatのエラー">acrobatのエラー</h3>
+<p>講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告
+20225。Adobe Acrobat 7.0（または
+6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF
+Converter。Adobe PDF
+プリンタを使用できない可能性があります。GetLastError :
+指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．</p>
+<p><strong>警告 20225</strong>で検索すると，アドビのサポートページに対処法が載っていた．
+<a href="http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0" rel="external" target="_blank">http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0</a></p>
+<p>色々な原因があるらしいが，僕の場合はPathに<strong>C:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbem</strong>を追加したら無事に修復インストール出来た．よかったよかった．</p>
+<h3 id="winxpインストール時のトラブル">WinXPインストール時のトラブル</h3>
+<p>Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， <strong>Setup is
+inspecting your computer&rsquo;s hardware configuration</strong>
+と出てインストール出来ない．</p>
+<p>検索すると，Linuxパーティションがあるとダメらしく，<a href="http://ja.wikipedia.org/wiki/0xAA55" rel="external" target="_blank">マスターブートレコード</a>なるものを削除する必要があるとのこと．
+<a href="http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html" rel="external" target="_blank">http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html</a>
+に書いてあることを試したらインストールできた．</p>
+<h3 id="windows7でupdateできない">Windows7でUpdateできない</h3>
+<p>2010/11/12発生・解決</p>
+<p>Windows Update エラー 80072efd</p>
+<p>NOD32のアドレスリストに 「*.update.microsoft.com」と
+「download.windowsupdate.com」を例外設定したら出来るようになった．</p>
+<p><a href="#R-image-b270a50c3c4a70beaa6b9d8ecd7473b7" class="lightbox-link"><img alt="nod32.jpg" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/memo/nod32.jpg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b270a50c3c4a70beaa6b9d8ecd7473b7"><img alt="nod32.jpg" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/memo/nod32.jpg"></a></p>
+<h3 id="msワード2010印刷出来ない">MSワード2010印刷出来ない</h3>
+<p>来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける．
+現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．</p>
+<p>原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない．
+エラーさえ出ない．
+こういう時期にこういうトラブルは本当に勘弁して欲しい．</p>
+<p>仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？</p>
+<h1 id="ルータの設定">ルータの設定</h1>
+<p>使用機材：I-O DATAのETX-R</p>
+<ol>
+<li>情報コンセントにLANケーブルを差し込み，もう一方をルータの「INTERNET」と書かれている口に差し込む．</li>
+<li>PCのLANポートとルータの「LAN」と書かれた口のいずれかをLANケーブルで接続する．</li>
+<li>「マイネットワーク」→「ネットワーク接続を表示する」→「ローカルエリア接続」アイコンを右クリックし，プロパティを表示する．</li>
+<li>「インターネットプロトコル（TCP/IP）」を選択し，プロパティを表示する．</li>
+<li>「全般」タブの「IPアドレスを自動的に取得する」と「DNSサーバのアドレスを自動的に取得する」にチェックを入れる．「OK」→「OK」で「ローカルエリア接続のプロパティ」を閉じる．</li>
+<li>ブラウザのプロクシを切って，「<a href="http://etxr/%E3%80%8D%E3%82%92%E9%96%8B%E3%81%8F" rel="external" target="_blank">http://etxr/」を開く</a>．</li>
+<li>メインメニュー→基本設定→インターネット接続設定を開く</li>
+<li>「インターネット側設定」の「接続方法の設定」が「IPアドレス自動取得接続」になっていたら，「変更する」をクリックし，「IPアドレス固定設定接続」にする．なお，LAN側設定はデフォルトのままでよい．</li>
+<li>IPアドレス，サブネットマスク，ゲートウェイアドレス，DNSサーバー1，DNSサーバー2に情報処理センターから指定された値を設定する．</li>
+<li>NAS（Samba）で使う137，138，139，445番のポートを開放する．公開する機器のIPアドレスは末尾「1」</li>
+<li>設定が終わったらルータを再起動し，ブラウザのプロクシを再設定して終了</li>
+</ol>
+<p>参考URL：<a href="http://www.akakagemaru.info/port/io/ETX-R.html%EF%BC%8Chttp://wiki.samba.gr.jp/mediawiki/index.php?title=J114" rel="external" target="_blank">http://www.akakagemaru.info/port/io/ETX-R.html，http://wiki.samba.gr.jp/mediawiki/index.php?title=J114</a></p>
+<p>&lt;del&gt;
+問題点：NASに接続できない．．．が，ルータの内→外へはアクセス出来る（ハズ）ることは出来る（\\<strong>*.</strong>*.<strong>*.</strong>*という具合にIPアドレスを直接指定すれば）が，NASで公開設定したフォルダしかアクセス出来ない．その他のフォルダを開こうとしてユーザ名とパスワードを入れてもダメ．XP
+Homeだからguestアカウントでアクセスするようになっているのかも知れない．</p>
+<p>※公開設定したフォルダは別のワークグループからでも閲覧・書き込みが可能．それは嫌だ．&lt;/del&gt;
+NASに接続できるようになった．NAS内の各フォルダへのアクセス権の設定が原因だった．</p>
+<p>名前登録をすればIPアドレスを直接打たなくてもよいようだが，<del>面倒だし</del>特に困らないから放置．</p>
+<p>20090428：学生部屋のPCからネットワークに（NASにも）繋がらない問題発生もルーターの電源抜き差しで解決</p>
+<h1 id="windowsxpのファイル共有">WindowsXPのファイル共有</h1>
+<p>ホスト側コンピュータ名 PC1</p>
+<p>PC1におけるファイル共有のためのユーザアカウント Taro</p>
+<h2 id="ホスト側コンピュータの設定">ホスト側コンピュータの設定</h2>
+<p>以下はPC1のOSがWindowsXP
+Professionalの場合．Homeの場合は簡易ファイル共有を無効化できない．</p>
+<ol>
+<li>ワークグループの設定：「マイコンピュータ」を右クリックし，「システムのプロパティ」を表示する．次に，「コンピュータ名」タブの「変更」からワークグループを設定．再起動を求められたら，それに従う．</li>
+<li>簡易ファイル共有の無効化：「マイコンピュータ」を開き，「ツール」メニューの「フォルダオプション」を開く．「表示」タブの「詳細設定」をスクロールし，「簡易ファイルの共有を使用する（推奨）」を探して，そのチェックを外す．</li>
+<li>共有に使うユーザアカウントの作成：このアカウント（以下，Taro）を利用して他のコンピュータから共有フォルダにアクセスすることになる．作成は「コントロールパネル」から普通に作ればよい．権限は制限付きでよい．</li>
+<li>共有フォルダの設定：共有したいフォルダを右クリックし，「プロパティ」を開く．「共有」タブのこのフォルダを共有するにチェックを入れ，共有名（以下，share）を設定する（共有名の末尾に半角の$を入れると，他のコンピュータから見たときに自動的には表示されない．アクセスは可能）．「アクセス許可」をクリックし，次に「追加」をクリック，「Taro」をオブジェクト名をとして入力する．追加されたユーザを選択し，アクセス許可を設定する．</li>
+</ol>
+<h2 id="クライアント側コンピュータの設定操作">クライアント側コンピュータの設定（操作）</h2>
+<p>以下はクライアント側もProfessionalの場合</p>
+<ol>
+<li>ワークグループの設定：上に同じ</li>
+<li>共有フォルダへのアクセス：「マイネットワーク」→「ワークグループのコンピュータを表示する」→PC1をダブルクリックするとPC1の共有フォルダ一覧（プリンタを共有設定していればプリンタも）が表示されるので，「share」を開く．ユーザ名とパスワードを要求されるので，「Taro」とそのパスワードを入力する．このとき，パスワードを保存するにチェックを入れれば，以後入力を求められない．</li>
+</ol>
+<p>クライアント側がHomeの場合，上記の設定では「share」にアクセスできない．</p>
+<p>試してみたこと：</p>
+<ol>
+<li>クライアントにアカウント「Taro」を作成し，「Taro」にログインして「share」にアクセスする．</li>
+<li>ホストにクライアントで普段使用するアカウントと同じアカウントを作成し，そのアカウントにアクセス許可を与える．クライアントからアクセス</li>
+</ol>
+<p>結果：どちらもユーザ名とパスワードを確認するダイアログが開き，それぞれのアカウントのユーザ名とパスワードでアクセスできた．</p>
+<h1 id="その他">その他</h1>
+<p>&lt;del&gt;===== マイネットワークに自PCを表示させない =====
+本当は逆のことを探していたのだけれど，自PCの存在をアナウンスする意味もないので，ついでに設定する．コマンドプロンプトで</p>
+<pre><code>net config server /hidden:yes
+</code></pre>
+<p>を実行する．要管理者権限</p>
+<p>参考URL：<a href="http://itpro.nikkeibp.co.jp/free/NT/WinReadersOnly/20040415/30/" rel="external" target="_blank">http://itpro.nikkeibp.co.jp/free/NT/WinReadersOnly/20040415/30/</a>&lt;/del&gt;</p>
+<p>ワークグループ外から見えなくなるだけかと思ったら，ワークグループ内からも見えなくなるらしい．それは困る．
+<a href="http://trendy.nikkeibp.co.jp/article/tec/winxp/20060124/115136/" rel="external" target="_blank">http://trendy.nikkeibp.co.jp/article/tec/winxp/20060124/115136/</a></p>
+<h2 id="ネットワーク共有フォルダが勝手に追加されるのを防ぐ">ネットワーク共有フォルダが勝手に追加されるのを防ぐ</h2>
+<p><a href="http://homepage2.nifty.com/winfaq/wxp/network.html#679" rel="external" target="_blank">http://homepage2.nifty.com/winfaq/wxp/network.html#679</a></p>
+<h2 id="macアドレスの確認">MACアドレスの確認</h2>
+<p>たまに使うが，うろ覚えなので毎度検索している．そろそろ書き留めておこう．コマンドプロンプトで</p>
+<pre><code>ipconfig/all
+</code></pre>
+<p>Physical Addressとか物理アドレスと書かれているところがMACアドレス</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/haselab/index.html">
+HaseLab
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/haselab/searchindex.en.js?1731121778";
+        </script>
+        <search><form action="/haselab/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['ja'];
+        </script>
+        <script src="/haselab/js/auto-complete.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.stemmer.support.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.multi.min.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/tinyseg.js?1731121778" defer></script>
+        <script src="/haselab/js/lunr/lunr.ja.min.js?1731121778" defer></script>
+        <script src="/haselab/js/search.js?1731121778" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/haselab/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/haselab/research/index.html"><a class="padding" href="/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-id="/haselab/activities/index.html"><a class="padding" href="/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/members/index.html"><a class="padding" href="/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/access/index.html"><a class="padding" href="/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-id="/haselab/memo/index.html"><a class="padding" href="/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/haselab/memo/r/index.html"><a class="padding" href="/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/haselab/memo/awk/index.html"><a class="padding" href="/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-id="/haselab/memo/centos/index.html"><a class="padding" href="/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-id="/haselab/memo/cuda/index.html"><a class="padding" href="/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-id="/haselab/memo/eclipse/index.html"><a class="padding" href="/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-id="/haselab/memo/graphviz/index.html"><a class="padding" href="/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-id="/haselab/memo/gtfs/index.html"><a class="padding" href="/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-id="/haselab/memo/imagemagick/index.html"><a class="padding" href="/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-id="/haselab/memo/latex/index.html"><a class="padding" href="/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-id="/haselab/memo/linuxtips/index.html"><a class="padding" href="/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-id="/haselab/memo/osx/index.html"><a class="padding" href="/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-id="/haselab/memo/office/index.html"><a class="padding" href="/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-id="/haselab/memo/nwsettings/index.html"><a class="padding" href="/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-id="/haselab/memo/pandoc/index.html"><a class="padding" href="/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="active " data-nav-id="/haselab/memo/pcsettings/index.html"><a class="padding" href="/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="" data-nav-id="/haselab/memo/qgis/index.html"><a class="padding" href="/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-id="/haselab/memo/ubuntu/index.html"><a class="padding" href="/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-id="/haselab/memo/vim/index.html"><a class="padding" href="/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-id="/haselab/memo/image/index.html"><a class="padding" href="/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/haselab/memo/pcsettings/index.html" lang="ja" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/haselab/js/clipboard.min.js?1731121778" defer></script>
+    <script src="/haselab/js/perfect-scrollbar.min.js?1731121778" defer></script>
+    <script src="/haselab/js/theme.js?1731121778" defer></script>
+  </body>
+</html>
