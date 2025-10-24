@@ -2,7 +2,8 @@
 title: Home
 weight: 20
 ---
-[秋田工業高等専門学校](https://www.akita-nct.ac.jp/)
-[土木・建築系](https://www2.akita-nct.ac.jp/cea/kankyo.php) 長谷川研究室のWebサイトです．
+[香川大学](https://www.kagawa-u.ac.jp/) [創造工学部](https://www.kagawa-u.ac.jp/kagawa-u_ead/)
+[建築・都市環境コース](https://www.kagawa-u.ac.jp/kagawa-u_ead/course/architecture/)
+長谷川研究室のWebサイトです．
 
 サイト内のコンテンツは左のメニューまたは検索窓からどうぞ．
