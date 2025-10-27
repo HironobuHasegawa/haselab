@@ -179,6 +179,16 @@ var relearn_searchindex = [
     "uri": "/activities/202109/index.html"
   },
   {
+    "breadcrumb": "Home \u003e 活動報告",
+    "content": "4月1日付けで香川大学 創造工学部建築・都市環境コースに准教授として着任しました． 研究室に4年生の吾郷さんと阿部さんが配属となりました．思い返せば16年前，秋田高専で最初の配属学生も2名でした． 2025年の10月27日(月)に書いています．",
+    "description": "4月1日付けで香川大学 創造工学部建築・都市環境コースに准教授として着任しました． 研究室に4年生の吾郷さんと阿部さんが配属となりました．思い返せば16年前，秋田高専で最初の配属学生も2名でした． 2025年の10月27日(月)に書いています．",
+    "tags": [
+      "香川大学"
+    ],
+    "title": "2025年4月",
+    "uri": "/activities/202504/index.html"
+  },
+  {
     "breadcrumb": "Home \u003e Tags",
     "content": "",
     "description": "",
@@ -714,5 +724,13 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Tag :: 行動変容",
     "uri": "/tags/%E8%A1%8C%E5%8B%95%E5%A4%89%E5%AE%B9/index.html"
+  },
+  {
+    "breadcrumb": "Home \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: 香川大学",
+    "uri": "/tags/%E9%A6%99%E5%B7%9D%E5%A4%A7%E5%AD%A6/index.html"
   }
 ]
