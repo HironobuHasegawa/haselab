@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GIS :: タグ :: HaseLab</title>
-    <link>http://localhost:1313/haselab/tags/gis/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/gis/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <atom:link href="http://localhost:1313/haselab/tags/gis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/gis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RでGIS</title>
-      <link>http://localhost:1313/haselab/memo/r/rgis/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/r/rgis/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/r/rgis/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/r/rgis/index.html</guid>
       <description>GISというか地図表示 RjpWikiの記事を参考（というかほとんどそのまま）．下記データを使用した場合に書き換えただけ．&#xA;~~よりmaptoolsに特化した記事は以下． http://www.okada.jp.org/RWiki/?maptools%20%A4%C7%C3%CF%BF%DE%C9%BD%BC%A8~~無くなってた．&#xA;http://www.okada.jp.org/RWiki/?Rmap%A4%F2%BB%C8%A4%C3%A4%BF%C3%CF%BF%DE%C9%BD%BC%A8にRを使った地図表示についてまとめられている．&#xA;使用パッケージ maptools とsp&#xA;データの入手 みんなの地球地図ホーム ＞ ダウンロードするには（簡易版）＞ Shape形式データ http://www.globalmap.org/download/data/shp/1_1/shape_jp_1_1.zip を「C:/GIS_mapdata/」に解凍した場合を記す． すなわち，「C:/GIS_mapdata/shape_jp_1_1」に色々データが入っている状態．&#xA;表示 行政域を表示&#xA;library(maptools) setwd(&#34;C:/GIS_mapdata/shape_jp_1_1&#34;) getwd() jpn &lt;- read.shape(&#34;bnda_1_1.shp&#34;) jpn_poly &lt;- Map2poly(jpn) plot(jpn_poly) 行政域以外の地図を表示させたい場合，適宜&#xA;jpn &lt;- read.shape(&#34;bnda_1_1.shp&#34;) の.shpファイルを変えればよい．&#xA;maptoolsでShapeFileを切り出す方法 日本全体は不要なので，北海道だけの.shpファイルが欲しい．&#xA;library(maptools) setwd(&#34;C:/GIS_mapdata/shape_jp_1_1&#34;) getwd() jpn &lt;- read.shape(&#34;bnda_1_1.shp&#34;) jpn_poly &lt;- Map2poly(jpn) #plot(jpn_poly) jpn_df &lt;- jpn$att.data hokkaido_poly &lt;- subset(jpn_poly,jpn_df$nam==&#34;HOKKAIDO&#34;) hokkaido_df &lt;- subset(jpn_df,jpn_df$nam==&#34;HOKKAIDO&#34;) write.polylistShape(hokkaido_poly,hokkaido_df,&#34;hokkaido&#34;) 北海道だけのシェープファイルを作成後，&#xA;library(maptools) setwd(&#34;C:/GIS_mapdata/shape_jp_1_1&#34;) hokkaido &lt;- read.shape(&#34;hokkaido.shp&#34;) hokkaido_poly &lt;- Map2poly(hokkaido) plot(hokkaido_poly) で北海道だけが表示される．&#xA;札幌市ならsubsetの条件をlaa==“SAPPORO-SHI&#34;にすればよい．</description>
     </item>
   </channel>

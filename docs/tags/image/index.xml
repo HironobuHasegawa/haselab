@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Image :: タグ :: HaseLab</title>
-    <link>http://localhost:1313/haselab/tags/image/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/image/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <atom:link href="http://localhost:1313/haselab/tags/image/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/image/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>graphviz</title>
-      <link>http://localhost:1313/haselab/memo/graphviz/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/graphviz/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</guid>
       <description>ネットワーク図やフローチャートを描くのに便利&#xA;dot言語という言語で記述し，コンパイルすることで画像を生成する．&#xA;Rで使うためのパッケージもあるらしいが，最近はメンテナンスされていないようだ．&#xA;日本語解説記事&#xA;http://ja.q-bpm.org/mediawiki/index.php/Q-BPM:%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E7%94%BB%E5%83%8F%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9#.E4.BD.8D.E7.BD.AE.E3.82.92.E6.8F.83.E3.81.88.E3.82.8B.EF.BC.88invis.E3.82.A8.E3.83.83.E3.82.B8.E3.81.AE.E8.BF.BD.E5.8A.A0.EF.BC.89 http://hitoriblog.com/?p=18414 http://kyle-in-jp.blogspot.com.au/2011/06/graphviz.html</description>
     </item>
     <item>
       <title>ImageMagick</title>
-      <link>http://localhost:1313/haselab/memo/imagemagick/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/imagemagick/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</guid>
       <description>画像を操作したり，表示するソフトウェアの集合体&#xA;composite 画像の差分を取る 参考 http://blog.mirakui.com/entry/20110326/1301111196&#xA;composite -compose difference 1.jpg 2.jpg difference.jpg 画像のサイズ・フォーマット変換 サイズ変換（origin.jpegを320x240サイズのconv.jpegに変換）&#xA;convert -geometry 320x240 origin.jpeg conv.jpeg フォーマット変換（1.jpegを1.gifに変換）&#xA;convert 1.jpeg 1.gif 複数画像のフォーマット変換 現在のディレクトリ内のtiffファイル全てをjpegに一括変換&#xA;mogrify -format jpeg *.tiff Exif情報 ざっくりとした情報を表示するには， ``` identify photo.jpg ```&#xA;より詳細を表示するには -verbose ``` identify -verbose photo.jpg ```&#xA;撮影日時など，特定の情報を表示するには -format ``` identify -format “%[EXIF:DateTimeOriginal]” photo.jpg ```&#xA;![](tag&gt;image tool)</description>
     </item>
     <item>
       <title>画像関連のあれこれ</title>
-      <link>http://localhost:1313/haselab/memo/image/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/image/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</guid>
       <description>公式サイト http://www.sno.phy.queensu.ca/~phil/exiftool/&#xA;インストール ``` brew install exiftool ```&#xA;Exif情報の表示 ``` exiftool DCSA0001.jpg exiftool -DateTimeOriginal DCSA0001.jpg ```&#xA;Exif情報の編集 http://muibrog.hatenablog.com/entry/20100729/p1 によれば， ``` exiftool -[追加・変更したいタグ名]=“exifに加えたい内容” photo.jpg ``` とすれば，編集できるようだ．&#xA;ファイルの変更日時を撮影日時で変更 重複ファイルを検出・削除できるPhotos Duplicate Cleanerを使っても，上手くいかない画像ファイルがある． おそらくはファイルの変更日時やExif情報などを見て判断しているのだろうが，画像ファイルを特に編集した覚えはないのに変更日時が変更されていることがある．&#xA;検出できるように，ファイルの変更日時を撮影日時で変更したい．&#xA;あるディレクトリ以下のjpgファイルに対してexif情報を使って，一括で処理する方法が http://www.tuxradar.com/answers/433 に書いてあった． ファイル名の変更は不要なので，その処理を削除し，sedのパターンを変えるなどして，以下のようなものを作った．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```&#xA;1行目は現在のディレクトリで&#34;.jpg&#34;を含むファイルを探している 2行目はexiftoolを使って撮影日時を出力 3行目はexiftoolの出力から邪魔な部分をsedで削除（空文字と置換） 4行目はtouchを使ってファイルのタイムスタンプを撮影日時で更新 exiftoolで上手くいったか確認（タイムスタンプならFinderでも確認出来るが）すると，Modify Dateが変わっていない（Exif情報なので，タイムスタンプの変更とは関係ない）ので，修正．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) exiftool -ModifyDate=$(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```</description>
     </item>
   </channel>

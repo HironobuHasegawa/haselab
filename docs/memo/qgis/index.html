@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head><script src="/haselab/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=haselab/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.152.1">
@@ -42,7 +42,7 @@ CRS Coordinate Reference System 座標参照系
 1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック
 秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．
 以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
-    <meta property="og:url" content="http://localhost:1313/haselab/memo/qgis/index.html">
+    <meta property="og:url" content="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html">
     <meta property="og:site_name" content="HaseLab">
     <meta property="og:title" content="QGIS :: HaseLab">
     <meta property="og:description" content="![](tag&gt;GIS osx) 書きかけ
@@ -85,35 +85,35 @@ CRS Coordinate Reference System 座標参照系
 以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a">
     <meta itemprop="wordCount" content="387">
     <title>QGIS :: HaseLab</title>
-    <link href="http://localhost:1313/haselab/css/auto-complete/auto-complete.min.css?1761705601" rel="stylesheet">
-    <script src="http://localhost:1313/haselab/js/auto-complete/auto-complete.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/search-lunr.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/search.js?1761705601" defer></script>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/auto-complete/auto-complete.min.css?1761705862" rel="stylesheet">
+    <script src="https://hironobuhasegawa.github.io/haselab/js/auto-complete/auto-complete.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search-lunr.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search.min.js?1761705862" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="http://localhost:1313/haselab/searchindex.ja.js?1761705601";
+      window.relearn.index_js_url="https://hironobuhasegawa.github.io/haselab/searchindex.ja.js?1761705862";
     </script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.stemmer.support.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.multi.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/tinyseg.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.ja.min.js?1761705601" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.stemmer.support.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.multi.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/tinyseg.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.ja.min.js?1761705862" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['ja'];
     </script>
-    <link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705601" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705601" rel="stylesheet"></noscript>
-    <link href="http://localhost:1313/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761705601" rel="stylesheet">
-    <link href="http://localhost:1313/haselab/css/theme.css?1761705601" rel="stylesheet">
-    <link href="http://localhost:1313/haselab/css/format-html.css?1761705601" rel="stylesheet" id="R-format-style">
+    <link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705862" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705862" rel="stylesheet"></noscript>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761705862" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/theme.min.css?1761705862" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/format-html.min.css?1761705862" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = ``;
+      window.relearn.min = `.min`;
       window.relearn.path='\/memo\/qgis\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313\/haselab';
+      window.relearn.absBaseUri='https:\/\/hironobuhasegawa.github.io\/haselab';
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       window.relearn.disableInlineCopyToClipboard=false;
@@ -160,7 +160,7 @@ CRS Coordinate Reference System 座標参照系
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="http://localhost:1313/haselab/memo/qgis/index.html">
+  <body class="mobile-support html" data-url="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -223,14 +223,14 @@ CRS Coordinate Reference System 座標参照系
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="http://localhost:1313/haselab/index.html"><span itemprop="name">Home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="http://localhost:1313/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">QGIS</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://hironobuhasegawa.github.io/haselab/index.html"><span itemprop="name">Home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://hironobuhasegawa.github.io/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">QGIS</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/qgis.md" rel="external" title="編集 (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="http://localhost:1313/haselab/memo/pcsettings/index.html" title="PCのメモ (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html" title="PCのメモ (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="http://localhost:1313/haselab/memo/ubuntu/index.html" title="Ubuntu (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html" title="Ubuntu (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="更に"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -307,7 +307,7 @@ END```と入力（平均標高G04d_002が&rsquo;unknown&rsquo;と等しくない
 <h2 id="国土交通省国土数値情報-平成18年土地利用細分メッシュテータ">国土交通省国土数値情報 平成18年土地利用細分メッシュデータ</h2>
 <p>~~久しぶりに使おうとしたら，xml形式のみでの提供になっていた．~~Webページ内のタブでシェープファイルを含むダウンロードが選択できた（<a href="http://nlftp.mlit.go.jp/ksj/gmlold/index.html" rel="external">http://nlftp.mlit.go.jp/ksj/gmlold/index.html</a>
 分かり難いので，もっとシンプルな構造にして欲しい）．</p>
-<p>以前作ったスタイルファイル<img alt="H18LandUse_StyleSettings.qml" class="bg-white border figure-image" src="http://localhost:1313/haselab/memo/h18landuse_stylesettings.qml" style="height: auto;width: auto;">を使おうとしたところ，データを格納するカラム名が変わっていた．修正したもの<img class="bg-white border figure-image" src="http://localhost:1313/haselab/memo/l03-b-06_5940-jgd_meb01.qml" style="height: auto;width: auto;">を適用すると，以下のような土地利用図が得られる．</p>
+<p>以前作ったスタイルファイル<img alt="H18LandUse_StyleSettings.qml" class="bg-white border figure-image" src="https://hironobuhasegawa.github.io/haselab/memo/h18landuse_stylesettings.qml" style="height: auto;width: auto;">を使おうとしたところ，データを格納するカラム名が変わっていた．修正したもの<img class="bg-white border figure-image" src="https://hironobuhasegawa.github.io/haselab/memo/l03-b-06_5940-jgd_meb01.qml" style="height: auto;width: auto;">を適用すると，以下のような土地利用図が得られる．</p>
 <!-- raw HTML omitted -->
 <h1 id="使用している国土数値情報">使用している国土数値情報</h1>
 <p>国土数値情報とは</p>
@@ -745,7 +745,7 @@ X,Y,P11_001,P11_002,P11_003_1,P11_003_2,P11_003_3,P11_003_4,P11_003_5,P11_003_6,
 <p>バス停留所データとバスルートを使って秋田高専周辺の路線図を作成した．</p>
 <!-- raw HTML omitted -->
 <h3 id="gtfsgeneral-transit-feed-specification">GTFS（General Transit Feed Specification）</h3>
-<p>バス停とルートを<a href="http://localhost:1313/haselab/memo/gtfs/index.html">GTFS</a>（General Transit Feed
+<p>バス停とルートを<a href="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html">GTFS</a>（General Transit Feed
 Specification）で使いたい．</p>
 <p><a href="https://developers.google.com/transit/gtfs/reference?hl=ja#stops_fields" rel="external">stops.txt</a>と
 <a href="https://developers.google.com/transit/gtfs/reference?hl=ja#shapes_fields" rel="external">shapes.txt</a>を作れば良いのは分かった．
@@ -782,7 +782,7 @@ installでインストールは出来たが，変換は出来ない（2015/02/11
 <h2 id="nike">Nike+ <a href="https://mattstuehler.com/lab/NikePlus/" rel="external">https://mattstuehler.com/lab/NikePlus/</a></h2>
 <p>でNikep+にアップロードした過去のランがgpx形式（<a href="http://ja.wikipedia.org/wiki/GPX" rel="external">http://ja.wikipedia.org/wiki/GPX</a>
 参照）でダウンロード可能．ただし，サードパーティーによるサービスなので，利用は自己責任で．</p>
-<p>2010年の秋（もう3年前！）に北秋田市の森吉山にリバートレッキングに行った時<img class="bg-white border figure-image" src="http://localhost:1313/haselab/memo/p1000793.jpg" style="height: auto;width: auto;">のデータを読み込んでみる．
+<p>2010年の秋（もう3年前！）に北秋田市の森吉山にリバートレッキングに行った時<img class="bg-white border figure-image" src="https://hironobuhasegawa.github.io/haselab/memo/p1000793.jpg" style="height: auto;width: auto;">のデータを読み込んでみる．
 「ベクタレイヤの追加」で全てのファイル形式を選んで，gpx形式のファイルを開く．読み込むベクタレイヤを「waypoints,
 routes, tracks, route_points,
 track_points」から指定するように言われるが，track_pointsとtracks以外は中身が入っていなかった．</p>
@@ -819,11 +819,11 @@ earthで開くと，余計な情報も入っているのでごちゃごちゃし
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
         <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="http://localhost:1313/haselab/index.html">
+          <a id="R-logo" class="R-default" href="https://hironobuhasegawa.github.io/haselab/index.html">
             <div class="logo-title">HaseLab</div>
           </a>
         </div>
-        <search><form action="http://localhost:1313/haselab/search/index.html" method="get">
+        <search><form action="https://hironobuhasegawa.github.io/haselab/search/index.html" method="get">
           <div class="searchbox default-animation">
             <button class="search-detail" type="submit" title="検索 (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">検索</label>
@@ -854,31 +854,30 @@ earthで開くと，余計な情報も入っているのでごちゃごちゃし
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-url="http://localhost:1313/haselab/research/index.html"><a class="padding" href="http://localhost:1313/haselab/research/index.html">研究紹介</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/activities/index.html"><a class="padding" href="http://localhost:1313/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/members/index.html"><a class="padding" href="http://localhost:1313/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/access/index.html"><a class="padding" href="http://localhost:1313/haselab/access/index.html">アクセス</a></li>
-            <li class="parent " data-nav-url="http://localhost:1313/haselab/memo/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
-            <li class="alwaysopen " data-nav-url="http://localhost:1313/haselab/memo/r/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/hugo/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/hugo/index.html">Hugo</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/awk/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/awk/index.html">awk</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/centos/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/centos/index.html">CentOS</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/cuda/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/cuda/index.html">CUDA</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/eclipse/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/eclipse/index.html">eclipse</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/graphviz/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/graphviz/index.html">graphviz</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/gtfs/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/gtfs/index.html">GTFS</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/imagemagick/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/latex/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/linuxtips/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/linuxtips/index.html">Linux tips</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/osx/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/osx/index.html">Mac</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/office/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/office/index.html">MS Office</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/nwsettings/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/nwsettings/index.html">Network settings</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/pandoc/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/pandoc/index.html">Pandoc</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/pcsettings/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
-            <li class="active " data-nav-url="http://localhost:1313/haselab/memo/qgis/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/qgis/index.html">QGIS</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/ubuntu/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/vim/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/vim/index.html">VIM</a></li>
-            <li class="" data-nav-url="http://localhost:1313/haselab/memo/image/index.html"><a class="padding" href="http://localhost:1313/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/research/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/research/index.html">研究紹介</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/activities/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/activities/index.html">活動報告</a><ul id="R-subsections-1819491c9785e8057b24a66626c2185e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/members/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/members/index.html">メンバー</a><ul id="R-subsections-0a1f139d2262dcaf55908db01d983e8e" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/access/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/access/index.html">アクセス</a></li>
+            <li class="parent " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/index.html">メモ</a><ul id="R-subsections-744bf25ebfe552665eec55ac7b7d0e24" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/r/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/r/index.html">R</a><ul id="R-subsections-0b9584bd69345a0ae2c21adcf84e15d8" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/awk/index.html">awk</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/centos/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/centos/index.html">CentOS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html">CUDA</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html">eclipse</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html">graphviz</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html">GTFS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html">ImageMagick</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/latex/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/latex/index.html">LaTeX覚え書き</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html">Linux tips</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/osx/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/osx/index.html">Mac</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/office/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/office/index.html">MS Office</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html">Network settings</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html">Pandoc</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html">PCのメモ</a></li>
+            <li class="active " data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html">QGIS</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html">Ubuntu</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/vim/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/vim/index.html">VIM</a></li>
+            <li class="" data-nav-url="https://hironobuhasegawa.github.io/haselab/memo/image/index.html"><a class="padding" href="https://hironobuhasegawa.github.io/haselab/memo/image/index.html">画像関連のあれこれ</a></li></ul></li>
           </ul>
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
@@ -898,7 +897,7 @@ earthで開くと，余計な情報も入っているのでごちゃごちゃし
                 <div class="control-style">
                   <label class="a11y-only" for="R-select-language">言語</label>
                   <select id="R-select-language">
-                    <option id="R-select-language-ja" value="ja" data-url="http://localhost:1313/haselab/memo/qgis/index.html" lang="ja" selected data-selected>日本語</option>
+                    <option id="R-select-language-ja" value="ja" data-url="https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html" lang="ja" selected data-selected>日本語</option>
                   </select>
                 </div>
                 <div class="clear"></div>
@@ -909,8 +908,8 @@ earthで開くと，余計な情報も入っているのでごちゃごちゃし
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="http://localhost:1313/haselab/js/clipboard/clipboard.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761705601" defer></script>
-    <script src="http://localhost:1313/haselab/js/theme.js?1761705601" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/clipboard/clipboard.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761705862" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/theme.min.js?1761705862" defer></script>
   </body>
 </html>

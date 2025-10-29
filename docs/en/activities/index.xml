@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Activities :: HaseLab (English)</title>
-    <link>http://localhost:1313/haselab/en/activities/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/en/activities/index.html</link>
     <description>Current Activities / Monthly Reports Monthly activity reports can be viewed through the side menu navigation&#xA;Warning Please note: Most archived monthly reports and detailed activity logs are currently available only in Japanese. We are continuously working to update our content. Past Activities and Achievements This section links to the researcher’s achievements stored on Researchmap.&#xA;Publications / Papers (Refereed papers only, excluding Doctoral and Master’s theses) Abstracts, Preprints, and Miscellaneous Manuscripts (Non-refereed) Presentations and Oral Sessions (Including oral, poster, and online presentations by the researcher only) Research Projects, Grants, and Collaborations</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/haselab/en/activities/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/en/activities/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

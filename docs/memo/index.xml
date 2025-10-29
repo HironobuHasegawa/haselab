@@ -2,150 +2,143 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>メモ :: HaseLab</title>
-    <link>http://localhost:1313/haselab/memo/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/memo/index.html</link>
     <description>下の階層を含めて以下のメモはだいぶ古くなっており，長谷川の思い出以上の価値はありません（2021/09/20追記）．&#xA;以下に記す内容は，&#xA;少し気になったことを ちょこっと調べて ろくに精査もしないで適当に書いている だけのものであり，とりとめのない私的なメモ以上の意味を持ちません． 従いまして，記述している内容には私の勘違い・思い違い・思い込み・希望等が含まれており，その内容について保証は致しかねます．&#xA;と堅苦しく書くほどの内容はないのですが，念のため．&#xA;R Rに関する覚え書き&#xA;Mac OSX 関係 osx&#xA;Ubuntu 関係 ubuntu&#xA;テキスト編集 VIM awk 画像ファイル関係 image&#xA;GIS関係 QGIS GTFS(General Transit Feed Specification) eclipse eclipse&#xA;調べ物 特許 http://www6.ipdl.inpit.go.jp/Tokujitu/tjsogodbk.ipdl&#xA;Office MSオフィスやLibreOffice，OpenOfficeなど office&#xA;研究室内のPC設定 研究室内のPC設定&#xA;ファイラ Windows7機をメインマシンに変更するのに伴い，ファイラをMDIEからX-Finderに乗り換えた． MDIEはかなり長く使っており，特に不満は無かった． 7でも普通に使用できそうだったが，UACがうるさいのとSynergyが上手く動かないという点がストレスで変更を決意．&#xA;マウスジェスチャに以下を追加した&#xA;最後に閉じたタブを復元 TF:Shift Closed: 動作はパスを実行，新規タブにチェック firefox gmailに自動でBCCを入れるgreasemonkeyスクリプト&#xA;作者サイト http://jaidev.info/home/hacks/gmailAutoBcc&#xA;日本語解説 http://devilog.net/2010/08/uncategorized-20223424.html&#xA;Thunderbird 本文中にスペースが入る 2013/09/30にMac OSX版のThunderbird24.0で発生を確認&#xA;http://phreeride.blogspot.jp/2012/05/thunderbird.html に書いてある通り，「環境設定」→「詳細」→「設定エディタ」からabout:configを呼び出し，editor.htmlWrapColumnを整数値型で新規に作成し，値に0を設定する． 念のため，再起動した．&#xA;今のところ上手くいっている．&#xA;使用しているアドオン 名称 機能 URL コメント Auto Address Cleaner 宛先メールアドレスから表示名を取り除く https://addons.mozilla.org/ja/thunderbird/addon/7148/|表示名を「Gonbe Nanashi」みたいに設定している人への返信時に，呼び捨ては失礼だからアドレス帳にわざわざ「○×社 名無権兵衛 様」みたいに登録する文化，についていけなくなってきた時に使うと便利 Address Close Button メール作成時に送信先を削除するボタンを追加 https://addons.mozilla.org/de/thunderbird/addon/11604/ CorrectLink メールに記述されたリンクを修正 https://addons.mozilla.org/ja/thunderbird/addon/106452/ Attachment Sizes 添付ファイルのサイズを表示 https://addons.mozilla.org/de/thunderbird/addon/75780/ ConfigDate 日付表示形式をカスタマイズ https://addons.mozilla.org/de/thunderbird/addon/901/ MinimizeToTray Plus ウィンドウをシステムトレイに最小化する https://addons.mozilla.org/de/thunderbird/addon/2831/ Extra Folder Columns フォルダペインにカラムを追加 https://addons.mozilla.org/de/thunderbird/addon/9716/|フォルダ毎のサイズとメール数を表示している QuickFolders 任意のフォルダをブックマークツールバーのように表示する https://addons.mozilla.org/de/thunderbird/addon/3254/|メール整理派には欠かせないが，アーカイブ＆検索派には不要かも Quote Colors 引用文の表示をカスタマイズ https://addons.mozilla.org/de/thunderbird/addon/170/ Display Mail User Agent ヘッダに送信者の使用メーラーを表示 https://addons.mozilla.org/ja/thunderbird/addon/562/|官公庁のLotus Notes率はすごい．情報統制に気を使っているんだろうな．それに比べてアカデミック（の事務も含めて）の自由さはラクだけど，危うさも感じる．自戒を込めて． Country Lookup ヘッダに発信国を表示 https://addons.mozilla.org/ja/thunderbird/addon/3595/ Remove Duplicate Messages (Alternate) 重複メールを削除 https://addons.mozilla.org/en-US/thunderbird/addon/4654/ Duplicate Contact Manager アドレス帳内の重複を整理 https://addons.mozilla.org/ja/thunderbird/addon/4631/ Signature Switch 署名の有無を切り替えるボタン追加 https://addons.mozilla.org/ja/thunderbird/addon/611/ LightningとかProvider for Google Calendarのように入れてはいるけど使っていないものは除いて，必須のものだけまとめた． シングルディスプレイ環境だとまた少し違ってくるんだろう．</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 30 Sep 2021 01:14:30 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/haselab/memo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/memo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
-      <link>http://localhost:1313/haselab/memo/r/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/r/index.html</link>
       <pubDate>Thu, 30 Sep 2021 01:14:30 +0900</pubDate>
-      <guid>http://localhost:1313/haselab/memo/r/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/r/index.html</guid>
       <description>![](tag&gt;R tips windows osx)&#xA;Rに関するあれこれ VimでR http://qiita.com/kirishima274/items/56233d5cd830d099b28f&#xA;Vim-R-pluginを使う．&#xA;NeoBundle &#39;vim-scripts/Vim-R-plugin&#39; 以下は， http://www.lepem.ufc.br/jaa/r-plugin.html#r-plugin-installation を参考．&#xA;vimcomを入れる ダウンロード&#xA;download.file(&#34;http://www.lepem.ufc.br/jaa/vimr/vimcom_1.2-6.tar.gz&#34;, destfile = &#34;vimcom_1.2-6.tar.gz&#34;) MacVimを使わない vimcomインストール&#xA;install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, configure.args=&#34;--enable-clientserver&#34;, repos = NULL) 失敗したら，XQuartzを一旦アンインストールして，Homebrew caskから入れ直す．&#xA;brew cask install xquartz VimもHomebrewから入れる&#xA;brew install vim --with-client-server --with-lua MacVimを使う brew install macvim --with-cscope --with-client-server --with-lua --HEAD MacVim-Kaoriyaを使う install.packages(&#34;vimcom_1.2-6.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) その他のRパッケージをインストール Rのコンソールの出力を色付けて表示&#xA;download.file(&#34;http://cran.r-project.org/src/contrib/Archive/colorout/colorout_0.9-9.tar.gz&#34;, destfile = &#34;colorout_0.9-9.tar.gz&#34;) install.packages(&#34;colorout_0.9-9.tar.gz&#34;, type = &#34;source&#34;, repos = NULL) install.packages(&#34;setwidth&#34;) .Rprofileに追記 if(interactive()){ library(colorout) library(setwidth) options(vimcom.verbose = 1) # optional library(vimcom) } エイリアスを設定 .zshrcに追記</description>
     </item>
     <item>
-      <title>Hugo</title>
-      <link>http://localhost:1313/haselab/memo/hugo/index.html</link>
-      <pubDate>Sun, 26 Sep 2021 15:29:56 +0900</pubDate>
-      <guid>http://localhost:1313/haselab/memo/hugo/index.html</guid>
-      <description>使用テーマの解説 https://learn.netlify.app/en/&#xA;x. Markdown CheetSheet Text Format Italic（斜体） Italic（斜体）&#xA;Emphasis（強調） Emphasis（強調）&#xA;Strikethrough（取り消し線）&#xA;This is inline.&#xA;List text test test text test test text test test Horizontal rules Blockquotes（引用） This is Blockquotes&#xA;Links（参照） yonehub blog&#xA;Images（画像） Tables（表） id name date 1 test 2019-01-01 2 test 2019-01-02 3 test 2019-01-03</description>
-    </item>
-    <item>
       <title>awk</title>
-      <link>http://localhost:1313/haselab/memo/awk/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/awk/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</guid>
       <description>2012/11/07 1行1レコード形式のデータ，特に大きなデータを取り扱うのに便利なのだということを某MLで知る．&#xA;今扱っている固定長データ（大きいのでも600MBくらいだけど）から分析に使うフィールドを切り出すのに便利そうだ．&#xA;※改行コードはLFを前提としていることに注意（2012/11/27追記）&#xA;網羅的なガイドは以下 http://www.kt.rim.or.jp/~kbk/gawk-30/gawk_toc.html&#xA;こちらの方が取っつきやすいかも http://antibayesian.hateblo.jp/entry/2014/09/15/162605&#xA;フィールドの指定方法 awk.txtの全レコードに対して，2番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $2 }&#39; awk.txt awk.txtの全レコードに対して，10番目と3番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $10 $3 }&#39; awk.txt これだと連結されるので，間にブランクを入れる&#xA;awk &#39;{ print $10 &#34; &#34; $3 }&#39; awk.txt 詳しい解説は以下&#xA;http://www.ibm.com/developerworks/jp/linux/library/l-awk1/ http://shellscript.sunone.me/awk.html&#xA;2012/11/22 追記&#xA;パターンによるレコード範囲指定 レコード番号NRを使った範囲指定 組み込み変数のNRはレコード番号を指定する．ただし，NRとNFは変数とはいっても通常，値は代入はせず読み取り専用で用いる&#xA;awk.txtのレコード番号3（3行目）の，2番目のフィールドを（標準）出力するには&#xA;awk &#39;NR == 3 { print $2 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）の，1番目のフィールドを（標準）出力するには&#xA;awk &#39;NR &lt; 5 { print $1 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）またはレコード番号が7の，全てのフィールドをout.txtに出力するには&#xA;awk &#39;NR &lt; 5 || NR == 7 { print }&#39; awk.txt &gt; out.txt ※これは一行目がラベルになっているデータを分割する際に有用&#xA;フィールド区切り文字の指定 -Fオプションにより，フィールドの区切り文字を指定することが出来る．&#xA;awk.txtの区切り文字をスペースに指定して，全レコードに対して，2番目のフィールドを（標準）出力するには</description>
     </item>
     <item>
       <title>CentOS</title>
-      <link>http://localhost:1313/haselab/memo/centos/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/centos/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/centos/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/centos/index.html</guid>
       <description>CentOS 5.4 64bit&#xA;インストール メディアチェック後，インストール開始&#xA;「システムクロックでUTCを使用」のチェックは外した&#xA;追加リポジトリにチェックを入れると固まるので，入れない．&#xA;NTPサーバ名: ntp.nict.jp&#xA;インストール完了後再起動でとりあえずOK&#xA;諸設定 proxy設定 システム→設定→ネットワークのプロキシ で設定可能&#xA;ユーザhaseがsudo出来るように設定 bashからsuでルートにログイン&#xA;/usr/sbin/visudo でsudo設定ファイルにアクセス viなので，「i」キーで編集開始&#xA;## Allow root to run any commands anywhere root ALL=(ALL) ALL の下に&#xA;hase ALL=(ALL) ALL を追記 エスケープキーを押して編集モードから抜ける&#xA;:wq で変更を保存して閉じる&#xA;キーボード入力関連の設定 CapsLockキーと左Ctrlキーを入れ替え システム→設定→キーボード→レイアウトのオプション Ctrl key positionでSwap Ctrl and CapsLock を選択し閉じる&#xA;日本語入力切り替え設定 言語バーを右クリックして，「SCIMを設定」を選択する。&#xA;フロントエンド→全体設定→オプション&#xA;キーボード配列を日本語に設定． ホットキーの開始に「Henkan」キーを，終了に「Muhenkan」キーを設定 SCIMの再起動を促されるが，コマンドが分からなかったので，マシンを再起動した．&#xA;sambaの設定 システム→管理→セキュリティレベルとファイアーウォールの設定でsambaにチェックを入れる．&#xA;ユーザ（既存）を追加&#xA;pdbedit -a hase sambaのパスワードを設定&#xA;[hase@hasegawa02 ~]$ smbpasswd Old SMB password: New SMB password: Retype new SMB password: Password changed for user hase CUDA環境の構築 ドライバのインストール ドライバインストールには，kernel-develが必要なので，</description>
     </item>
     <item>
       <title>CUDA</title>
-      <link>http://localhost:1313/haselab/memo/cuda/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/cuda/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/cuda/index.html</guid>
       <description>CentOS5.4へのCUDA環境のセットアップはcentosを参照&#xA;VNC経由ではいくつかのサンプルプログラムが動かない．&#xA;OpenGLがらみのようだ． http://epa.scitec.kobe-u.ac.jp/~gpgpu/hiki/hiki.cgi?%BA%EE%B6%C8%A5%E1%A5%E2%28%C7%BC%C2%BF%29#28CUDA-29+-A5-A4-A5-F3-A5-B9-A5-C8-A1-BC-A5-EB にあるのは試したけれど，解決しないので放置する．&#xA;きちんとコンパイル出来て，きちんと計算してくれればそれでいい．</description>
     </item>
     <item>
       <title>eclipse</title>
-      <link>http://localhost:1313/haselab/memo/eclipse/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/eclipse/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/eclipse/index.html</guid>
       <description>インストール Pleiades All in One C/C++のJRE付き 上記ファイルをダウンロード後，Cドライブ直下に解凍し，eclipseとリネームする．&#xA;設定 MinGW MinGWが同梱されており，eclipse内からはすぐに使用できる．だが，外部（例えばコマンドプロンプト）から使用する場合は，Pathが通っていない．そのため，makeやgcc,sed,nkf等のツールを使う際にはあらかじめPathを設定するか，実行ファイルまでの絶対パスを記述する必要がある． パスを追加する場合は以下を追加すればよい．&#xA;C:\eclipse\mingw\bin C:\eclipse\msys\bin バージョンによってbinディレクトリまでのパスが異なる可能性があるが，その場合は適宜読み替えのこと&#xA;※nkfは入ってなかった</description>
     </item>
     <item>
       <title>graphviz</title>
-      <link>http://localhost:1313/haselab/memo/graphviz/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/graphviz/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</guid>
       <description>ネットワーク図やフローチャートを描くのに便利&#xA;dot言語という言語で記述し，コンパイルすることで画像を生成する．&#xA;Rで使うためのパッケージもあるらしいが，最近はメンテナンスされていないようだ．&#xA;日本語解説記事&#xA;http://ja.q-bpm.org/mediawiki/index.php/Q-BPM:%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E7%94%BB%E5%83%8F%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9#.E4.BD.8D.E7.BD.AE.E3.82.92.E6.8F.83.E3.81.88.E3.82.8B.EF.BC.88invis.E3.82.A8.E3.83.83.E3.82.B8.E3.81.AE.E8.BF.BD.E5.8A.A0.EF.BC.89 http://hitoriblog.com/?p=18414 http://kyle-in-jp.blogspot.com.au/2011/06/graphviz.html</description>
     </item>
     <item>
       <title>GTFS</title>
-      <link>http://localhost:1313/haselab/memo/gtfs/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/gtfs/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html</guid>
       <description>GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，&#xA;GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。&#xA;作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．&#xA;フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）&#xA;ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．</description>
     </item>
     <item>
       <title>ImageMagick</title>
-      <link>http://localhost:1313/haselab/memo/imagemagick/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/imagemagick/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</guid>
       <description>画像を操作したり，表示するソフトウェアの集合体&#xA;composite 画像の差分を取る 参考 http://blog.mirakui.com/entry/20110326/1301111196&#xA;composite -compose difference 1.jpg 2.jpg difference.jpg 画像のサイズ・フォーマット変換 サイズ変換（origin.jpegを320x240サイズのconv.jpegに変換）&#xA;convert -geometry 320x240 origin.jpeg conv.jpeg フォーマット変換（1.jpegを1.gifに変換）&#xA;convert 1.jpeg 1.gif 複数画像のフォーマット変換 現在のディレクトリ内のtiffファイル全てをjpegに一括変換&#xA;mogrify -format jpeg *.tiff Exif情報 ざっくりとした情報を表示するには， ``` identify photo.jpg ```&#xA;より詳細を表示するには -verbose ``` identify -verbose photo.jpg ```&#xA;撮影日時など，特定の情報を表示するには -format ``` identify -format “%[EXIF:DateTimeOriginal]” photo.jpg ```&#xA;![](tag&gt;image tool)</description>
     </item>
     <item>
       <title>LaTeX覚え書き</title>
-      <link>http://localhost:1313/haselab/memo/latex/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/latex/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/latex/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/latex/index.html</guid>
       <description>LaTeX 文書の設定（プリアンブル） 余白（margin）を上を30mm，それ以外を25mmとする（2012/11/13）&#xA;\usepackage{geometry} \geometry{left=25truemm,right=25truemm,bottom=25truemm,top=30truemm} % Mergins インデント（indent）の量を10mmにする（2012/11/13）&#xA;\parindent=10truemm Timesフォントを使う．ただし，amsmathを使う場合は先にamsmathパッケージを読み込むこと（2012/11/13）&#xA;\usepackage{txfonts} 脚注と傍注 脚注は\footnote{}&#xA;傍注は\marginpar{}&#xA;ただし，\marginpar{}ではコメントは本文の出現箇所と高さを揃えて出力するが，本文中に記号も番号も出ないため，どこに対するコメントなのかイマイチ分かりづらい．&#xA;https://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/9020.html と https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=66 を参考（つなげただけですが）に プリアンブルに&#xA;%傍注に番号を付けるための設定 \newcounter{marginpar}% 新しいカウンタ \makeatletter \let\org@marginpar\marginpar% オリジナルを退避 %% \renewcommand{\marginpar}[1]{% \refstepcounter{marginpar}% カウンタを一つ増やす \kern0pt$^{\themarginpar}$% 本文での傍注番号 \org@marginpar{\footnotesize\themarginpar~#1}% 傍注 }% \makeatother %傍注\marginpar{}の本分出現箇所に記号を付けるコマンド\marginnote{}を新たに定義 \newcommand{\marginnote}[2][*]{% \inhibitglue\kern0pt #1\marginpar{\footnotesize \xkanjiskip=0.1zw plus 0.1zw minus 0.05zw\relax #1\ #2}} と記述すれば，\marginnote{}で記号と番号付きで出現箇所が分かるような傍注が出力される．&#xA;図表 figure環境 図を入れる領域を準備する&#xA;EPS画像の取り込み \begin{figure}[!htb] % here, top, bottom \begin{center} \includegraphics[width=22zw, clip]{filename.eps} % 22文字文の幅で，空白を切り抜き \end{center} \caption{図のキャプションは図の下に}\label{fig:figlabel} % 文章中で参照するためにラベルを付けておく \end{figure} PDF画像の取り込み MS Officeで作成した図について</description>
     </item>
     <item>
       <title>Linux tips</title>
-      <link>http://localhost:1313/haselab/memo/linuxtips/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/linuxtips/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/linuxtips/index.html</guid>
       <description>ファイル操作 文字コード変更 元々のファイルを上書きしてUTF-8に変更&#xA;nkf -w --overwrite example.txt ワイルドカードを使って，csv形式のファイルを上書きしてシフトJISに変更&#xA;nkf -s --overwrite *.csv 2013/04/23追記&#xA;nkfを実行すると，自動的にファイル中の半角カタカナが全角カタカナに変換される（参考：http://d.hatena.ne.jp/rx7/20110205/p1 ）． これはこれで便利（例えば，Rは半角カタカナを読み込めない）だが，もし変換したくないときには-xオプションを用いる．&#xA;元々のファイルを上書きしてUTF-8に変更（ただし半角カタカナはそのまま）&#xA;nkf -wx --overwrite example.txt 所有権変更 個別に変更&#xA;chown [ユーザ名[:グループ名]] filename ディレクトリ以下を全てまとめて変更&#xA;chown -R [ユーザ名[:グループ名]] directory 所有権がルートにある場合は，sudoと組み合わせて使う&#xA;その他 プロセスの優先度変更 renice [優先度] -p [プロセスID] renice [優先度] -u [ユーザ名] 優先度は-20〜19までの整数値で，-20が最優先</description>
     </item>
     <item>
       <title>Mac</title>
-      <link>http://localhost:1313/haselab/memo/osx/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/osx/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/osx/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/osx/index.html</guid>
       <description>Mac OS X MS Office 2011 先週末のアップデート後にExcelが落ちるようになり，セーフモードを試すも意味が無いので，仕方なく再インストールした．&#xA;単純なアプリケーションフォルダからの削除・再インストールではダメで，AppClearnerでの削除でもダメで，MS公式の完全なアンインストール方法実施後の再インストールでようやく使用可能になった．&#xA;http://support.microsoft.com/kb/2398768/ja&#xA;疲れた．&#xA;メンテナンス ディスクのアクセス権の検証と修復 OS Xをアップデートしたらしておいたほうが良いとのことなので，ディスクユーティリティから実行した．&#xA;参考 http://www.ttcbn.net/no_second_life/archives/22570&#xA;2012/05/14&#xA;Yosemite 10.10.5からEl Capitan 10.11.6にアップグレード 0. Time Machineでバックアップを取っておく 1. App Storeからアップグレード 2. 再起動し，起動時にcmd+Rを押し続けて「OS X 復元」を起動 3. 「ディスクユーティリティ」でシステムドライブを削除 4. 「OS Xを再インストール」でEl Capitanをネットワークインストール 5. インストール後に起動し，データやアプリをTime Machineから復元する&#xA;``` brew cask install qlcolorcode quicklook-csv qlmarkdown ```&#xA;vim インストール 日本語環境で使うのに便利な設定がされているものが公開されているので，それを使う http://code.google.com/p/macvim-kaoriya/&#xA;設定 シェルから起動させるための，.bash_profileへの設定は本ページ下部のシェル設定を参照&#xA;Vimで挿入モードから抜ける時に英数入力に切り替えるを参考に，KeyRemap4MacBookを設定&#xA;.vimrcへの設定は http://yuroyoro.hatenablog.com/entry/20101104/1288879591 を参考にした．大変充実した内容だが，ほとんど理解できないので，取りあえず&#xA;&#34; ;でコマンド入力( ;と:を入れ替) noremap ; : noremap : ; だけを設定しておく． 以下を追加（2012/11/07）</description>
     </item>
     <item>
       <title>MS Office</title>
-      <link>http://localhost:1313/haselab/memo/office/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/office/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/office/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/office/index.html</guid>
       <description>表計算ソフト Excelで日付から曜日を計算して表示&#xA;A1セルに日付が入っている場合，以下のような関数を書けば良い． ``` =CHOOSE(WEEKDAY(A1,1),“日”,“月”,“火”,“水”,“木”,“金”,“土”) ```</description>
     </item>
     <item>
       <title>Network settings</title>
-      <link>http://localhost:1313/haselab/memo/nwsettings/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/nwsettings/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/nwsettings/index.html</guid>
       <description>2010/12/09，無線LANについて情報処理センターから注意喚起があった． 折角の機会なのでまとめておく．&#xA;学生部屋：ルータ経由で3台が学内LANに接続&#xA;長谷川部屋：メインマシン・ワークステーション・プリンタは固定IP&#xA;無線LANのセキュリティ設定 SSIDの隠蔽：なし 暗号化：WPA2 MACアドレスフィルタリング：あり</description>
     </item>
     <item>
       <title>Pandoc</title>
-      <link>http://localhost:1313/haselab/memo/pandoc/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/pandoc/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/pandoc/index.html</guid>
       <description>[Pandoc公式サイト](http://johnmacfarlane.net/pandoc/)&#xA;参考 http://qiita.com/items/80bcd0f353ef5b8980ee&#xA;Markdown記法を使って文書を書いて，それをPandocを使ってLaTeXフォーマットに変換することが出来る．それ以外のも様々なフォーマットの入出力に対応している．&#xA;Markdown から LaTeX&#xA;pandoc input.md -s -o output.tex LaTeX から Markdown&#xA;pandoc -s input.tex -o output.md 出力されたファイルはeptex+dvipdfmxを使えるように設定済みのTeXShopで何ら調整することなく普通にコンパイル出来た．プリアンブルを含めて色々気になるところはあるけれど，document環境内だけ取り出せばいいので問題なし． 見出しがレベルに応じてsectionやsubsectionに，箇条書きも数字のあるなしでenumerateとitemizeそれぞれに．斜体は\emphに，太字は\textbfにきちんとなった．他は試していないけれど，これだけでも十分だ．もちろん日本語も問題なかった． いやー，凄い． ここ数年は論文やレジメは再利用性を考えてLaTeXで，ちょっとしたメモ書きや調べ物をまとめるには書式が簡単なWiki（DokuWikiかTiddlyWiki）をメインに使っていた． 数式が必要なもの以外は全部Markdownに移行してしまおうか．&#xA;MacでMarkdownを書く方法としては，&#xA;Coteditor + Marked Vim + Marked [Kobito](http://kobito.qiita.com/ja) Mou などがある．</description>
     </item>
     <item>
       <title>PCのメモ</title>
-      <link>http://localhost:1313/haselab/memo/pcsettings/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/pcsettings/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/pcsettings/index.html</guid>
       <description>PCのメモ 菊地君が使うPCのマザーボード P5GDC-V Deluxe&#xA;~~システム情報では確認できず，取説も見あたらないので，起動直後の画面を撮影して確認した． ~~箱が見つかった．&#xA;トラブルとその対処 PCが起動しない http://www.dell-faq.com/detail.asp?FAQID=198346&amp;baID=1 を参考に全てを実行したら起動した（2010/09/04）．&#xA;acrobatのエラー 講演資料をPPTで作成し，配布用にPDFを作ろうとしたらPDFプリンタが見つからなかった．修復インストールを試したら，**警告 20225。Adobe Acrobat 7.0（または 6.0）セットアップは次の新規項目を作成できませんでした : Adobe PDF Converter。Adobe PDF プリンタを使用できない可能性があります。GetLastError : 指定されたモジュールが見つかりません。**と出て修復インストールが出来ない．&#xA;警告 20225で検索すると，アドビのサポートページに対処法が載っていた． http://www.adobe.com/jp/support/kb/ts/222/ts_222965_ja-jp.html#anc_a_0&#xA;色々な原因があるらしいが，僕の場合はPathにC:¥Windows¥system32;C:¥WINDOWS;C:¥WINDOWS¥system32¥wbemを追加したら無事に修復インストール出来た．よかったよかった．&#xA;WinXPインストール時のトラブル Vine Linux4.2を入れていたPCにWinXPを入れようとしたところ， Setup is inspecting your computer’s hardware configuration と出てインストール出来ない．&#xA;検索すると，Linuxパーティションがあるとダメらしく，マスターブートレコードなるものを削除する必要があるとのこと． http://www.takosuke.net/~seraphis/archives/2008/01/setup-is-inspec.html に書いてあることを試したらインストールできた．&#xA;Windows7でUpdateできない 2010/11/12発生・解決&#xA;Windows Update エラー 80072efd&#xA;NOD32のアドレスリストに 「*.update.microsoft.com」と 「download.windowsupdate.com」を例外設定したら出来るようになった．&#xA;MSワード2010印刷出来ない 来年度，本学のJABEE認定創造工学システムプログラムが継続審査を受ける． 現在，僕も所属する学内WGで自己点検書を作成中で，文字通りの師走進行だ．&#xA;原稿の必要箇所だけをページ指定で印刷しようとすると，印刷出来ない． エラーさえ出ない． こういう時期にこういうトラブルは本当に勘弁して欲しい．&#xA;仮想プリンタもダメで，エラーも出ない．プリンタジョブがきちんと飛ばないのか？？&#xA;ルータの設定 使用機材：I-O DATAのETX-R&#xA;情報コンセントにLANケーブルを差し込み，もう一方をルータの「INTERNET」と書かれている口に差し込む． PCのLANポートとルータの「LAN」と書かれた口のいずれかをLANケーブルで接続する． 「マイネットワーク」→「ネットワーク接続を表示する」→「ローカルエリア接続」アイコンを右クリックし，プロパティを表示する． 「インターネットプロトコル（TCP/IP）」を選択し，プロパティを表示する． 「全般」タブの「IPアドレスを自動的に取得する」と「DNSサーバのアドレスを自動的に取得する」にチェックを入れる．「OK」→「OK」で「ローカルエリア接続のプロパティ」を閉じる． ブラウザのプロクシを切って，「http://etxr/」を開く． メインメニュー→基本設定→インターネット接続設定を開く 「インターネット側設定」の「接続方法の設定」が「IPアドレス自動取得接続」になっていたら，「変更する」をクリックし，「IPアドレス固定設定接続」にする．なお，LAN側設定はデフォルトのままでよい． IPアドレス，サブネットマスク，ゲートウェイアドレス，DNSサーバー1，DNSサーバー2に情報処理センターから指定された値を設定する． NAS（Samba）で使う137，138，139，445番のポートを開放する．公開する機器のIPアドレスは末尾「1」 設定が終わったらルータを再起動し，ブラウザのプロクシを再設定して終了 参考URL：http://www.akakagemaru.info/port/io/ETX-R.html，http://wiki.samba.gr.jp/mediawiki/index.php?title=J114</description>
     </item>
     <item>
       <title>QGIS</title>
-      <link>http://localhost:1313/haselab/memo/qgis/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/qgis/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/qgis/index.html</guid>
       <description>![](tag&gt;GIS osx) 書きかけ&#xA;オープンソースソフトウェアのGISソフトであるQGISの使い方の基礎をまとめる． QGISはWindows，Mac OSX，Linuxなどで使用可能なマルチプラットフォーム対応だが，動作は基本的にOSXでしか確認していない．エンコードさえ気をつければ大丈夫だと思う．多分．&#xA;QGIS CRSについての注意点 2011年10月以降の公共測量成果物は世界測地系（JGD2011）によるものとなったが，QGISでは2017/10/04現在，該当するCRSは選択できない． 代わりにJGD2000を選択することとなるが，そうすると地物のズレがあるらしい． 数値地図（国土基本情報）などを使うときには注意が必要となる．&#xA;また，Googleマップや各種GPSで用いられるのはWGS84なので，データのやり取りをする際に注意．&#xA;最初の設定 1. QGISを起動 2. 新規プロジェクト作成 3. 「ファイル」→「プロジェクトのプロパティ」→「空間参照システム(CSR)」→「オンザフライCRS変換を有効にチェック」→「JGD2000 とのみ書かれているものを選択」 4. 「QGIS」→「Preference」→「ネットワーク」からプロキシを設定する．プロキシタイプはDefaultProxyからHttpProxyに変更しないとダメ（参考 http://gis.stackexchange.com/questions/25188/how-to-access-qgis-plugin-repositories-from-behind-a-proxy）．&#xA;CRS Coordinate Reference System 座標参照系&#xA;「交差ツール」で秋田県行政区域と重なり合った部分だけを切り取る 1. 秋田県行政区域N03-13_05_130401.shpと標高・傾斜度5次メッシュデータ（の一部）G04-d-11_5839-jgd_GML.shpを開く．文字化けを防ぐため，開く際にはエンコーディングをShift_JISに設定する．&#xA;2. 交差ツールを起動「ベクタ」→「空間演算ツール」→「交差」&#xA;3. 交差の実行「ベクタレイヤーの入力」で切り取り対象となるG04-d-11_5839-jgd_GML.shpを選択，「レイヤを交差する」でN03-13_05_130401.shpを選択，出力ファイルをH23Altitude5839.shpとして「OK」で実行&#xA;4. 入力座標参照系エラー：一つまたはそれ以上の数の入力レイヤは空間参照システム情報がありません．期待通りの結果はできません．TOCに新しいレイヤを追加しますか？「Yes」を選択し，続いてJGD2000を指定する&#xA;以下，他の標高・傾斜度5次メッシュでも同様の処理を行う&#xA;交差とクリップの違い 交差は両方の属性値を持つが，クリップは切り取り対象の属性値のみを持つ&#xA;「結合ツール」を使って複数のshapeファイルを結合する 1. 「ベクタ」→「データマネジメントツール」→「複数のshapeファイルを一つに結合する」で結合ツールを起動 2. 「フォルダ内でレイヤで選択されている」にチェックを入れ，入力ファイルにH23Altitude5839.shp，H23Altitude5840.shp，H23Altitude5939.shp，H23Altitude5940.shp，H23Altitude6039.shp，H23Altitude6040.shpを指定（コマンドキーを押しながら複数選択）し，「出力Shapefile」にH23AltitudeAkita.shpとして「OK」で実行&#xA;標高で色を塗り分け 標高の値に応じて色を塗り分けたいが，標高・傾斜度5次メッシュデータは文字列型として属性値を格納しているため，そのままでは個々の値を「分類」して塗り分けることしか出来ない．そこで，新たに実数値型のフィールドを作成し，これを元に色の塗り分けを行う．&#xA;1. QGISでH23AltitudeAkitaを開き，「レイヤプロパティ」→「フィールド」→「編集モード切替」をクリックして編集モードに入る． 2. 「フィールド計算機」をクリックしてフィールド計算機を呼び出す．「新しいフィールドを作る」にチェックを入れ，「出力フィールド名」をAltitude，「出力フィールドタイプ」を小数点付き数値(real)，「出力フィールド幅」を10，「精度」（小数の桁数）を1とする．「式」に```CASE WHEN “G04d_002” != ‘unknown’ THEN toreal( “G04d_002” ) END```と入力（平均標高G04d_002が’unknown’と等しくない場合，G04d_002を実数値に変換する．‘unknown’の場合は何もしないので，文字列のままとなり，設定したフィールドタイプ（実数）で扱えないので，NULLになる．）し，「OK」をクリック 3. 「編集モード切替」をクリックして，編集モードを終了し，保存するかどうかの確認があるので，「save」を選択 4. 「レイヤプロパティ」→「スタイル」→「段階に分けられた」に変更し，「カラム」をAltitude，「シンボル」のボーダースタイルを「線無し」，「分類数」を10，「色階調」をGreys，「モード」を自然な分類に設定し，「分類」をクリックしてスタイルを作成し，「OK」をクリック&#xA;秋田県行政区域N03-13_05_130401を緑色の背景にすると，以下のような見た目になる（画像をクリックすると拡大）．田沢湖も分かるのが面白い．&#xA;以下のページも参考になる． http://www.geopacific.org/opensourcegis/gcngisbook/QGIS_book/7b2c17ae0/7b2c17ae067bc030fc30bf306e8868793a</description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>http://localhost:1313/haselab/memo/ubuntu/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/ubuntu/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/ubuntu/index.html</guid>
       <description>apt aptでユーザ認証付きのプロキシサーバを使用する場合， /etc/apt/apt.conf を編集する． なお，username，password，proxy.addressはそれぞれ適切なものに書き替える．&#xA;Aciquire::&lt;http::Proxy&gt; &#34;&lt;http://username:password@proxy.address:8080&gt;&#34; Aciquire::&lt;https::Proxy&gt; &#34;&lt;http://username:password@proxy.address:8080&gt;&#34; Aciquire::&lt;ftp::Proxy&gt; &#34;&lt;http://username:password@proxy.address:8080&gt;&#34; Aciquire::socks::Proxy &#34;&lt;http://username:password@proxy.address:8080&gt;&#34; Parallels Desktopに入れたUbuntu 16.04のaptで使用するサーバがアメリカだったので，日本のサーバに変更 https://launchpad.net/ubuntu/+archivemirrors によると，山形大学の回線が太いので，山形大学のミラーを使用させてもらう．&#xA;sudo sed -i.bak -e &#34;s%[http://us.archive.ubuntu.com/ubuntu/%http://linux.yz.yamagata-u.ac.jp/pub/linux/ubuntu-archive/%g](http://us.archive.ubuntu.com/ubuntu/%http://linux.yz.yamagata-u.ac.jp/pub/linux/ubuntu-archive/%g)&#34; /etc/apt/sources.list Nvidia GTX-1080 NvidiaのGTX-1080をUbuntuで使う際にハマったのでメモ。&#xA;ドライバーを提供しているリポジトリ (https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa) を登録するために&#xA;sudo add-apt-repository ppa:graphics-drivers/ppa としたが、&#xA;Cannot add PPA: &#39;ppa:\~graphics-drivers/ubuntu/ppa&#39;. ERROR: &#39;\~graphics-drivers&#39; user or team does not exist. というエラーが出て追加登録できない。 aptのproxy設定は上述の通り済ませてある。&#xA;https://qiita.com/aKenjiKato/items/18f9b8553f8ad4117d79 にあるように、&#xA;add-apt-repository は apt.confのプロキシ設定を見ていないかもしれない&#xA;ので、.bashrcに&#xA;http_proxy=&lt;http://username:password@proxy.address:8080&gt; https_proxy=&lt;https://username:password@proxy.address:8080&gt; ftp_proxy=&lt;ftp://username:password@proxy.address:8080&gt; を記述して、sudoに環境変数を渡す*-E*オプションを付けて，&#xA;sudo -E add-apt-repository ppa:graphics-drivers/ppa で無事に追加できた。&#xA;sudo -E add-apt-repository ppa:graphics-drivers/ppa sudo -E apt-get update sudo -E apt-get install nvidia-384 #2017/10/12現在 sudo apt-get install mesa-common-dev sudo apt-get install freeglut3-dev CUDAのインストール ※Cuda toolkit 9 と CuDNN 7 では Tensorflow（2017/10/18のバージョン）が動かない。</description>
     </item>
     <item>
       <title>VIM</title>
-      <link>http://localhost:1313/haselab/memo/vim/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/vim/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/vim/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/vim/index.html</guid>
       <description>検索結果にマッチしたもの全体への処理 http://qiita.com/0829/items/6df968408d52b949aac0 より，検索結果にマッチしたもの全体への処理．&#xA;検索は普通に ``` /検索文字列 ```&#xA;検索結果にマッチした行全てを削除 ``` :g//d ``` 検索結果にマッチした行全てをヤンク ``` qqq:g//y Q ``` 貼り付けるときは，qレジスタを明示して， ``` “qp ``` でOK．&#xA;検索結果をファイル末尾に移動する場合は， :g//m$ ![](tag&gt;Vim tips)</description>
     </item>
     <item>
       <title>画像関連のあれこれ</title>
-      <link>http://localhost:1313/haselab/memo/image/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/image/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</guid>
       <description>公式サイト http://www.sno.phy.queensu.ca/~phil/exiftool/&#xA;インストール ``` brew install exiftool ```&#xA;Exif情報の表示 ``` exiftool DCSA0001.jpg exiftool -DateTimeOriginal DCSA0001.jpg ```&#xA;Exif情報の編集 http://muibrog.hatenablog.com/entry/20100729/p1 によれば， ``` exiftool -[追加・変更したいタグ名]=“exifに加えたい内容” photo.jpg ``` とすれば，編集できるようだ．&#xA;ファイルの変更日時を撮影日時で変更 重複ファイルを検出・削除できるPhotos Duplicate Cleanerを使っても，上手くいかない画像ファイルがある． おそらくはファイルの変更日時やExif情報などを見て判断しているのだろうが，画像ファイルを特に編集した覚えはないのに変更日時が変更されていることがある．&#xA;検出できるように，ファイルの変更日時を撮影日時で変更したい．&#xA;あるディレクトリ以下のjpgファイルに対してexif情報を使って，一括で処理する方法が http://www.tuxradar.com/answers/433 に書いてあった． ファイル名の変更は不要なので，その処理を削除し，sedのパターンを変えるなどして，以下のようなものを作った．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```&#xA;1行目は現在のディレクトリで&#34;.jpg&#34;を含むファイルを探している 2行目はexiftoolを使って撮影日時を出力 3行目はexiftoolの出力から邪魔な部分をsedで削除（空文字と置換） 4行目はtouchを使ってファイルのタイムスタンプを撮影日時で更新 exiftoolで上手くいったか確認（タイムスタンプならFinderでも確認出来るが）すると，Modify Dateが変わっていない（Exif情報なので，タイムスタンプの変更とは関係ない）ので，修正．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) exiftool -ModifyDate=$(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```</description>
     </item>
   </channel>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Research :: HaseLab (English)</title>
-    <link>http://localhost:1313/haselab/en/research/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/en/research/index.html</link>
     <description>Contents will be available soon&#xA;Tip This page is currently under construction. Please check back later for full content. Current Draft Content Peer-Reviewed Journal Publications (English) Effects of Driver’s License Status and Familiarity with Road Environment on Fixation Behavior While Walking to School (Journal of the Eastern Asia Society for Transportation Studies, 2021, Volume 14, Pages 2028-2040)&#xD;Pedestrian Behavior Analysis using Smart Eyewear (Asian Transport Studies, 2019, Volume 5, Issue 3, Pages 453-469)&#xD;Text Mining Analysis on Methods of Information Provision that Influence Tourists’ Travel Behavior (Journal of the Eastern Asia Society for Transportation Studies, 2010, Volume 8, Pages 941-953)&#xD;A BASIC STUDY ON TRAFFIC ACCIDENT DATA ANALYSIS USING SUPPORT VECTOR MACHINE (Journal of the Eastern Asia Society for Transportation Studies, 2007, Volume 7, Pages 2873-2880)</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/haselab/en/research/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/en/research/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

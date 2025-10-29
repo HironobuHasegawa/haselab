@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>活動報告 :: HaseLab</title>
-    <link>http://localhost:1313/haselab/activities/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/activities/index.html</link>
     <description>活動報告 左のメニューから月別の活動報告をご覧いただけます．&#xA;過去の活動 論文 ※博士論文と修士論文以外は査読付き論文 講演要旨集やその他の原稿など ※査読なし 講演・口頭発表等 ※自分で発表（口頭・ポスター・オンライン）したもののみ 共同研究・競争的資金等の研究課題</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 21 Sep 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/haselab/activities/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/activities/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021年度活動報告</title>
-      <link>http://localhost:1313/haselab/activities/2021/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/activities/2021/index.html</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/activities/2021/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/activities/2021/index.html</guid>
       <description>2021年4月の活動報告 2021年5月の活動報告 2021年6月の活動報告 2021年7月の活動報告 2021年8月の活動報告 2021年9月の活動報告</description>
     </item>
     <item>
       <title>2025年4月</title>
-      <link>http://localhost:1313/haselab/activities/202504/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/activities/202504/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/activities/202504/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/activities/202504/index.html</guid>
       <description>4月1日付けで香川大学 創造工学部建築・都市環境コースに准教授として着任しました． 研究室に4年生の吾郷さんと阿部さんが配属となりました．思い返せば16年前，秋田高専で最初の配属学生も2名でした． 2025年の10月27日(月)に書いています．</description>
     </item>
   </channel>

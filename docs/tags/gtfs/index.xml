@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gtfs :: タグ :: HaseLab</title>
-    <link>http://localhost:1313/haselab/tags/gtfs/index.html</link>
+    <link>https://hironobuhasegawa.github.io/haselab/tags/gtfs/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <atom:link href="http://localhost:1313/haselab/tags/gtfs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/gtfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GTFS</title>
-      <link>http://localhost:1313/haselab/memo/gtfs/index.html</link>
+      <link>https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/haselab/memo/gtfs/index.html</guid>
+      <guid>https://hironobuhasegawa.github.io/haselab/memo/gtfs/index.html</guid>
       <description>GTFSとは https://developers.google.com/transit/gtfs/?hl=ja より，&#xA;GTFS（General Transit Feed Specification）には、公共交通機関の時刻表とその地理的情報に使用される共通形式が定義されています。GTFS の「フィード」を利用することで、交通機関は乗換案内データを公開し、デベロッパーはそのデータを相互運用可能な方法で利用するアプリケーションを作成することができます。&#xA;作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．&#xA;フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）&#xA;ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．</description>
     </item>
   </channel>
