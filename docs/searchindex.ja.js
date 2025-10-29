@@ -76,8 +76,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "",
-    "content": "香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．",
-    "description": "香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．",
+    "content": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．",
+    "description": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．",
     "tags": [],
     "title": "Home",
     "uri": "/index.html"
