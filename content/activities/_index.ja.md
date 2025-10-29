@@ -2,9 +2,9 @@
 title: 活動報告
 weight: 4
 ---
-
-## 2021年度の活動報告
+## 活動報告
 左のメニューから月別の活動報告をご覧いただけます．
+
 
 ## 過去の活動
 - [論文](https://researchmap.jp/hirohasegawa/published_papers) ※博士論文と修士論文以外は査読付き論文

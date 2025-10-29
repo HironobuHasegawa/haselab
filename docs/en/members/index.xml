@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Members :: HaseLab (English)</title>
+    <link>http://localhost:1313/haselab/en/members/index.html</link>
+    <description>The information listed below reflects the composition of the lab for each academic year.&#xA;Academic Year 2025 Members Name Position / Grade Affiliation Office Room Notes Hironobu Hasegawa Associate Professor / PI Architecture, Civil and Environmental Engineering Program Building 2, 3F, Room 2313 Dr. Eng.; Authorized Ph.D. Supervisor TAIKI AGO 4th Year Undergraduate Architecture, Civil and Environmental Engineering Program Building 2, 3F, North Side TETSUYA ABE 4th Year Undergraduate Architecture, Civil and Environmental Engineering Program Building 2, 3F, North Side Past Members Info Our lab has just started a new chapter at Kagawa University. Please note that the list of past members from the researcher&#39;s previous institution, Akita National College of Technology, is currently available only on the Japanese version of this page.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/haselab/en/members/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hironobu Hasegawa</title>
+      <link>http://localhost:1313/haselab/en/members/hironobuhasegawa/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/en/members/hironobuhasegawa/index.html</guid>
+      <description>Hironobu Hasegawa, Dr. Eng. Profile Summary This section provides the essential academic and professional identifiers for the faculty member leading Hasegawa Lab.&#xA;Key Roles and Affiliation Item Details Name Hironobu HASEGAWA Position / Role Associate Professor / PI (Principal Investigator) Supervision Status Authorized Ph.D. Supervisor Degree Dr. Eng. (Doctor of Engineering) Email hasegawa.hironobu [at] kagawa-u.ac.jp Affiliation Kagawa University / Faculty of Engineering and Design / Program in Architecture, Civil and Environmental Engineering Origin Furano City, Hokkaido, Japan Biography researchmap (Researcher Profile)</description>
+    </item>
+  </channel>
+</rss>

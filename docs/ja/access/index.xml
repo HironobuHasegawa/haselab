@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>アクセス :: HaseLab</title>
+    <link>http://localhost:1313/haselab/ja/access/index.html</link>
+    <description>住所 761-0301 香川県高松市林町2217-20 香川大学 林町キャンパス&#xA;長谷川の居室は2号館3階2313号室です．&#xA;香川大学 :: 林町キャンパス&#xA;交通アクセス 香川大学 :: アクセス方法</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/ja/access/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

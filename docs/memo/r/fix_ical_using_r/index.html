@@ -10,7 +10,7 @@
 色々と探った結果，ical形式でエクスポートすると，カレンダーの設定によらずUTCで出力されることが判明した．フィードバックは送ったが，待っていられないし，そもそも仕様の可能性もある．
 そのため，以下のようなRスクリプトを書いて，icalを修正することにした．
 成果物 if (!require(&#34;pacman&#34;)) install.packages(&#34;pacman&#34;); library(pacman) p_load(tidyverse) setwd(&#34;icalファイルの場所&#34;) # ical（拡張子はics）ファイルを文字列ベクトルで読み込み data &lt;- read_lines(&#34;Calendar.ics&#34;) # 修正対象はDTSTART,DTEND,DTSTAMP,CREATED,LAST-MODIFIED ## lubridateパッケージのsecond minute hour day month yearを使って最初に&#34;TZID=Asia/Tokyo:&#34;以下の部分を作っておいて，その後にmutateする方が良いと思うが，直す気力がない． dat &lt;- tibble(raw=data, jst=with_tz(ymd_hms(str_sub(data,9)), &#34;Asia/Tokyo&#34;)) %&gt;% mutate(DTSTART= paste0(&#34;DTSTART;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), DTEND= paste0(&#34;DTEND;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), DTSTAMP= paste0(&#34;DTSTAMP;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), CREATED = paste0(&#34;CREATED;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19)), &#34;LAST-MODIFIED&#34;= paste0(&#34;LAST-MODIFIED;TZID=Asia/Tokyo:&#34;,str_sub(jst,1,4),str_sub(jst,6,7),str_sub(jst,9,10),&#34;T&#34;,str_sub(jst,12,13),str_sub(jst,15,16),str_sub(jst,18,19))) out &lt;- ifelse(str_detect(dat$raw, pattern=&#34;DTSTART:2&#34;),dat$DTSTART, # カレンダーの設定情報である&#34;DTSTART:19700101T000000&#34;を除外するため&#34;DTSTART:2&#34;とする ifelse(str_detect(dat$raw, pattern=&#34;DTEND:&#34;),dat$DTEND, ifelse(str_detect(dat$raw, pattern=&#34;DTSTAMP:&#34;),dat$DTSTAMP, ifelse(str_detect(dat$raw, pattern=&#34;CREATED:&#34;),dat$CREATED, ifelse(str_detect(dat$raw, pattern=&#34;LAST-MODIFIED:&#34;),dat$&#34;LAST-MODIFIED&#34;, dat$raw))))) # ファイルに書き出し write_lines(out, &#34;FixedCalendar.ics&#34;, na = &#34;NA&#34;, append = FALSE) 同じ事象に悩む方のお役に立てば幸いです．">
-    <meta name="author" content="長谷川裕修">
+    <meta name="author" content="Hironobu Hasegawa">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Rを使ってicalファイルのタイムゾーンを修正する :: HaseLab">
     <meta name="twitter:description" content="背景 Googleカレンダーの整理をしていたら，カレンダー内の予定がUTCとなっていた． カレンダー表示のときには通常通りJSTの時間で表示されているが，予定の詳細を見たり編集する際にUTCとなっている．
@@ -47,27 +47,27 @@
     <meta itemprop="wordCount" content="71">
     <meta itemprop="keywords" content="R,Ical,Google,Calendar,カレンダー">
     <title>Rを使ってicalファイルのタイムゾーンを修正する :: HaseLab</title>
-    <link href="http://localhost:1313/haselab/css/auto-complete/auto-complete.min.css?1761295763" rel="stylesheet">
-    <script src="http://localhost:1313/haselab/js/auto-complete/auto-complete.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/search-lunr.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/search.js?1761295763" defer></script>
+    <link href="http://localhost:1313/haselab/css/auto-complete/auto-complete.min.css?1761705601" rel="stylesheet">
+    <script src="http://localhost:1313/haselab/js/auto-complete/auto-complete.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/search-lunr.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/search.js?1761705601" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="http://localhost:1313/haselab/searchindex.en.js?1761295763";
+      window.relearn.index_js_url="http://localhost:1313/haselab/searchindex.ja.js?1761705601";
     </script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.stemmer.support.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.multi.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/tinyseg.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/lunr/lunr.ja.min.js?1761295763" defer></script>
+    <script src="http://localhost:1313/haselab/js/lunr/lunr.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/lunr/lunr.stemmer.support.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/lunr/lunr.multi.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/lunr/tinyseg.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/lunr/lunr.ja.min.js?1761705601" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['ja'];
     </script>
-    <link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761295763" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761295763" rel="stylesheet"></noscript>
-    <link href="http://localhost:1313/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761295763" rel="stylesheet">
-    <link href="http://localhost:1313/haselab/css/theme.css?1761295763" rel="stylesheet">
-    <link href="http://localhost:1313/haselab/css/format-html.css?1761295763" rel="stylesheet" id="R-format-style">
+    <link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705601" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="http://localhost:1313/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761705601" rel="stylesheet"></noscript>
+    <link href="http://localhost:1313/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761705601" rel="stylesheet">
+    <link href="http://localhost:1313/haselab/css/theme.css?1761705601" rel="stylesheet">
+    <link href="http://localhost:1313/haselab/css/format-html.css?1761705601" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -85,14 +85,14 @@
       window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
       window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
       // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Copy_to_clipboard = `クリップボードにコピー`;
+      window.T_Copied_to_clipboard = `クリップボードにコピー!`;
+      window.T_Copy_link_to_clipboard = `リンクをクリップボードにコピー`;
+      window.T_Link_copied_to_clipboard = `リンクをクリップボードにコピーしました!`;
+      window.T_Reset_view = `ビューのリセット`;
+      window.T_View_reset = `リセットを見る`;
+      window.T_No_results_found = `"{0}" の結果が見つかりません`;
+      window.T_N_results_found = `"{0}" で {1} 件の結果が見つかりました`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
       window.relearn.customvariantname = "my-custom-variant";
@@ -129,9 +129,9 @@
         <div class="topbar-wrapper">
           <div class="topbar-sidebar-divider"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="メニュー (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="目次 (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -151,13 +151,13 @@
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="http://localhost:1313/haselab/index.html"><span itemprop="name">Home</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="http://localhost:1313/haselab/memo/index.html"><span itemprop="name">メモ</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="http://localhost:1313/haselab/memo/r/index.html"><span itemprop="name">R</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Rを使ってicalファイルのタイムゾーンを修正する</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/r/Fix_ical_using_r.md" rel="external" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/HironobuHasegawa/haselab/blob/master/content/memo/r/Fix_ical_using_r.md" rel="external" title="編集 (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="http://localhost:1313/haselab/memo/r/datamanipulationwithr/index.html" title="Rでのデータの取扱い (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="http://localhost:1313/haselab/memo/r/statet/index.html" title="eclipse+StatET (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="更に"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -173,7 +173,7 @@
         <div class="flex-block-wrapper">
 <article class="default">
   <header class="headline">
-<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="タグ" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
   <ul>
     <li><a class="term-link" href="http://localhost:1313/haselab/tags/calendar/index.html">Calendar</a></li>
     <li><a class="term-link" href="http://localhost:1313/haselab/tags/google/index.html">Google</a></li>
@@ -222,7 +222,7 @@
 <p>同じ事象に悩む方のお役に立てば幸いです．</p>
 
   <footer class="footline">
-              <i class='fa-fw fas fa-calendar'></i> Sep 30, 2021
+              <i class='fa-fw fas fa-calendar'></i> 2021/09/30
   </footer>
 </article>
         </div>
@@ -238,10 +238,10 @@
         </div>
         <search><form action="http://localhost:1313/haselab/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
-            <label class="a11y-only" for="R-search-by">Search</label>
-            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-detail" type="submit" title="検索 (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">検索</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="検索...">
+            <button class="search-clear" type="button" data-search-clear="" title="検索をクリア"><i class="fas fa-times" title="検索をクリア"></i></button>
           </div>
         </form></search>
       </div>
@@ -311,13 +311,26 @@
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
           <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">言語</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-ja" value="ja" data-url="http://localhost:1313/haselab/memo/r/fix_ical_using_r/index.html" lang="ja" selected data-selected>日本語</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
           </ul>
         </div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="http://localhost:1313/haselab/js/clipboard/clipboard.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761295763" defer></script>
-    <script src="http://localhost:1313/haselab/js/theme.js?1761295763" defer></script>
+    <script src="http://localhost:1313/haselab/js/clipboard/clipboard.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761705601" defer></script>
+    <script src="http://localhost:1313/haselab/js/theme.js?1761705601" defer></script>
   </body>
 </html>

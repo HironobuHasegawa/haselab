@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dokuwiki :: Tag :: HaseLab</title>
-    <link>https://hironobuhasegawa.github.io/haselab/tags/dokuwiki/index.html</link>
+    <title>Dokuwiki :: タグ :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/dokuwiki/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 21 Sep 2021 09:30:25 +0900</lastBuildDate>
-    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/dokuwiki/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/haselab/tags/dokuwiki/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021年9月</title>
-      <link>https://hironobuhasegawa.github.io/haselab/activities/202109/index.html</link>
+      <link>http://localhost:1313/haselab/activities/2021/202109/index.html</link>
       <pubDate>Tue, 21 Sep 2021 09:30:25 +0900</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/activities/202109/index.html</guid>
+      <guid>http://localhost:1313/haselab/activities/2021/202109/index.html</guid>
       <description>令和3年度高速道路調査会研究発表会で『注意の引きやすさに着⽬した視覚的な⾼速道路逆⾛防⽌対策の評価』と題して研究助成の成果を発表しました．オンライン参加だったので，正確には動画が配信されているのを見ていました． 令和3年度高速道路調査会研究発表会 EASTS 2021 Conferenceに参加して，『Effects of Driver’s License Status and Familiarity with Road Environment on Fixation Behavior While Walking to School』を発表しました．質疑はリアルタイムで行われ，いつもながらもう少し英語を勉強しようと思いました． 某先生が機械音声（一昔前の抑揚のない感じではなく，NaturalReaderのような流暢な感じ）で発表動画を作成していて，強いな，と思いました． タイミング合わず発表は未視聴ですが，秋田高専OBの大学院生も発表していたようです． 全然関係ないですが，開催校のWebサイトが格好良かったです．EASTS2021 – The 14th International Conference of Eastern Asia Society for Transportation Studies 2021 dokuwikiというWikiクローンで作っていた研究室Webサイトをメンテンナンスしようと思い，無料レンタルサーバからFTP経由でまるごとバックアップを取ったら，その後アクセスできなくなり数日が経過． 諦めていろいろな手段を検討1した末，GitHub Pagesと静的サイトジェネレータのHugoを組み合わせて作ってみることにしました． 試行錯誤の末，ようやく形になったものの，古い研究室Webサイトにアクセスしたら復活していました．辛い． 前向きに考えれば， markdownに移行2できた 過去サイトの資産を再利用可能だった（pandocでdokuwiki &lt;-&gt; markdown (gfmもOK) できた） Git (GitHub)の使い方に少し慣れた．これを機にソースコードのバージョン管理をしたい 新しい？技術に触れた といった点は良かったと思います．&#xA;pandocを使ったdokuwiki -&gt; markdown&#xA;cd data/pages for f in *.txt; do pandoc -f dokuwiki -t gfm $f &gt; ${f%.*}.md done 他のレンタルサーバへの引っ越し，Notionなど ↩︎</description>
     </item>
   </channel>

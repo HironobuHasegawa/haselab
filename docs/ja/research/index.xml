@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>研究紹介 :: HaseLab</title>
+    <link>http://localhost:1313/haselab/ja/research/index.html</link>
+    <description>最近の研究テーマ 以下は2021年度の学生向け研究紹介で使ったスライドから抜粋した図です． そのうちもう少し真面目なものを用意したいと思います． 網羅的なリスト 網羅的かつ最新のリストは researchmap リサーチマップに掲載している以下のリストを御覧ください．&#xA;論文 ※博士論文と修士論文以外は査読付き論文 講演要旨集やその他の原稿など ※査読なし 講演・口頭発表等 ※自分で発表したもののみ 共同研究・競争的資金等の研究課題</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <atom:link href="http://localhost:1313/haselab/ja/research/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

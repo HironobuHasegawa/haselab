@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Location and Access :: HaseLab (English)</title>
+    <link>http://localhost:1313/haselab/en/access/index.html</link>
+    <description>Address Kagawa University Hayashi Campus&#xA;2217-20 Hayashicho, Takamatsu, Kagawa 761-0301, Japan&#xA;Dr. Hasegawa’s Office: Room 2313, 3rd Floor, Building No. 2.&#xA;Kagawa University :: Hayashi Campus (Map and Details)&#xA;Directions Kagawa University :: How to Access the Campuses</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/haselab/en/access/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

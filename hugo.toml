@@ -1,6 +1,8 @@
 baseURL = "https://hironobuhasegawa.github.io/haselab/"
 canonifyURLs = true
-languageCode = "ja"
+# languageCode = "ja"
+defaultContentLanguage = "ja"  # 日本語をデフォルトにする場合
+
 title = "HaseLab"
 publishDir = "docs"
 theme = "hugo-theme-relearn"
@@ -14,7 +16,7 @@ ignoreLogs = ["warning-goldmark-raw-html",'warning-partial-superfluous-prefix']
 
 [params]
   editURL = "https://github.com/HironobuHasegawa/haselab/blob/master/content/"
-  author.name = "長谷川裕修"
+  author.name = "Hironobu Hasegawa"
 
   [params.imageEffects]
     bg-white = true
@@ -25,3 +27,18 @@ ignoreLogs = ["warning-goldmark-raw-html",'warning-partial-superfluous-prefix']
 [outputs]
 home = [ "HTML", "RSS"]
 
+[languages]
+  # 1. 日本語 (ja) の定義
+  [languages.ja]
+    title = "HaseLab"
+    languageName = "日本語"
+    languageCode = "ja"
+    weight = 1  # ナビゲーションでの表示順 (小さいほど優先)
+
+  # 2. 英語 (en) の定義
+  [languages.en]
+    title = "HaseLab (English)"
+    languageName = "English"
+    languageCode = "en"
+    weight = 2
+    # 英語コンテンツの表示時に適用したい、英語固有の設定があればここに追加

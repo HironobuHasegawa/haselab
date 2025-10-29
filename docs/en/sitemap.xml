@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/haselab/en/research/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/research/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/research/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/research/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/activities/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/activities/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/activities/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/activities/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/members/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/members/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/members/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/members/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/access/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/access/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/access/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/access/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/members/hironobuhasegawa/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/members/hironobuhasegawa/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/members/hironobuhasegawa/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/members/hironobuhasegawa/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/categories/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/categories/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/categories/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/categories/index.html" />
+  </url>
+  <url>
+    <loc>http://localhost:1313/haselab/en/tags/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/haselab/tags/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="http://localhost:1313/haselab/tags/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/haselab/en/tags/index.html" />
+  </url>
+</urlset>

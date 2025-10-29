@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Osx :: Tag :: HaseLab</title>
-    <link>https://hironobuhasegawa.github.io/haselab/tags/osx/index.html</link>
+    <title>Osx :: タグ :: HaseLab</title>
+    <link>http://localhost:1313/haselab/tags/osx/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>ja</language>
-    <atom:link href="https://hironobuhasegawa.github.io/haselab/tags/osx/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/haselab/tags/osx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rでテキストマイニング</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/r/rtextmining/index.html</link>
+      <link>http://localhost:1313/haselab/memo/r/rtextmining/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/r/rtextmining/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/r/rtextmining/index.html</guid>
       <description>MeCabとRMeCabのインストール MeCab Windows環境ではバイナリが公開されている． http://sourceforge.net/projects/mecab/files/ からmecab-0.98.exe（バージョンは2009/10/15現在）をダウンロードし，インストール（僕はC:\MeCabに入れた）．&#xA;____ 2012/04/28追記 osx lionでは自分でビルドするか，homebrewでのインストールが便利．&#xA;ビルドはgccが使えさえすればマニュアル通りで大丈夫．&#xA;homebrewのインストール過程でアンインストールしたので，改めてhomebrewを使ってMeCabをインストールする．&#xA;$ brew install mecab ==&gt; Downloading http://mecab.googlecode.com/files/mecab-0.993.tar.gz ######################################################################## 100.0% ==&gt; ./configure --prefix=/usr/local/Cellar/mecab/0.993 ==&gt; make install Error: The linking step did not complete successfully The formula built, but is not symlinked into /usr/local You can try again using `brew link mecab&#39; ==&gt; Summary /usr/local/Cellar/mecab/0.993: 17 files, 2.9M, built in 46 seconds すごく楽．辞書もインストール&#xA;$ brew install mecab-ipadic Error: You must `brew link mecab&#39; before mecab-ipadic can be installed 指示に従い実行</description>
     </item>
     <item>
       <title>awk</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</link>
+      <link>http://localhost:1313/haselab/memo/awk/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/awk/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/awk/index.html</guid>
       <description>2012/11/07 1行1レコード形式のデータ，特に大きなデータを取り扱うのに便利なのだということを某MLで知る．&#xA;今扱っている固定長データ（大きいのでも600MBくらいだけど）から分析に使うフィールドを切り出すのに便利そうだ．&#xA;※改行コードはLFを前提としていることに注意（2012/11/27追記）&#xA;網羅的なガイドは以下 http://www.kt.rim.or.jp/~kbk/gawk-30/gawk_toc.html&#xA;こちらの方が取っつきやすいかも http://antibayesian.hateblo.jp/entry/2014/09/15/162605&#xA;フィールドの指定方法 awk.txtの全レコードに対して，2番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $2 }&#39; awk.txt awk.txtの全レコードに対して，10番目と3番目のフィールドを（標準）出力するには&#xA;awk &#39;{ print $10 $3 }&#39; awk.txt これだと連結されるので，間にブランクを入れる&#xA;awk &#39;{ print $10 &#34; &#34; $3 }&#39; awk.txt 詳しい解説は以下&#xA;http://www.ibm.com/developerworks/jp/linux/library/l-awk1/ http://shellscript.sunone.me/awk.html&#xA;2012/11/22 追記&#xA;パターンによるレコード範囲指定 レコード番号NRを使った範囲指定 組み込み変数のNRはレコード番号を指定する．ただし，NRとNFは変数とはいっても通常，値は代入はせず読み取り専用で用いる&#xA;awk.txtのレコード番号3（3行目）の，2番目のフィールドを（標準）出力するには&#xA;awk &#39;NR == 3 { print $2 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）の，1番目のフィールドを（標準）出力するには&#xA;awk &#39;NR &lt; 5 { print $1 }&#39; awk.txt awk.txtのレコード番号が5未満（1～4）またはレコード番号が7の，全てのフィールドをout.txtに出力するには&#xA;awk &#39;NR &lt; 5 || NR == 7 { print }&#39; awk.txt &gt; out.txt ※これは一行目がラベルになっているデータを分割する際に有用&#xA;フィールド区切り文字の指定 -Fオプションにより，フィールドの区切り文字を指定することが出来る．&#xA;awk.txtの区切り文字をスペースに指定して，全レコードに対して，2番目のフィールドを（標準）出力するには</description>
     </item>
     <item>
       <title>graphviz</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</link>
+      <link>http://localhost:1313/haselab/memo/graphviz/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/graphviz/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/graphviz/index.html</guid>
       <description>ネットワーク図やフローチャートを描くのに便利&#xA;dot言語という言語で記述し，コンパイルすることで画像を生成する．&#xA;Rで使うためのパッケージもあるらしいが，最近はメンテナンスされていないようだ．&#xA;日本語解説記事&#xA;http://ja.q-bpm.org/mediawiki/index.php/Q-BPM:%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E7%94%BB%E5%83%8F%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9#.E4.BD.8D.E7.BD.AE.E3.82.92.E6.8F.83.E3.81.88.E3.82.8B.EF.BC.88invis.E3.82.A8.E3.83.83.E3.82.B8.E3.81.AE.E8.BF.BD.E5.8A.A0.EF.BC.89 http://hitoriblog.com/?p=18414 http://kyle-in-jp.blogspot.com.au/2011/06/graphviz.html</description>
     </item>
     <item>
       <title>ImageMagick</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</link>
+      <link>http://localhost:1313/haselab/memo/imagemagick/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/imagemagick/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/imagemagick/index.html</guid>
       <description>画像を操作したり，表示するソフトウェアの集合体&#xA;composite 画像の差分を取る 参考 http://blog.mirakui.com/entry/20110326/1301111196&#xA;composite -compose difference 1.jpg 2.jpg difference.jpg 画像のサイズ・フォーマット変換 サイズ変換（origin.jpegを320x240サイズのconv.jpegに変換）&#xA;convert -geometry 320x240 origin.jpeg conv.jpeg フォーマット変換（1.jpegを1.gifに変換）&#xA;convert 1.jpeg 1.gif 複数画像のフォーマット変換 現在のディレクトリ内のtiffファイル全てをjpegに一括変換&#xA;mogrify -format jpeg *.tiff Exif情報 ざっくりとした情報を表示するには， ``` identify photo.jpg ```&#xA;より詳細を表示するには -verbose ``` identify -verbose photo.jpg ```&#xA;撮影日時など，特定の情報を表示するには -format ``` identify -format “%[EXIF:DateTimeOriginal]” photo.jpg ```&#xA;![](tag&gt;image tool)</description>
     </item>
     <item>
       <title>Sweaveに関するメモ</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/r/sweave/index.html</link>
+      <link>http://localhost:1313/haselab/memo/r/sweave/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/r/sweave/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/r/sweave/index.html</guid>
       <description>Sweave ![](tag&gt;R LaTeX osx)&#xA;参考URL：http://qh73xe.sakura.ne.jp/wordpress/?p=72&#xA;設定 環境はMac OSX 10.8.4&#xA;TeX本体 MacTeX2013を http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?Mac に従って設定&#xA;ZXjatypeパッケージ (公式サイト)[http://zrbabbler.sp.land.to/zxjatype.html]&#xA;Sweaveはチャンク内に記したRコードをTeXソース中でverbatim環境（のラッパーであるSinput環境・Soutput環境）に出力するが，XeLaTeXではverbatim環境で日本語を使えないようだ． そこで，ZRさんが開発・公開しているZXjatypeパッケージを使う．&#xA;残った問題：長いコードの場合，折り返しが効かずに右側にはみ出る．ざっと調べたところ，皆悩んでいるようだ．&#xA;Sweave.styとae.sty http://svn.r-project.org/R/trunk/share/texmf/tex/latex/Sweave.sty&#xA;http://web.mit.edu/ghudson/dev/nokrb/third/tetex/texmf/tex/latex/ae/ae.sty&#xA;ダウンロードしたら&#xA;/usr/local/texlive/texmf-local/tex/latex/local に配置し，&#xA;sudo mktexlsr を実行&#xA;Rstudio Program defaults Weave Rnw files using: Sweave Typeset LaTeX into PDF using: XeLaTeX LaTeX editing and compilation は全てチェックを入れる PDF preview Preview は System Viewer Always enable Rnw concordance もチェックを入れる 実行例 ```&#xA;\documentclass[a4paper]{bxjsarticle} \usepackage{zxjatype} \setCJKmainfont{HiraMinPro-W3} \setjamonofont{Ricty} % 効いていないかも \setmonofont{Ricty} % 効いていないかも \usepackage{mediabb} \XeTeXlinebreaklocale &#34;ja&#34; \title{タイトル} \author{著者} \begin{document} \SweaveOpts{concordance=TRUE} \maketitle \section{Sweaveで日本語} 本文はもちろん， &lt;&lt;&gt;&gt;= cat(&#34;コード中の日本語出力も大丈夫&#34;) @ \section{グラフにも日本語} &lt;&lt;&gt;&gt;= par(family=&#34;HiraKakuPro-W3&#34;) # グラフに日本語を使う場合 data &lt;- iris summary(data) @ echoオプションで実行したコードを出力するかどうかを制御できる． コードを出力しないでグラフだけを描画する場合（\tt{plot(data[,1:2])}だけを実行） &lt;&lt;fig = TRUE, echo = FALSE&gt;&gt;= plot(data[,1:2]) title(&#34;チャンクオプションはfig = TRUE, echo = FALSE&#34;) @ コードを出力する場合 \begin{center} &lt;&lt;fig = TRUE, echo = TRUE&gt;&gt;= plot(data[,1:2]) title(&#34;グラフにも日本語&#34;) text(x=7,y=2,&#34;text()で日本語出力&#34;) @ \end{center} \end{document} ```</description>
     </item>
     <item>
       <title>画像関連のあれこれ</title>
-      <link>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</link>
+      <link>http://localhost:1313/haselab/memo/image/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://hironobuhasegawa.github.io/haselab/memo/image/index.html</guid>
+      <guid>http://localhost:1313/haselab/memo/image/index.html</guid>
       <description>公式サイト http://www.sno.phy.queensu.ca/~phil/exiftool/&#xA;インストール ``` brew install exiftool ```&#xA;Exif情報の表示 ``` exiftool DCSA0001.jpg exiftool -DateTimeOriginal DCSA0001.jpg ```&#xA;Exif情報の編集 http://muibrog.hatenablog.com/entry/20100729/p1 によれば， ``` exiftool -[追加・変更したいタグ名]=“exifに加えたい内容” photo.jpg ``` とすれば，編集できるようだ．&#xA;ファイルの変更日時を撮影日時で変更 重複ファイルを検出・削除できるPhotos Duplicate Cleanerを使っても，上手くいかない画像ファイルがある． おそらくはファイルの変更日時やExif情報などを見て判断しているのだろうが，画像ファイルを特に編集した覚えはないのに変更日時が変更されていることがある．&#xA;検出できるように，ファイルの変更日時を撮影日時で変更したい．&#xA;あるディレクトリ以下のjpgファイルに対してexif情報を使って，一括で処理する方法が http://www.tuxradar.com/answers/433 に書いてあった． ファイル名の変更は不要なので，その処理を削除し，sedのパターンを変えるなどして，以下のようなものを作った．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```&#xA;1行目は現在のディレクトリで&#34;.jpg&#34;を含むファイルを探している 2行目はexiftoolを使って撮影日時を出力 3行目はexiftoolの出力から邪魔な部分をsedで削除（空文字と置換） 4行目はtouchを使ってファイルのタイムスタンプを撮影日時で更新 exiftoolで上手くいったか確認（タイムスタンプならFinderでも確認出来るが）すると，Modify Dateが変わっていない（Exif情報なので，タイムスタンプの変更とは関係ない）ので，修正．&#xA;``` find . -name “*.jpg” | while read PHOTO; do DATE=$(exiftool -DateTimeOriginal $PHOTO | sed ’s/[Date/Time Original : ]//g’) exiftool -ModifyDate=$(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO touch -t $(echo $DATE | sed ’s/\(..$\)/\.\1/’) $PHOTO done ```</description>
     </item>
   </channel>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home :: HaseLab (English)</title>
+    <link>http://localhost:1313/haselab/en/index.html</link>
+    <description>This is the Web site of Hasegawa Lab. We are belonging in Kagawa University&#xA;Faculty of Engineering and Design, Program in Architecture, Civil and Environmental Engineering; ACE and Graduate school of Engineering.&#xA;Contents are available via side menu/search window.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/haselab/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Research</title>
+      <link>http://localhost:1313/haselab/en/research/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/en/research/index.html</guid>
+      <description>Contents will be available soon&#xA;Tip This page is currently under construction. Please check back later for full content. Current Draft Content Peer-Reviewed Journal Publications (English) Effects of Driver’s License Status and Familiarity with Road Environment on Fixation Behavior While Walking to School (Journal of the Eastern Asia Society for Transportation Studies, 2021, Volume 14, Pages 2028-2040)&#xD;Pedestrian Behavior Analysis using Smart Eyewear (Asian Transport Studies, 2019, Volume 5, Issue 3, Pages 453-469)&#xD;Text Mining Analysis on Methods of Information Provision that Influence Tourists’ Travel Behavior (Journal of the Eastern Asia Society for Transportation Studies, 2010, Volume 8, Pages 941-953)&#xD;A BASIC STUDY ON TRAFFIC ACCIDENT DATA ANALYSIS USING SUPPORT VECTOR MACHINE (Journal of the Eastern Asia Society for Transportation Studies, 2007, Volume 7, Pages 2873-2880)</description>
+    </item>
+    <item>
+      <title>Activities</title>
+      <link>http://localhost:1313/haselab/en/activities/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/en/activities/index.html</guid>
+      <description>Current Activities / Monthly Reports Monthly activity reports can be viewed through the side menu navigation&#xA;Warning Please note: Most archived monthly reports and detailed activity logs are currently available only in Japanese. We are continuously working to update our content. Past Activities and Achievements This section links to the researcher’s achievements stored on Researchmap.&#xA;Publications / Papers (Refereed papers only, excluding Doctoral and Master’s theses) Abstracts, Preprints, and Miscellaneous Manuscripts (Non-refereed) Presentations and Oral Sessions (Including oral, poster, and online presentations by the researcher only) Research Projects, Grants, and Collaborations</description>
+    </item>
+    <item>
+      <title>Members</title>
+      <link>http://localhost:1313/haselab/en/members/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/en/members/index.html</guid>
+      <description>The information listed below reflects the composition of the lab for each academic year.&#xA;Academic Year 2025 Members Name Position / Grade Affiliation Office Room Notes Hironobu Hasegawa Associate Professor / PI Architecture, Civil and Environmental Engineering Program Building 2, 3F, Room 2313 Dr. Eng.; Authorized Ph.D. Supervisor TAIKI AGO 4th Year Undergraduate Architecture, Civil and Environmental Engineering Program Building 2, 3F, North Side TETSUYA ABE 4th Year Undergraduate Architecture, Civil and Environmental Engineering Program Building 2, 3F, North Side Past Members Info Our lab has just started a new chapter at Kagawa University. Please note that the list of past members from the researcher&#39;s previous institution, Akita National College of Technology, is currently available only on the Japanese version of this page.</description>
+    </item>
+    <item>
+      <title>Location and Access</title>
+      <link>http://localhost:1313/haselab/en/access/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/haselab/en/access/index.html</guid>
+      <description>Address Kagawa University Hayashi Campus&#xA;2217-20 Hayashicho, Takamatsu, Kagawa 761-0301, Japan&#xA;Dr. Hasegawa’s Office: Room 2313, 3rd Floor, Building No. 2.&#xA;Kagawa University :: Hayashi Campus (Map and Details)&#xA;Directions Kagawa University :: How to Access the Campuses</description>
+    </item>
+  </channel>
+</rss>
