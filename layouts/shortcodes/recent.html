@@ -1,5 +1,5 @@
 {{- $n := int (.Get "count" | default 5) -}}
-{{- $pages := site.RegularPages -}}
+{{- $pages := where site.Pages "Kind" "in" (slice "page" "section") -}}
 {{- with .Get "section" }}{{ $pages = where $pages "Section" . }}{{ end -}}
 <ul class="recent-updates">
 {{- range first $n $pages.ByLastmod.Reverse }}
