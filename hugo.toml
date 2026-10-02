@@ -42,3 +42,8 @@ home = [ "HTML", "RSS"]
     languageCode = "en"
     weight = 2
     # 英語コンテンツの表示時に適用したい、英語固有の設定があればここに追加
+
+enableGitInfo = true
+
+[frontmatter]
+  lastmod = ["lastmod", ":git", ":fileModTime"]
