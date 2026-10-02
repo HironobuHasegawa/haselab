@@ -1,0 +1,8 @@
+{{- $n := int (.Get "count" | default 5) -}}
+{{- $pages := site.RegularPages -}}
+{{- with .Get "section" }}{{ $pages = where $pages "Section" . }}{{ end -}}
+<ul class="recent-updates">
+{{- range first $n $pages.ByLastmod.Reverse }}
+  <li>{{ .Lastmod.Format "2006.01.02" }}　<a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+{{- end }}
+</ul>

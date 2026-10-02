@@ -29,6 +29,7 @@ GTFS（General Transit Feed Specification）には、公共交通機関の時刻
     <meta property="og:locale" content="ja">
     <meta property="og:type" content="article">
     <meta property="article:section" content="メモ">
+    <meta property="article:modified_time" content="2025-10-24T18:24:54+09:00">
     <meta property="article:tag" content="Gtfs">
     <meta property="article:tag" content="公共交通">
     <meta itemprop="name" content="GTFS :: HaseLab">
@@ -37,30 +38,31 @@ GTFS（General Transit Feed Specification）には、公共交通機関の時刻
 作成したフィードをGoogleに送ると，Googleマップのルート検索に反映されるらしい． 秋田県内だとあまり整備されていないが，シドニーにいた頃は大変お世話になった．
 フィードの作成 フィードは複数のテキストファイルをzipで固めたもの テキストファイルのエンコーディングはUTF8 フィードに含まれるテキストファイルは以下の通り（https://developers.google.com/transit/gtfs/reference?hl=ja から抜粋）
 ファイル名 必須 定義 agency.txt 必須 このフィードのデータを提供する 1 社以上の交通機関． stops.txt 必須 乗客が乗り降りする停車地点． routes.txt 必須 交通機関のルート．ルートとは利用者に 1 つのサービスとして表示される，旅程のグループのことです． trips.txt 必須 各ルートの旅程．旅程とは一定の時間に 2 回以上の停車を伴う移動行程を指します． stop\_times.txt 必須 各旅程の個々の停車地への到着時刻と出発時刻． calendar.txt 必須 週間時刻表に基づいたサービス ID の日付．サービスの開始日と終了日に加えて，サービスが利用できる曜日を指定します． calendar\_dates.txt 省略可能 calendar.txt ファイルで定義されたサービス ID の例外．この calendar\_dates.txt にサービスのすべての日付を含める場合，calendar.txt の代わりにこのファイルだけを指定することも可能です． fare\_attributes.txt 省略可能 交通機関のルートの料金情報． fare\_rules.txt 省略可能 交通機関のルートの料金情報を適用するための規則． shapes.txt 省略可能 交通機関のルートを示す線を地図に描くための規則． frequencies.txt 省略可能 サービスの間隔が一定でないルートの運行間隔（旅程の間隔）． transfers.txt 省略可能 乗換地点で別のルートに乗り継ぐための規則． feed\_info.txt 省略可能 フィード自体に関するその他の情報（フィード提供者，バージョン，有効期間などの情報）． サンプルは https://developers.google.com/transit/gtfs/examples/gtfs-feed?hl=ja を参照のこと（すぐに試せるzipで固めたものも入手可能）．">
+    <meta itemprop="dateModified" content="2025-10-24T18:24:54+09:00">
     <meta itemprop="wordCount" content="381">
     <meta itemprop="keywords" content="Gtfs,公共交通">
     <title>GTFS :: HaseLab</title>
-    <link href="https://hironobuhasegawa.github.io/haselab/css/auto-complete/auto-complete.min.css?1761706634" rel="stylesheet">
-    <script src="https://hironobuhasegawa.github.io/haselab/js/auto-complete/auto-complete.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/search-lunr.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/search.min.js?1761706634" defer></script>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/auto-complete/auto-complete.min.css?1790931094" rel="stylesheet">
+    <script src="https://hironobuhasegawa.github.io/haselab/js/auto-complete/auto-complete.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search-lunr.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/search.min.js?1790931094" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="https://hironobuhasegawa.github.io/haselab/searchindex.ja.js?1761706634";
+      window.relearn.index_js_url="https://hironobuhasegawa.github.io/haselab/searchindex.ja.js?1790931094";
     </script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.stemmer.support.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.multi.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/tinyseg.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.ja.min.js?1761706634" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.stemmer.support.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.multi.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/tinyseg.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/lunr/lunr.ja.min.js?1790931094" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['ja'];
     </script>
-    <link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761706634" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1761706634" rel="stylesheet"></noscript>
-    <link href="https://hironobuhasegawa.github.io/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1761706634" rel="stylesheet">
-    <link href="https://hironobuhasegawa.github.io/haselab/css/theme.min.css?1761706634" rel="stylesheet">
-    <link href="https://hironobuhasegawa.github.io/haselab/css/format-html.min.css?1761706634" rel="stylesheet" id="R-format-style">
+    <link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1790931094" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://hironobuhasegawa.github.io/haselab/fonts/fontawesome/css/fontawesome-all.min.css?1790931094" rel="stylesheet"></noscript>
+    <link href="https://hironobuhasegawa.github.io/haselab/css/perfect-scrollbar/perfect-scrollbar.min.css?1790931094" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/theme.min.css?1790931094" rel="stylesheet">
+    <link href="https://hironobuhasegawa.github.io/haselab/css/format-html.min.css?1790931094" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -577,8 +579,8 @@ feeds/test.zip ``` Webサーバが立ち上がるので，ブラウザで
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/clipboard/clipboard.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1761706634" defer></script>
-    <script src="https://hironobuhasegawa.github.io/haselab/js/theme.min.js?1761706634" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/clipboard/clipboard.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/perfect-scrollbar/perfect-scrollbar.min.js?1790931094" defer></script>
+    <script src="https://hironobuhasegawa.github.io/haselab/js/theme.min.js?1790931094" defer></script>
   </body>
 </html>

@@ -16,3 +16,11 @@ Click here to view comprehensive information regarding our research and Ph.D. su
 長谷川研究室のWebサイトです．
 
 サイト内のコンテンツは左のメニューまたは検索窓からどうぞ．
+
+## 最近の更新
+
+{{< recent count="5" >}}
+
+## 活動報告の新着
+
+{{< recent count="3" section="activities" >}}

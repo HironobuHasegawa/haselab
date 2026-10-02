@@ -7,16 +7,17 @@ weight: 200
 氏 名：長谷川 裕修（Hironobu HASEGAWA）
 
 所属：
-[香川大学](https://www.kagawa-u.ac.jp/) [創造工学部](https://www.kagawa-u.ac.jp/kagawa-u_ead/)
-[建築・都市環境コース](https://www.kagawa-u.ac.jp/kagawa-u_ead/course/architecture/)
+[香川大学](https://www.kagawa-u.ac.jp/)
+ [創造工学部](https://www.kagawa-u.ac.jp/kagawa-u_ead/)
+ [建築・都市環境コース](https://www.kagawa-u.ac.jp/kagawa-u_ead/course/architecture/)
+ [准教授](http://ja.wikipedia.org/wiki/%E5%87%86%E6%95%99%E6%8E%88)
 
-[准教授](http://ja.wikipedia.org/wiki/%E5%87%86%E6%95%99%E6%8E%88)
-
-出身地：[北海道](http://www.pref.hokkaido.lg.jp/)[富良野市](http://www.city.furano.hokkaido.jp/)
+出身地：[北海道](http://www.pref.hokkaido.lg.jp/) [富良野市](http://www.city.furano.hokkaido.jp/)
 
 # 略歴
 
 [researchmap リサーチマップ](https://researchmap.jp/hirohasegawa)
+
 [ORCID](https://orcid.org/0000-0003-3722-2005)
 
 ## 学歴
@@ -45,7 +46,7 @@ weight: 200
 | 2008年4月～2008年9月  | 室蘭工業大学               | リサーチ・アシスタント                                   |
 | 2008年10月～2014年9月 | 秋田工業高等専門学校       | 助教                                                     |
 | 2012年9月～2013年9月  | ニューサウスウェールズ大学 | 客員研究員                                               |
-| 2014年10月～          | 秋田工業高等専門学校       | 准教授                                                   |
+| 2014年10月～2025年3月          | 秋田工業高等専門学校       | 准教授                                                   |
 | 2025年4月～          |  香川大学      | 准教授                                                   |
 
 ## 資格等
