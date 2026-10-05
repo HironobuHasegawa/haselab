@@ -76,8 +76,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "",
-    "content": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．\n最近の更新 2026.10.05　2025年4月 2026.10.05　2026年度活動報告 2026.10.02　長谷川 裕修 2026.10.02　2025年度活動報告 2026.10.02　メンバー 活動報告の新着 2026.10.05　2025年4月 2026.10.05　2026年度活動報告 2026.10.02　2025年度活動報告",
-    "description": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．\n最近の更新 2026.10.05　2025年4月 2026.10.05　2026年度活動報告 2026.10.02　長谷川 裕修 2026.10.02　2025年度活動報告 2026.10.02　メンバー 活動報告の新着 2026.10.05　2025年4月 2026.10.05　2026年度活動報告 2026.10.02　2025年度活動報告",
+    "content": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．\n最近の更新 2026.10.05　2026年度活動報告 2026.10.02　長谷川 裕修 2026.10.02　2025年度活動報告 2026.10.02　メンバー 2026.10.02　活動報告 活動報告の新着 2026.10.05　2026年度活動報告 2026.10.02　2025年度活動報告 2026.10.02　活動報告",
+    "description": "重要 For International Applicants: English Site is Here! Click here to view comprehensive information regarding our research and Ph.D. supervision in English:\nGo to English Site\n香川大学 創造工学部 建築・都市環境コース 長谷川研究室のWebサイトです．\nサイト内のコンテンツは左のメニューまたは検索窓からどうぞ．\n最近の更新 2026.10.05　2026年度活動報告 2026.10.02　長谷川 裕修 2026.10.02　2025年度活動報告 2026.10.02　メンバー 2026.10.02　活動報告 活動報告の新着 2026.10.05　2026年度活動報告 2026.10.02　2025年度活動報告 2026.10.02　活動報告",
     "tags": [],
     "title": "Home",
     "uri": "/index.html"
@@ -201,16 +201,6 @@ var relearn_searchindex = [
     ],
     "title": "2021年9月",
     "uri": "/activities/2021/202109/index.html"
-  },
-  {
-    "breadcrumb": "Home \u003e 活動報告 \u003e 2025年度活動報告",
-    "content": "4月1日付けで香川大学 創造工学部建築・都市環境コースに准教授として着任しました． 研究室に4年生の吾郷さんと阿部さんが配属となりました．思い返せば16年前，秋田高専で最初の配属学生も2名でした． 2025年の10月27日(月)に書いています．",
-    "description": "4月1日付けで香川大学 創造工学部建築・都市環境コースに准教授として着任しました． 研究室に4年生の吾郷さんと阿部さんが配属となりました．思い返せば16年前，秋田高専で最初の配属学生も2名でした． 2025年の10月27日(月)に書いています．",
-    "tags": [
-      "香川大学"
-    ],
-    "title": "2025年4月",
-    "uri": "/activities/2025/202504/index.html"
   },
   {
     "breadcrumb": "Home \u003e タグ",
@@ -724,14 +714,6 @@ var relearn_searchindex = [
     "tags": [],
     "title": "タグ :: 行動変容",
     "uri": "/tags/%E8%A1%8C%E5%8B%95%E5%A4%89%E5%AE%B9/index.html"
-  },
-  {
-    "breadcrumb": "Home \u003e タグ",
-    "content": "",
-    "description": "",
-    "tags": [],
-    "title": "タグ :: 香川大学",
-    "uri": "/tags/%E9%A6%99%E5%B7%9D%E5%A4%A7%E5%AD%A6/index.html"
   },
   {
     "breadcrumb": "Home \u003e タグ",

@@ -2,4 +2,10 @@
 *.un~
 
 # Vim swap files
-*.swp
+*.sw[a-p]
+
+# Hugo build lock
+.hugo_build.lock
+
+# Shell config (not part of the site)
+.zshrc
