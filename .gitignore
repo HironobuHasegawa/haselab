@@ -1,2 +1,5 @@
 # Vim undo files
 *.un~
+
+# Vim swap files
+*.swp
