@@ -10,7 +10,7 @@ The information listed below reflects the composition of the lab for each academ
 | :--- | :--- | :--- | :--- | :--- |
 | [Hironobu Hasegawa](/members/hironobuhasegawa) | Associate Professor / PI | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, Room 2313 | Dr. Eng.; Authorized Ph.D. Supervisor |
 | Tetsuya Abe | 1st Year Master's Student | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
-| Sota Ogawa | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
+| Souta Ogawa | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Kodai Saeki | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Sakurako Yasuba | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Kai Yamasaki | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
@@ -26,7 +26,7 @@ The information listed below reflects the composition of the lab for each academ
 | [Hironobu Hasegawa](/members/hironobuhasegawa) | Associate Professor / PI | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, Room 2313 | |
 | Taiki Ago | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Tetsuya Abe | 4th Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
-| Sota Ogawa | 3rd Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
+| Souta Ogawa | 3rd Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Kodai Saeki | 3rd Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Sakurako Yasuba | 3rd Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
 | Kai Yamasaki | 3rd Year Undergraduate | Architecture, Civil and Environmental Engineering Program | Building 2, 3F, North Side | |
